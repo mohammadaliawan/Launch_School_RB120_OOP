@@ -204,3 +204,25 @@ The string "Sparky" is being passed to the `new` method through to the initializ
 ### Can getter and setter methods be accessed within the class?
   Yes, they can be referenced from within the class. In fact, it is preffered to use these getter and setter methods instead of referencing the instance variables directly.
 
+### What things does the attr_accessor method create?
+  getter method, setter method and also one instance variable.
+
+  So, `attr_accessor :name, :height, :weight`
+  gives us six getter/setter methods and threee instance variables @name, @height, @weight although right now they reference the `nil` object.
+
+
+## Classes and Objects II
+
+### What are class methods and how are they implemented?
+  Class methods are methods that are called directly on the class itself without having to instantiate any objects.
+
+  ```ruby
+  def self.what_am_i
+    "I am a GoodDog class!"
+  end
+```
+
+### When are class method used?
+  Class methods are where we put functionality that does not pertain to individual objects.
+  Objects contain state, and if we have a method that does not need to deal with states, then we can just use a class method. 
+

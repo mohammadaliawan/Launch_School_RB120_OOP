@@ -1,9 +1,21 @@
-def get_name
-  str = str.capitalize
+class MyCar
+  attr_accessor :color
+
+  def initialize(color)
+    @color = color
+  end
+
+  def spray_paint(color)
+    color = color
+  end
 end
 
-def some_method(get_name)
-  @name = get_name
-end
+lumina = MyCar.new("white")
 
-p some_method("hello")
+puts lumina.color
+
+lumina.color = "Black"
+
+puts lumina.color
+
+

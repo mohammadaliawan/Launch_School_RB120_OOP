@@ -1,136 +1,56 @@
-# Create a superclass called Vehicle for your MyCar class to inherit from and 
-# move the behavior that isn't specific to the MyCar class to the superclass.
-# Create a constant in your MyCar class that stores information about the vehicle that 
-# makes it different from other types of Vehicles.
+# Create a class called MyCar. 
+# When you initialize a new instance or object of the class, 
+# allow the user to define some instance variables that tell us the year, 
+# color, and model of the car. Create an instance variable that is set to 0
+# during instantiation of the object to track the current speed of the car 
+# as well. Create instance methods that allow the car to speed up, brake, 
+# and shut the car off.
 
-# Then create a new class called MyTruck that inherits from your superclass that also 
-# has a constant defined that separates it from the MyCar class in some way.
-
-module Towable
-  def tow
-    puts "What do you need me to tow?"
-  end
-end
-
-
-class Vehicle
-  attr_accessor :year, :color, :model, :speed
-
-  @@number_of_vehicles = 0
+class MyCar
+  attr_accessor :color
+  attr_reader :year
 
   def initialize(year, color, model)
-    @@number_of_vehicles += 1
-    self.year = year
-    self.color = color
-    self.model = model
-    self.speed = 0
+    @year = year
+    @color = color
+    @model = model
+    @current_speed = 0
   end
 
-  def self.total
-    @@number_of_vehicles
+  def spray_paint(new_color)
+    self.color = new_color
+    puts "Your car is now a shiny #{self.color}"
   end
 
-  def self.mileage(gallons, miles)
-    puts "This vehicle has a milage of #{miles/(gallons.to_f)} miles per gallon"
-  end
-  
-  def speed_up
-    self.speed += 10
+  def current_speed
+    puts "You are now going at #{@current_speed} mph."
   end
 
-  def brake
-    self.speed -= 5
+  def speed_up(s)
+    @current_speed += s
+    puts "You accelerate by #{s} mph "
   end
 
-  def shut_off
-    self.speed = 0
-  end
-end
-
-
-class MyCar < Vehicle
-  DRIVE = 4
-
-  @@number_of_cars = 0
-
-  def initialize(year, color, model)
-    super
-    @@number_of_cars += 1
+  def brake(b)
+    @current_speed-= b
+    puts "You decelerate by #{b} mph"
   end
 
-  def self.total
-    @@number_of_cars
-  end
-
-  def to_s
-    "Car model: #{model}, year: #{year}, color: #{color}"
+  def shut_down
+    @current_speed = 0
+    puts "Lets park this bad boy!"
   end
 end
 
-class MyTruck < Vehicle
-  include Towable
-  DRIVE = 8
+lumina = MyCar.new(1997, "white", "chevy lumina")
+# lumina.current_speed
+# lumina.speed_up(50)
+# lumina.current_speed
+# lumina.brake(20)
+# lumina.current_speed
+# lumina.shut_down
+# lumina.current_speed
 
-  @@number_of_trucks = 0
-
-  def initialize(year, color, model)
-    super
-    @@number_of_trucks += 1
-  end
-
-  def self.total
-    @@number_of_trucks
-  end
-
-  def to_s
-    "Truck model: #{model}, year: #{year}, color: #{color}"
-  end
-end
-
-new_car = MyCar.new(1987, "Yellow", "Choverlet")
-new_truck = MyTruck.new(1987, "Black", "Ford Tundra")
-
-my_car = MyCar.new(2007, "White", "Suzuki")
-
-# p new_car.to_s
-
-# p new_truck.to_s
-
-# p Vehicle.total
-
-# p MyCar.total
-
-# p MyTruck.total
-
-# new_truck.tow
-
-# puts Vehicle.ancestors
-
-# puts "-------------------------"
-
-# puts MyCar.ancestors
-
-# puts "-------------------------"
-
-# puts MyTruck.ancestors
-
-new_car.speed_up
-new_truck.speed_up
-
-p new_car.speed
-p new_truck.speed
-
-new_car.brake
-new_truck.brake
-
-p new_car.speed
-p new_truck.speed
-
-new_car.shut_off
-new_truck.shut_off
-
-p new_car.speed
-p new_truck.shut_off
-
-
-
+lumina.color = "black"
+puts lumina.color
+puts lumina.year
