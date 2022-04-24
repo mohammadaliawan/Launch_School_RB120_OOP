@@ -54,7 +54,7 @@
 ### What is the meaning of "instances of the same class"?
   Objects are instances of classes; meaning that objects are created from classes. 
 
-### What is the meaning "instantiated from a class"?
+### What is the meaning of "instantiated from a class"?
   Objects are created from classes.
 
 ### Where are the attributes and behaviours of objects defined?
@@ -129,14 +129,14 @@ BasicObject
 ### When making classes what are the two things we usually focus on?
   States and Behaviours
 
-### What are states and behviours?
+### What are states and behaviours?
   States track attributes of individual objects, while Behaviours are what objects are capable of doing
 
 ### What is used to keep track of states of an object?
   Instance variables are used to track the states of objects
 
 ### What is the scope of instance variables?
-  Instance variables are scopeed at the instance or object level.
+  Instance variables are scoped at the instance or object level.
 
 ### What are instance methods?
   Instance method expose behaviours of objects of a class. They expose an interface to interact with objects of a class. They are available to all objects of that class.
@@ -208,7 +208,7 @@ The string "Sparky" is being passed to the `new` method through to the initializ
   getter method, setter method and also one instance variable.
 
   So, `attr_accessor :name, :height, :weight`
-  gives us six getter/setter methods and threee instance variables @name, @height, @weight although right now they reference the `nil` object.
+  gives us six getter/setter methods and three instance variables @name, @height, @weight although right now they reference the `nil` object.
 
 
 ## Classes and Objects II
@@ -222,7 +222,34 @@ The string "Sparky" is being passed to the `new` method through to the initializ
   end
 ```
 
-### When are class method used?
+### When are class methods used?
   Class methods are where we put functionality that does not pertain to individual objects.
   Objects contain state, and if we have a method that does not need to deal with states, then we can just use a class method. 
+
+### What are class variables and what is difference between instance and class variables?
+  Instance variables capture information related to specific instances of classes. Class variables capture information related to an entire class.
+  Class variables can be accessed from within instance methods as well.
+
+### What does the to_s method return by default?
+  By default the to_s method returns the name of the object and an encoding of the object_id.
+
+  **the to_s method is called automatically on the object when we use it with puts or when used with string interpolation**
+
+### What does `self` represent when used within the class inside instance methods?
+  From within the class, When an instance method uses `self`, it references the calling object.
+
+### What does `self` represent when used within the class but outside an instance method?
+  Using `self` inside a class but outside an instance method refers to the class itself.
+
+## Inheritance
+  Inheritance is when a class inherits behavior from another class. 
+  The class that is inheriting is called the subclass and the class it inherits from is called the superclass.
+  Inheritance is used as a way to extract common behaviours from classes that share that behavior and move it to a superclass. This lets us keep logic in one place.
+
+### What is method overriding?
+  When the same methods exist in the superclass and subclass, the method in the subclass shall be used. This is called method overridding.
+
+### What is the `super` keyword used for?
+  `super` is used within a method to call a method earlier in the method lookup path. When you call `super` within a method, it searches the method lookup path for a method of the same name.
+
 
