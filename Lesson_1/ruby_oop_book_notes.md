@@ -242,14 +242,21 @@ The string "Sparky" is being passed to the `new` method through to the initializ
   Using `self` inside a class but outside an instance method refers to the class itself.
 
 ## Inheritance
+
+
   Inheritance is when a class inherits behavior from another class. 
   The class that is inheriting is called the subclass and the class it inherits from is called the superclass.
   Inheritance is used as a way to extract common behaviours from classes that share that behavior and move it to a superclass. This lets us keep logic in one place.
+
+### What is used to signify that a class inherits from another class?
+  class GoodDog < Animal
 
 ### What is method overriding?
   When the same methods exist in the superclass and subclass, the method in the subclass shall be used. This is called method overridding.
 
 ### What is the `super` keyword used for?
-  `super` is used within a method to call a method earlier in the method lookup path. When you call `super` within a method, it searches the method lookup path for a method of the same name.
+  `super` is used within a method to call a method earlier in the method lookup path. When you call `super` within a method, it searches the method lookup path for a method of the same name then invokes it.
+
+### 
 
 

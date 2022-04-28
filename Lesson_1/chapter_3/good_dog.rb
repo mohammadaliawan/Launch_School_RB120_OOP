@@ -1,22 +1,27 @@
 class Animal
-  attr_accessor :name
-
-  def initialize(name)
-    self.name = name
+  def speak
+    "Hello!"
   end
 end
 
 class GoodDog < Animal
-  attr_accessor :color
+  attr_accessor :name
 
-  def initialize(color)
-    super
-    self.color = color
+  def initialize(n)
+    self.name = n
+  end
+
+  def speak # overriding
+    super + " from the GoodDog Class"
   end
 end
 
-bruno = GoodDog.new("brown")
+class Cat < Animal
 
-p bruno
+end
 
+sparky = GoodDog.new("Sparky")
+paws = Cat.new
 
+puts sparky.speak
+puts paws.speak
