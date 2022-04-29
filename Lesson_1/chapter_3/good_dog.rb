@@ -13,7 +13,7 @@ end
 class GoodDog
   DOG_YEARS = 7
 
-  attr_accessor :name, :age
+  attr_accessor :name
 
   def initialize(n, a)
     self.name = n
@@ -24,12 +24,19 @@ class GoodDog
     "#{self.name} in human years is #{human_years}"
   end
 
+  def older?(other_dog)
+    self.age > other_dog.age
+  end
+
   private
 
   def human_years
     age * DOG_YEARS
   end
 
+  protected
+
+  attr_accessor :age
 end
 
 class BadDog < Animal
@@ -56,4 +63,7 @@ end
 # # puts paws.speak
 
 sparky = GoodDog.new("Sparky", 4)
-p sparky.public_disclosure
+
+fido = GoodDog.new("Fido", 3)
+
+p sparky.older?(fido)
