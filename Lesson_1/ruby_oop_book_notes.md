@@ -257,6 +257,67 @@ The string "Sparky" is being passed to the `new` method through to the initializ
 ### What is the `super` keyword used for?
   `super` is used within a method to call a method earlier in the method lookup path. When you call `super` within a method, it searches the method lookup path for a method of the same name then invokes it.
 
-### 
+### What does the `super` keyword do in addition to invoking a method earlier in the lookup path?
+  It also automatically passes the argument passed to the method in the subclass to the method in the superclass.
 
+### How do you use `super` to send no arguments to the method in the superclass?
+  `super()`
+
+### What are the two types of inheritance called?
+  Class inheritance where a class inherits the behaviours from another class. One type inherits the behaviours from another type.
+
+  The other type of inheritance is called interface inheritance. The class doesnt inherit from another type. But instead inherits the interface provided by the mixin module.
+
+
+### When to use class inheritance vs. interface inheritance?
+
+  - you can only subclass from one class. But you can mixin as many modules as you like. 
+  - If there is "is a/an" relationship, class inheritance is the correct choice
+  - If there is "has a/an" relationship interface inheritance is generally a better choice.
+  - You cannot instantiate modules. Modules are only used for namespacing and grouping common methods.
+
+### What is the Method Lookup Path?
+  Method Lookup path is the order in which classes are inspected when you call a method.
+
+### Modules and Class inheritance togather
+  Instances of a class have access to methods defined in any included modules in the superclass.
+
+### What is namespacing?
+  namespacing means organizing similar classes under a module. 
+
+### What are the advantages of using modules for namespacing?
+  - It becomes easy to recognize related classes
+  - It reduces the likelihood of our classes colliding wit other similarly names classes.
+
+### What are the three use cases for modules?
+  - mixin common behaviour into classes
+  - namespacing: grouping related classes in a module
+  - container for out of place methods called module methods
+
+### How are module methods defined and called?
+```ruby
+  module Mammal
+  def self.some_method
+    #some code
+  end
+end
+
+value = Mammal.some_method #OR
+value = Mammal::some_method
+```
+
+They are called directly from the module:
+`value = Mammal.some_method`
+
+### What is Method Access Controi?
+  Restricting access to methods by using access modifiers.
+
+### What are the three access modifiers used in Ruby?
+  public, private, protected.
+
+### What is a public method?
+  Public method is a method that is available to anyone who knows either the class name or the object's name. These methods are readily available for the rest of the program to use and comprise the class's interface i.e how other classes and objects will interact with this class and its objects.
+
+### What are private methods?
+  Methods that are doing some work in the class but dont need to be available to the rest of the program. `private` methods are only accessible from other methods in the class.
 

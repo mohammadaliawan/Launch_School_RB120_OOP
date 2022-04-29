@@ -1,18 +1,43 @@
 class Animal
+  attr_accessor :name
+
+  def initialize(name)
+    self.name = name
+  end
+
   def speak
     "Hello!"
   end
 end
 
-class GoodDog < Animal
-  attr_accessor :name
+class GoodDog
+  DOG_YEARS = 7
 
-  def initialize(n)
+  attr_accessor :name, :age
+
+  def initialize(n, a)
     self.name = n
+    self.age = a
   end
 
-  def speak # overriding
-    super + " from the GoodDog Class"
+  def public_disclosure
+    "#{self.name} in human years is #{human_years}"
+  end
+
+  private
+
+  def human_years
+    age * DOG_YEARS
+  end
+
+end
+
+class BadDog < Animal
+  attr_accessor :age, :name
+
+  def initialize(age, name)
+    super(name)
+    self.age = age
   end
 end
 
@@ -20,8 +45,15 @@ class Cat < Animal
 
 end
 
-sparky = GoodDog.new("Sparky")
-paws = Cat.new
+# bruno = GoodDog.new("Brown")
+# bear = BadDog.new(2, "bear")
+# # paws = Cat.new
 
-puts sparky.speak
-puts paws.speak
+# p bruno
+# p bear.age
+
+# # puts sparky.speak
+# # puts paws.speak
+
+sparky = GoodDog.new("Sparky", 4)
+p sparky.public_disclosure
