@@ -322,6 +322,9 @@ They are called directly from the module:
   Methods that are doing some work in the class but dont need to be available to the rest of the program. `private` methods are only accessible from other methods in the class.
   Private methods are not accessible outside of the class definition at all, and are only accessible from inside the class when called without self.
 
+  it is now legal to call private methods with a literal self as the caller. Note that this does not mean that we can call a private method with any other object, not even one of the same type. We can only call a private method with the current object.
+
 ### What are protected methods?
   Protected methods are similar to private methods in that they cannot be invoked outside the class.
   The main difference is that protected methods allow access between class instances while protected methods donot
+  Unlike private methods , other instances of the class or subclass can also invoke the method. 
