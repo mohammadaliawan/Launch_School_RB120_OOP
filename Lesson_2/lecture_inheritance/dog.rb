@@ -1,12 +1,4 @@
-class Dog
-  def speak
-    "bark!"
-  end
-
-  def swim
-    "swimming"
-  end
-
+class Pet
   def run
     "running"
   end
@@ -14,11 +6,26 @@ class Dog
   def jump
     "jumping"
   end
+end
 
+class Dog < Pet
   def fetch
     "fetching"
   end
-  
+
+  def speak
+    'bark!'
+  end
+
+  def swim
+    'swimming!'
+  end
+end
+
+class Cat < Pet
+  def speak
+    "Meow!"
+  end
 end
 
 class BullDog < Dog
@@ -27,6 +34,19 @@ class BullDog < Dog
   end
 end
 
-karl = BullDog.new
-p karl.speak
-p karl.swim
+pete = Pet.new
+kitty = Cat.new
+dave = Dog.new
+bud = Bulldog.new
+
+pete.run                # => "running!"
+pete.speak              # => NoMethodError
+
+kitty.run               # => "running!"
+kitty.speak             # => "meow!"
+kitty.fetch             # => NoMethodError
+
+dave.speak              # => "bark!"
+
+bud.run                 # => "running!"
+bud.swim                # => "can't swim!"
