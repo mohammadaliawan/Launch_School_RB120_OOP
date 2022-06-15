@@ -1,0 +1,16 @@
+Do you think its possible for someone who has 10 years of experience in oil and gas, to change their profession to Software Development? And is it possible for them to actually become a successful and highly sort after software engineer in a few years? Is it possible for them to find a remote job in a US or Europe based company while staying in Pakistan?
+
+I am here to tell you that it is. I have more than 10 years of experience in oil and gas. Ever since Covid-19 happened it has been very hard to find a job at a good company where my career could grow, specially in Pakistan. This is specially true for fresh engineers in mechanical, chemical, electrical and other related fields. The economy of Pakistan is in deep trouble right now and good jobs are very hard to get.
+
+However, software development and the IT sector has a completely different story. Take the example of #Arbisoft, a software services company in Lahore. They have grown expnentially in past two years. Remote work, having become the norm rather than the exception in the past few years, has opened a vast number of opportunities in Pakistan. 
+
+Now back to my story. I lost my job in an engineering company in Abu Dhabi in 2020 when covid hit. I came back to Pakistan and couldn't find a job anywhere. I had always been fascinated by the software field and I had been thinking about career change for a long time, but due to family committments I didnt know how to make the switch and where to start. Thats when I found #LaunchSchool. #LaunchSchool showed me a well tested path to a successful career in software development. It's unlike any other online resource I have come across uptill now. It's a mastery based program that grounds you in the fundamentals of software development. 
+
+This Sunday, 12th of June, I will be hosting a live session to tell you all about what Launch School is and what it is not, why I chose Launch School, what is mastery based learning and why is it important, why fundamentals are important, and why doing Launch School will open up a vast number of opportunities for you while in Pakistan. And I will also answer why I believe switching your career to software development or a related field will be a good decision considering the state of the economy in Pakistan specially for fresh engineers.
+
+The session will be hosted on google meet. Here is a link (Software Development: Switching Careers and Launch School
+June 9, 2022, 8:00pm – June 12, 2022, 9:00pm · 
+Google Meet joining info
+Video call link: https://meet.google.com/tbw-dwvt-ekq) to join the session. It will held at 8 pm PKT, Sunday, 12th June.
+
+Disclaimer: I have been a student at Launch School since April, 2020. I dont work for Launch School and I am not affialted in anyother way with Launch School. The reason I am doing this is because considering the economic situation in Pakistan and having come across many fresh engineers during interviews who dont know which direction they should go in, I believe this is will help some people to find a path that could lead to a successful career. 

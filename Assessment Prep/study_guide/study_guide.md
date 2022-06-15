@@ -2,7 +2,8 @@
 
 You should be able to explain these concepts with clarity.
 
-- Specific Topics of Interest
+## Specific Topics of Interest
+
 - Classes and objects
 - Use attr_* to create setter and getter methods
 - How to call setters and getters
@@ -14,7 +15,7 @@ You should be able to explain these concepts with clarity.
 - Method lookup path
 - self
   - Calling methods with self
-  -More about self
+  - More about self
 - Reading OO code
 - Fake operators and equality
 - Working with collaborator objects
