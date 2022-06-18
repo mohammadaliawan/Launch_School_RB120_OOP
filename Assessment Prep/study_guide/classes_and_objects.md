@@ -76,6 +76,6 @@ When we say classes define the attributes of its objects, we are referring to ho
 
 The classes also define the accessor methods and level of method access control however we are generally just pointing to the instance variables. 
 
-When we say state tracks attributes for individual objects, we mean instance variables and values comprise an object's state., Here we are not referring to the getters and setters.
+When we say state tracks attributes for individual objects, we mean instance variables and values comprise an object's state. Here we are not referring to the getters and setters.
 
 
