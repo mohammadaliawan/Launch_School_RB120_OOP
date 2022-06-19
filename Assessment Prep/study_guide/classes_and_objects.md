@@ -15,15 +15,29 @@ OOP provides a way to create containers for data that can be changed and manipul
 
 ## What are classes and Objects?
 
-Objects are created from Classes. They are instances of a class. Classes are like blueprints for objects.Classes are like basic outlines of what an object should be made of and what it should be able to do. 
+Objects are created from Classes. They are known as instances of a class. Classes are like blueprints for objects.They are basic outlines of what an object should be made of and what it should be able to do. That is, they define the attributes and behaviors of the objects instantiated from those classes.
 
-They are like a specification or a plan specifying what attributes or properties those objects will have and what kind behaviours these objects will be able to perform. 
+For example in Ruby, there are classes like `String`, `Integer`, `Array` and `Hash`. And we can create instances of these classes which are known as objects. 
+
+```ruby
+new_str = String.new("Hello")
+```
+
+The above code is an example of instantiating an object of the `String` class with the class method `new`. `new_str` references a `String` object. We can also create custom classes in Ruby.
+
+```ruby
+class Computer
+end
+
+home_computer = Computer.new
+```
+ In the above code we have created a new custom class `Computer` and instantiated a new `Computer` object with the class method `new`. `home_computer` now references a `Computer` object.
+
+Classes are like a specification or a plan specifying what attributes or properties those objects will have and what kind of behaviours these objects will be able to perform. 
 
 The attributes and behaviours of objects are defined in the class they belong to. 
 
 An individual object contains different information than other objects although they are instances of the same class.
-
-Objects are known as instances of a class.
 
 ### How are classes created?
 
@@ -42,9 +56,9 @@ For example.
 class Computer
 end
 
-puffy = Computer.new
+home_computer = Computer.new
 ```
-In the above example we created the class `Computer` and instantiated a new `Computer` object by invoking the Public Class method `new` on the `Computer` class. This returns a new `Computer` object. This object is then assigned to the local variabl `puffy`. 
+In the above example we created the class `Computer` and instantiated a new `Computer` object by invoking the Public Class method `new` on the `Computer` class. This returns a new `Computer` object. This object is then assigned to the local variabl `home_computer`. 
 
 ### What is instantiation?
 
@@ -54,7 +68,12 @@ Class instantiation is the workflow of creating a new object from a class.
 
 States and Behaviours.
 
-States track attributes for individual objects. Behavious are what objects of a class are capable of doing.
+States track attributes for individual objects. 
+Behavious are what objects of a class are capable of doing.
+
+States are tracked by instance variables which are scoped at the object level and specified in the class  while behaviours are defined as instance methods in the class which are available to all objects of that class.
+
+Individual objects of the same class have unique states while having shared behaviors.
 
 For example, we have a `Computer` Class. We may create two different objects one named "HP Notebook" and the other "Dell Latitude". They are both `Computer` objects but contain different informatition like model, screen size, RAM, storage etc. 
 
@@ -66,8 +85,6 @@ Attributes can be thought of as the different characteristics that make up an ob
 
 For example, attributes of a `Computer` object might be model, screen size, RAM, storage etc.
 
-These attributes can be accessed and manipulated from outside the object. 
-
 ### When we refer to attributes what might we be referring to?
 
 We could be referring to the characteristic names or the name and the values attributed to the object. The meaning becomes clear from context.
@@ -77,5 +94,11 @@ When we say classes define the attributes of its objects, we are referring to ho
 The classes also define the accessor methods and level of method access control however we are generally just pointing to the instance variables. 
 
 When we say state tracks attributes for individual objects, we mean instance variables and values comprise an object's state. Here we are not referring to the getters and setters.
+
+### How does the initialize method work?
+
+`initialize` is an instance method that gets invoked every time we instantiate a new object by invoking the class method `new`. So basically the `new` method triggers the `initialize` method. 
+
+The initialize method is known as a constructor because it builds the object when a new object is instantiated. 
 
 

@@ -55,3 +55,26 @@ In the above example, the `Computer` object referenced by `home_computer` has th
 Now, it is possible to only read the state of this object through the use of the public method `Computer#info`. It is not possible to modify the state of this object i.e. manipulate the values for these instance variables. Although we can upgrade the RAM for the `home_computer` object by using the public method `Computer#upgrade_ram` but that access is also restricted as this attribute cannot be changed to any value. It can only be changed to `"8 GB"`. 
 
 So by creating a `Computer` object and exposing only certain interfaces that can only do certain actions on the object we have protected the data associated with our `home_computer` object. This is an example of encapsulation in OOP.
+
+## Polymorphism
+
+Polymorphism is the ability for different types of data to respond to a common interface. That is, it lets objects of different types respond to the same method invocation.
+
+When two or more object types have a method with the same name, we can invoke that method with any of those objects. 
+
+Polymorphism is implemented in two major ways:
+
+1. Inheritance
+
+- Class Inheritance:
+
+The concept of inheritance is used in Ruby where a class inherits the behaviors of another class, referred to as the superclass. This gives Ruby programmers the power to define basic classes with large reusability and smaller subclasses for more fine-grained, detailed behaviors.
+
+Inheritance is when a class inherits behavior from another class. The class that is inheriting behavior is called the subclass and the class it inherits from is called the superclass.
+
+We use inheritance as a way to extract common behaviors from classes that share that behavior, and move it to a superclass. This lets us keep logic in one place. 
+
+Another way to apply polymorphic structure to Ruby programs is to use a Module. Modules are similar to classes in that they contain shared behavior. However, you cannot create an object with a module. A module must be mixed in with a class using the include method invocation. This is called a mixin. After mixing in a module, the behaviors declared in that module are available to the class and its objects.
+
+2. Duck Typing
+
