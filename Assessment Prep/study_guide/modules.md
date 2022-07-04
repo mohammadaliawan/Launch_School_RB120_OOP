@@ -25,6 +25,6 @@ end
 ```
 In the above example, we have two classes `Laptop` and `Desktop`. And we have defined a module `Upgradable` which has two instance method `upgrade_ram` and `upgrade_storage`. 
 
-We have mixed in the module `Upgradable` in both classes by invoking the `include` method and passing the name of the module as argument.
+We have mixed in the module `Upgradable` in both classes by invoking the `include`method and passing the name of the module as argument.
 
 Now, the instance methods defined in the `Upgradable` module are now available to all instances of the classes `Laptop` and `Desktop`.
