@@ -6,7 +6,7 @@
 
 Encapsulation is hiding pieces of functionality and making it unavailable to the rest of the code base. It is a form of data protection, so that data cannot be manipulated or changed without obvious intention. It is what defines the boundaries in your application and allows your code to achieve new levels of complexity. Ruby, like many other OO languages, accomplishes this task by creating objects, and exposing interfaces (i.e., methods) to interact with those objects.
 
-Encapsulation lets us hide the internal representation of an object from the outside and only expose the methods and properties that users of the object need. We can use method access control to expose these properties and methods through the public (or external) interface of a class: its public methods.
+Check this <!-- Encapsulation lets us hide the internal representation of an object from the outside and only expose the methods and properties that users of the object need. We can use method access control to expose these properties and methods through the public (or external) interface of a class: its public methods. -->
 
 ### My definition
 
@@ -14,7 +14,7 @@ Encapsulation in object oriented programming is about restricting access to data
 
 Encapsulation in Ruby is implemented through the creation of objects and exposing only those behaviours and attributes of the object through public methods that are actually needed by other objects to interact with that object. 
 
-Encapsulation helps with data protection, reduces dependencies within the program and also makes the software program easier to maintain. 
+Encapsulation helps with data protection, reduces dependencies within the program and also makes the software program easier to maintain. It also helps the programmer to think on a new level of abstraction as the objects represent real world nouns.
 
 ### Example
 
