@@ -84,7 +84,7 @@ Polymorphism is implemented in two major ways:
 
 - Class Inheritance:
 
-Class Inheritance is when a class inherits behavior from another class. The class that is inheriting behavior is called the subclass and the class it inherits from is called the superclass.
+Class Inheritance is when a class inherits behavior or methods from another class. The class that is inheriting behavior is called the subclass and the class it inherits from is called the superclass.
 
 Super classes can be defined as basic classes with large reusability and smaller subclasses are defined for more fine-grained, detailed behaviors.
 
@@ -103,7 +103,24 @@ See example in computer.rb
 
 - Interface Inheritance
 
+A module is a collection of behaviors that is usable in other clasess via mixins.
+
 Another way to apply polymorphic structure to Ruby programs is to use a Module. Modules are similar to classes in that they contain shared behavior. However, you cannot create an object with a module. A module must be mixed in with a class using the `include` method invocation. This is called a mixin. After mixing in a module, the behaviors declared in that module are available to the class and its objects.
 
 2. Duck Typing
 
+
+
+## Method Lookup Path
+
+Ruby has a distinct lookup path that it follows each time a method is called.
+
+When a method is invoked on an object, ruby first looks for that method definition in the class that the object belongs to. If the method is not found, ruby keeps looking in any modules that are mixed in with the class following which it looks in the superclass of the current class. This continues in an ordered fashion until the method is found or there are no more places to look. 
+
+The Method lookup path ends with the following three classes/modules
+
+```
+Object
+Kernel
+BasicObject
+```

@@ -9,7 +9,7 @@
 
 ## What is OOP and Why is it important?
 
-Object oriented programming is a programming paradigm. As software systems grow in size, they become complex and it becomes hard to maintain them. OOP was created to deal with this problem.
+Object oriented programming is a programming paradigm. It was created to deal with growing complexity of large software systems. As software systems grow in size, they become complex and it becomes hard to maintain them. OOP was created to deal with this problem.
 
 If a software program contains several dependent parts, then changing something in one part effects several other parts which makes making a small change a very difficult task.
 
@@ -17,20 +17,19 @@ OOP provides a way to create containers for data that can be changed and manipul
 
 - programming paradigm
 - software programs grow complex, hard to maintain
+- many dependent parts triggers many errors due to a small change
 - OOP creates containers for data 
 - can be manipulated without affecting the entire program
 
-## What are classes and Objects?
+## What are Classes and Objects?
 
-In Ruby, anything that can be thought of as having a value is an object. Objects represent real world nouns which have both attributes and behaviors. Objects are created from Classes.They are known as instances of a class. 
+### Objects
 
-Classes are like blueprints for objects.They are basic outlines of what an object should be made of i.e. 'attributes' and what it should be able to do i.e. 'behaviours'. That is, they define the attributes and behaviors of the objects instantiated from those classes.
+In Ruby, anything that can be said to have a value is an object. Objects represent real world nouns which have both attributes and behaviors. Objects are created from Classes.They are known as instances of a class. 
 
-Objects of the same class have a unique 'state'. An object's state tracks the attributes defined in the class and instance variables are used to track information about an object's state and are scoped at the object level.
+### Classes
 
-While objects encapsulate state in the form of instance variables, classes encapsulates and exposes behaviors in the form of instance methods.
-
-Individual objects of the same class have unique states while having shared behaviors defined in the class as instance methods.
+Classes are like blueprints for objects. They are what objects are created from. They are basic outlines of what an object should be made of i.e. 'attributes' and what it should be able to do i.e. 'behaviours'. That is, they define the attributes and behaviors of the objects instantiated from those classes.
 
 For example in Ruby, there are classes like `String`, `Integer`, `Array` and `Hash`. And we can create instances of these classes which are known as objects. 
 
@@ -82,7 +81,7 @@ end
 
 home_computer = Computer.new
 ```
-In the above example we created the class `Computer` and instantiated a new `Computer` object by invoking the Public Class method `new` on the `Computer` class. This returns a new `Computer` object. This object is then assigned to the local variabl `home_computer`. 
+In the above example we created the class `Computer` and instantiated a new `Computer` object by invoking the Public Class method `new` on the `Computer` class. This returns a new `Computer` object. This object is then assigned to the local variable `home_computer`. 
 
 ### What is instantiation?
 
@@ -97,7 +96,11 @@ Behavious are what objects of a class are capable of doing.
 
 States are tracked by instance variables which are scoped at the object level and specified in the class  while behaviours are defined as instance methods in the class which are available to all objects of that class.
 
-Individual objects of the same class have unique states while having shared behaviors.
+Individual objects of the same class have unique states while having shared behaviors. Individual objects of the same class have unique states while having shared behaviors defined in the class as instance methods.
+
+Objects of the same class have a unique 'state'.
+
+While objects encapsulate state in the form of instance variables, classes encapsulate and exposes behaviors in the form of instance methods.
 
 For example, we have a `Computer` Class. We may create two different objects one named "HP Notebook" and the other "Dell Latitude". They are both `Computer` objects but contain different informatition like model, screen size, RAM, storage etc. 
 
