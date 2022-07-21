@@ -4,7 +4,7 @@
 
 Instance variables are scoped at the object level. They do not cross over between objects.
 
-Because the scope of instance variables is at the object level, this means that the instance variable is accessible in an object's instance methods even if it is initialized outside that method.
+Because the scope of instance variables is at the object level, this means that instance variables are accessible in an object's instance methods even if it is initialized outside that method.
 
 ### What differentiates instance variables from local variables?
 
@@ -103,7 +103,7 @@ If no constant definition is found in the inheritance heirarchy, then top level 
 
 ## Variable Scope and Inheritance
 
-### Instance Variables
+### Instance Variables and class inheritance
 
 ```ruby
 class Animal
@@ -122,6 +122,26 @@ fido = Dog.new("Fido")
 puts fido.dog_name
 ```
 
-In the above code, we have defined two classes `Animal` and `Dog`. `Dog` is a subclassed from `Animal`. On line `x` we instantiate a new `Dog` object by invoking the `new` class method on `Dog` and pass in the string object `"Fido"` as an argument. The `new` method invokes the instance method `initialize` . Ruby looks for the `initialize` method in `Dog` but not finding it there goes up the method lookup path to the superclass for `Dog` i.e. `Animal`. Find the `initialize` method there it invokes it and initializes the `@name` instance variable to the argument passed to `new` i.e. the string object `"Fido"`. 
+In the above code, we have defined two classes `Animal` and `Dog`. `Dog` is a subclassed from `Animal`. On line `x` we instantiate a new `Dog` object by invoking the `new` class method on `Dog` and pass in the string object `"Fido"` as an argument. The `new` method invokes the instance method `initialize` . Ruby looks for the `initialize` method in `Dog` but not finding it there goes up the method lookup path to the superclass for `Dog` i.e. `Animal`. It finds the `initialize` method there and invokes it and initializes the `@name` instance variable to the argument passed to `new` i.e. the string object `"Fido"`. 
 
-So the `@name` instance variable associated with the `fido` object has been initialized and is available at the object level being an instance variable. So when the `dog_name` instance method is invoked on line `x` on the `fido` object, The value for `@name `instance variable for the `fido` object is interpolated into the surrounding string on line `x` and the resulting string is output.
+So the `@name` instance variable associated with the `fido` object has been initialized and is available at the object level being an instance variable and hence is available in instance methods. So when the `dog_name` instance method is invoked on line `x` on the `fido` object, the value for `@name `instance variable for the `fido` object is interpolated into the surrounding string on line `x` and the resulting string is output.
+
+### Instance variables and interface inheritance
+
+```ruby
+module Swimmable
+  def enable_swimming
+    @can_swim = true
+  end
+end
+
+class Dog
+  def can_swim?
+    @can_swim
+  end
+end
+
+fido = Dog.new
+p fido.can_swim?
+
+```

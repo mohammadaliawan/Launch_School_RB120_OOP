@@ -31,6 +31,8 @@ In Ruby, anything that can be said to have a value is an object. Objects represe
 
 Classes are like blueprints for objects. They are what objects are created from. They are basic outlines of what an object should be made of i.e. 'attributes' and what it should be able to do i.e. 'behaviours'. That is, they define the attributes and behaviors of the objects instantiated from those classes.
 
+Individual objects will contain different information from other objects, yet they are instances of the same class.
+
 For example in Ruby, there are classes like `String`, `Integer`, `Array` and `Hash`. And we can create instances of these classes which are known as objects. 
 
 ```ruby
@@ -87,6 +89,7 @@ In the above example we created the class `Computer` and instantiated a new `Com
 
 Class instantiation is the workflow of creating a new object from a class. 
 
+
 ### When defining a class what are the two things we focus on?
 
 States and Behaviours.
@@ -96,9 +99,7 @@ Behavious are what objects of a class are capable of doing.
 
 States are tracked by instance variables which are scoped at the object level and specified in the class  while behaviours are defined as instance methods in the class which are available to all objects of that class.
 
-Individual objects of the same class have unique states while having shared behaviors. Individual objects of the same class have unique states while having shared behaviors defined in the class as instance methods.
-
-Objects of the same class have a unique 'state'.
+Individual objects of the same class have unique states while having shared behaviors.
 
 While objects encapsulate state in the form of instance variables, classes encapsulate and exposes behaviors in the form of instance methods.
 

@@ -10,9 +10,13 @@ Check this <!-- Encapsulation lets us hide the internal representation of an obj
 
 ### My definition
 
-Encapsulation in object oriented programming is about restricting access to data and functionality so that users of the data only have access to the data and functionality that they actually need and so that there is no unitentional manipulation of data.
+- restricting access to data and functionality
+- implemented through creation of objects and exposing behaviours and attributes
+- helps with data protection, reduces dependences, 
 
-Encapsulation in Ruby is implemented through the creation of objects and exposing only those behaviours and attributes of the object through public methods that are actually needed by other objects to interact with that object. 
+Confirmed<!-- Encapsulation in object oriented programming is about restricting access to data and functionality. It is a way of protecting data from unintentional manipulation. Users of the data only have access to the data and functionality that they actually need. This also helps with hiding how a functionality is implemented providing a new level of abstraction. We can use a functionality without needing to know how it is actually implemented.
+
+Encapsulation in Ruby is implemented through the creation of objects and exposing only those behaviours and attributes of the objects through public methods that are actually needed by objects to interact with other objects. -->
 
 Encapsulation helps with data protection, reduces dependencies within the program and also makes the software program easier to maintain. It also helps the programmer to think on a new level of abstraction as the objects represent real world nouns.
 
@@ -26,15 +30,6 @@ module Upgradable
   def upgrade_storage
   end
 end
-
-class Laptop
-  include Upgradable
-end
-
-class Desktop
-  include Upgradable
-end
-
 class Computer
   def initialize(type, model, ram, storage)
     self.type = type
@@ -56,6 +51,15 @@ class Computer
   attr_accessor :type, :model, :ram
 end
 
+class Laptop < Computer
+  include Upgradable
+end
+
+class Desktop < Computer
+  include Upgradable
+end
+
+
 home_computer = Computer.new("laptop", "Dell Latitude", "4 GB")
 
 p home_computer.info
@@ -68,9 +72,11 @@ p home_computer.info
 
 In the above example, the `Computer` object referenced by `home_computer` has three attributes `type`, `model` and `ram`. These attributes are tracked by the state of the object which comprises of the instance variables `@type`, `@model`, `@ram` and their values.
 
-Now, it is possible to only read the state of this object through the use of the public instance method `Computer#info`. It is not possible to modify the state of this object i.e. manipulate the values for these instance variables. Although we can upgrade the RAM for the `home_computer` object by using the public instance method `Computer#upgrade_ram` but that access is also restricted as this attribute cannot be changed to any value. It can only be changed to `"8 GB"`. 
+In Ruby, by default, it is not possible to access these instance variables directly from outside the object. So this object encapsulates i.e hides its own state from the outside world. The only way to access these attributes is through the public interface of the object i.e public methods. So, we can 'read' the object's state by invoking the `Computer#info` method on the `home_computer` object. 
 
-So by creating a `Computer` object and exposing only certain interfaces that can only do certain actions on the object we have protected the data associated with our `home_computer` object. This is an example of encapsulation in Ruby.
+Furthermore, by using method access control we have made all attribute accessors i.e. getters and setters, private. So it is not possible to reference the object's state or change it from outside the object or class. We have provided only a few public instance methods like `info` and `upgrade_ram` to interact with the object. This is an example of encapsulation of behaviour.
+
+So by creating objects and only exposing certain attributes and behaviours through the public interface of a class, we have protected the data from unintentional manipulation and hid the internal representation of the object from the outside. We dont need to do know how the `info` method or the `upgrade_ram` methods work, but only what they do.
 
 ## Polymorphism
 
@@ -81,6 +87,8 @@ When two or more object types have a method with the same name, we can invoke th
 Polymorphism is implemented in two major ways:
 
 1. Inheritance
+
+They are two ways to implement inheritance in Ruby i.e. Class Inheritance and Interface Inheritance.
 
 - Class Inheritance:
 
@@ -103,9 +111,12 @@ See example in computer.rb
 
 - Interface Inheritance
 
-A module is a collection of behaviors that is usable in other clasess via mixins.
+Interface inheritance is achieved through the use of modules. 
+A module is a collection of behaviors i.e. methods that is usable in other clasess through mixins. A module must be mixed in with a class using the `include` method invocation. This is called a mixin. After mixing in a module, the behaviors declared in that module are available to the class and its objects.
 
-Another way to apply polymorphic structure to Ruby programs is to use a Module. Modules are similar to classes in that they contain shared behavior. However, you cannot create an object with a module. A module must be mixed in with a class using the `include` method invocation. This is called a mixin. After mixing in a module, the behaviors declared in that module are available to the class and its objects.
+Modules can be mixed into as many classes as needed. Modules are similar to classes as they contain shared behavior. However, you cannot create an object with a module. 
+
+The purpose of a module is to group reusable code into one place. Another use is namespacing.
 
 2. Duck Typing
 

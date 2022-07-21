@@ -51,11 +51,11 @@ p teddy.swim
 - why
 - demonstrate about instance variables
 
-Line `47` outputs `nil` because the `swim` method invocation on line `47` returns `nil`. It returns `nil` because the test expresson `@can_swim` for the `if` modifier on line `42` returns `nil`as `@can_swim` is yet uninitialized Since `nil` is falsey, the `if` expression returns `nil` and being the last line in the method `swim` , `nil` is returned by the `swim` method which is then output by the `p` method.
+Line `47` outputs `nil` because the `swim` method invocation on line `47` returns `nil`. It returns `nil` because the test expresson `@can_swim` for the `if` modifier on line `42` returns `nil`as `@can_swim` is yet uninitialized. Since `nil` is falsey, the `if` expression returns `nil` and being the last line in the method `swim` , `nil` is returned by the `swim` method which is then output by the `p` method.
 
 To initialize the `@can_swim` variable we need to first invoke the `enable_swimming` method which is provided by the `Swim` module mixid in to the `Dog` class on line `39`. The `enable_swimming` method will initialize `@can_swim` to the object `true`. Now that , `@can_swim` is initialized to `true` , the `if` conditional on line `42` will return the string object `"swimming"`. And this will be returned by the `swim` method invocation. 
 
-This demonstrates that ruby returns `nil` if uninitialized instance variables are referenced instead of raising an error.
+This demonstrates that ruby returns `nil` if uninitialized instance variables are referenced instead of raising an error and also that instance variables are not inherited by a subclass from its superclass unlike instance methods. We must first call the inherited instance method that initialized that instance variable. Only then the object can access that instance variable.
 
 > What is output and why? What does this demonstrate about constant scope? What does `self` refer to in each of the 3 methods above
 
