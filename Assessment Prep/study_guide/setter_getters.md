@@ -26,7 +26,7 @@ p dell_notebook.model # returns "Dell Latitude 1559"
 
 ```
 
-In the above example, we have three instance variables `type`, `@model`. `@ram` associated with each `Computer` object. The `attr_reader` method invocation will create three instance methods `type`, `model` and `ram` which will return the values for these three instance variables respectively. 
+In the above example, we have three instance variables `@type`, `@model`. `@ram` associated with each `Computer` object. The `attr_reader` method invocation will create three instance methods `type`, `model` and `ram` which will return the values for these three instance variables respectively. 
 
 On the last line, we invoke the instance method `#model` on the `dell_notebook` object and it returns the values associated with the instance variable `@model`
 
@@ -34,7 +34,7 @@ On the last line, we invoke the instance method `#model` on the `dell_notebook` 
 
 Setter methods are instance methods which are used to change information about the state of an object. As state is tracked by instance variables, setter methods change the values referenced by these instance variables.
 
-Setter Methods are created by invoking the attribute accessor method `attr_writer` and passing in the symbols for the names of the getter methods we want to create.
+Setter Methods are created by invoking the attribute accessor method `attr_writer` and passing in the symbols for the names of the setter methods we want to create.
 
 
 
@@ -58,7 +58,7 @@ p dell_notebook.model # "Dell Latitude 2110"
 
 ```
 
-In the above example, we have three instance variables `type`, `@model`. `@ram` associated with each `Computer` object. The `attr_writer` method invocation will create three instance methods `type=`, `model=` and `ram=`.
+In the above example, we have three instance variables `@type`, `@model`. `@ram` associated with each `Computer` object. The `attr_writer` method invocation will create three instance methods `type=`, `model=` and `ram=`.
 
 On the last line, we invoke the instance method `#model=` on the `dell_notebook` object and pass the string object `"Dell Latitude 2110"` as an argument. The setter method `model=` assigns the new string object `"Dell Latitude 2110"` to the instance variable `@model`.
 

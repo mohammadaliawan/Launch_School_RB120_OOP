@@ -1,28 +1,28 @@
 
-# class Computer
-#   def initialize(type, model, ram)
-#     self.type = type
-#     self.model = model
-#     self.ram = ram
-#   end
+class Computer
+  def initialize(model, ram, storage)
+    self.model = model
+    self.ram = ram
+    self.storage = storage
+  end
 
-#   def info
-#     "#{self.type}, #{self.model}, #{ram}"
-#   end
+  def info
+    "#{model}, #{ram}, #{storage}"
+  end
 
-#   def upgrade_ram
-#     self.ram = "8 GB"
-#   end
+  def upgrade_ram
+    self.ram = "8 GB"
+  end
 
-#   private
+  private
 
-#   attr_accessor :type, :model, :ram
-# end
+  attr_accessor :model, :ram, :storage
+end
 
 # class Laptop < Computer
-#   def initialize(model, ram, screen_size)
-#     super("laptop", model, ram)
-#     @screen_size = screen_size
+#   def initialize(model, ram, storage, screen_size)
+#     super model, ram, storage
+#     self.screen_size = screen_size
 #   end
 
 #   def info
@@ -33,13 +33,13 @@
 #   attr_accessor :screen_size
 # end
 
-# home_computer = Laptop.new("Dell Latitude", "4 GB", "15.5 inches")
+home_computer = Computer.new("Dell Latitude", "4 GB", "350 GB")
 
-# p home_computer.info
+p home_computer.info
 
-# home_computer.upgrade_ram
+home_computer.upgrade_ram
 
-# p home_computer.info
+p home_computer.info
 
 # class Person
 #   attr_reader :name
@@ -70,11 +70,11 @@
 # teddy.enable_swimming
 # p teddy.swim
 
-module Describable
-  def describe_shape
-    "I am a #{self.class} and have #{SIDES} sides."
-  end
-end
+# module Describable
+#   def describe_shape
+#     "I am a #{self.class} and have #{SIDES} sides."
+#   end
+# end
 
 # p Describable.ancestors
 
@@ -167,17 +167,17 @@ end
 
 # p Person.ancestors
 
-class Animal
-  def initialize(name)
-    @name = name
-  end
-end
+# class Animal
+#   def initialize(name)
+#     @name = name
+#   end
+# end
 
-class Dog < Animal
-  def dog_name
-    "bark bark #{@name} bark bark"
-  end
-end
+# class Dog < Animal
+#   def dog_name
+#     "bark bark #{@name} bark bark"
+#   end
+# end
 
-fido = Dog.new("Fido")
-puts fido.dog_name
+# fido = Dog.new("Fido")
+# puts fido.dog_name

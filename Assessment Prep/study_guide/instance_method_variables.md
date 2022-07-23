@@ -1,6 +1,6 @@
 # Instance Methods and Instance variables
 
-Instance variables are used to track an indvidual object's state.
+Instance variables are used to track an individual object's state.
 
 State comprises of the instance variables associated with each object and their values.
 
@@ -10,17 +10,21 @@ Instance variables are scoped at the instance or object level.
 
 <!-- Instance variables are reponsible for keeping track of information about the state of an object.
  -->
-Every object's state is unique.
+Every object's state is distinct, and instance variables are how we keep track.
+
+We can expose information about the state of the object using instance methods.
 
 All objects of the same class have the same behaviours which are provided by the instance methods defined in the class. But they contain different states.
 
+### Every object's state is distinct. 
 
 ### Instance Methods
 
 Behaviours are defined as instance methods in a class and expose behavior for objects. These methods are available to each object of the class. So we can say that all objects of a class have shared behavior.
 
-All objects of the same class have the same behaviors, though they contain different states;
+All objects of the same class have the same behaviors, though they contain different states.
 
+Because the scope of instance variables is at the object level, this means that instance variables are accessible in an object's instance methods even if it is initialized outside that method.
 
 For Example:
 
