@@ -86,11 +86,11 @@ When two or more object types have a method with the same name, we can invoke th
 
 Polymorphism is implemented in two major ways:
 
-1. Inheritance
+### Inheritance
 
 They are two ways to implement inheritance in Ruby i.e. Class Inheritance and Interface Inheritance.
 
-- Class Inheritance:
+#### Class Inheritance:
 
 Class Inheritance is when a class inherits behavior or methods from another class. The class that is inheriting behavior is called the subclass and the class it inherits from is called the superclass.
 
@@ -98,14 +98,25 @@ Super classes can be defined as basic classes with large reusability and smaller
 
 We use inheritance as a way to extract common behaviors from classes that share that behavior, and move it to a superclass. This lets us keep logic in one place. 
 
-- Method Overriding
+
+##### Method Overriding
 Method overriding occurs when we have a method in a subclass that has the same name as a method in it's superclass. When the method is invoked, Ruby first looks for that method in the subclass. And as it finds a method with that name, it executes that method. It does not go looking further up the method look up path in the superclass. This is called method overriding. The method in the superclass was overridden by the method defined in the subclass. 
 
 See example in computer.rb
 
-- `super`
+##### `super`
 
 The `super` keyword is used to call a method of the same name earlier in the method lookup path. 
+
+When you call `super` from within a method, it searches the method lookup path for a method with the same name, then invokes it.
+
+**Calling `super` with and without arguments**
+
+If `super` is called without any arguments, it automatically forwards the arguments that were passed to the method from which `super` is called. 
+
+When called with specific arguments e.g. `super(a,b)`, the specified arguments will be sent up the method lookup path.
+
+If you call `super()` with empty paratheses, it calls the method in the superclass with no arguments at all.
 
 See example in computer.rb
 
@@ -125,6 +136,8 @@ The purpose of a module is to group reusable code into one place. Another use is
 ## Method Lookup Path
 
 Ruby has a distinct lookup path that it follows each time a method is called.
+
+Whenever a method is invoked, the order in which Ruby searches classes for the method definition is called the method lookup path.
 
 When a method is invoked on an object, ruby first looks for that method definition in the class that the object belongs to. If the method is not found, ruby keeps looking in any modules that are mixed in with the class following which it looks in the superclass of the current class. This continues in an ordered fashion until the method is found or there are no more places to look. 
 
