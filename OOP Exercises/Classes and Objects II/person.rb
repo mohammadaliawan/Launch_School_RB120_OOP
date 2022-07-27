@@ -1,8 +1,8 @@
 class Person
   attr_writer :secret
 
-  def compare_secret(person2)
-    self.secret == person2.secret
+  def compare_secret(other_person)
+    self.secret == other_person.secret
   end
 
   protected

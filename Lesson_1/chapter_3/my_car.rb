@@ -1,49 +1,41 @@
-module Towable
-  def can_tow?(pounds)
-    pounds < 2000
-  end
-end
-
 class Vehicle
-  attr_accessor :color, :current_speed
-  attr_reader :year, :model
+  attr_accessor :year, :color, :model, :speed
 
   @@number_of_vehicles = 0
 
   def initialize(year, color, model)
-    @@number_of_vehicles += 1
     @year = year
-    self.color = color
+    @color = color
     @model = model
-    self.current_speed = 0
+    @speed = 0
+    @@number_of_vehicles += 1
   end
 
-  def self.quantity
-    @@number_of_vehicles
+  def speed_up(speed_increment)
+    @speed += speed_increment
+    puts "You have accelerated and now your speed is #{@speed}"
   end
 
-  def spray_paint(new_color)
-    self.color = new_color
-    puts "Your car is now a shiny #{self.color}"
+  def brake(speed_decrement)
+    @speed -= speed_decrement
+    puts "You have decelerated and now your speed is #{@speed}"
   end
 
-  def speed_up(s)
-    self.current_speed += s
-    puts "You accelerate by #{s} mph "
-  end
-
-  def brake(b)
-    self.current_speed -= b
-    puts "You decelerate by #{b} mph"
-  end
-
-  def shut_down
-    self.current_speed = 0
+  def shut_off
+    @speed = 0
     puts "Lets park this bad boy!"
   end
 
+  def doors
+    puts "#{self.class} has #{self.class::NUMBER_OF_DOORS} doors"
+  end
+
+  def self.number_of_vehicles
+    @@number_of_vehicles
+  end
+
   def age
-    "Your #{self.model} is #{years_old} years old."
+    puts "Your #{model} is #{years_old} years_old!"
   end
 
   private
@@ -53,32 +45,23 @@ class Vehicle
   end
 end
 
-class MyCar < Vehicle
-  DRIVE_WHEELS = 2
-
-  def to_s
-    "My Car is a #{color}, #{year}, #{model}"
+module Towable
+  def can_tow?(pounds)
+    pounds < 2000
   end
+end
+
+class MyCar < Vehicle
+  NUMBER_OF_DOORS = 4
 end
 
 class MyTruck < Vehicle
   include Towable
-  DRIVE_WHEELS = 4 
-
-  def to_s
-    "My Truck is a #{color}, #{year}, #{model}"
-  end
+  NUMBER_OF_DOORS = 2
 end
 
-new_car = MyCar.new(2010, "Red", "Choverlet Nova")
+new_car = MyCar.new(2010, "Blue", "Corrola")
+new_truck = MyTruck.new(1992, "Black", "Landcruiser")
 
-new_truck = MyTruck.new(2010, "Black", " Tesla Optimus")
 
-# p new_truck.can_tow?(15000)
-
-# p Vehicle.ancestors
-# p MyCar.ancestors
-# p MyTruck.ancestors
-
-p new_car.age
-
+new_truck.age

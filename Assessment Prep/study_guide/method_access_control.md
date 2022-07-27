@@ -18,3 +18,20 @@ All methods are public by default.
 
 Methods that are performing some function inside a class but dont need to be available to rest of the program can be defined as private methods in a class.
 
+We can call the `private` method and any methods defined below the `private` method call is `private`
+
+`private` methods are only accessible from other methods in the class. They are not accessible outside of the class definition at all. We can only call private methods with the current object using `self`. They cannot be called with any other object even one of the same type.
+
+## Protected Methods
+
+Like `private` methods, `protected` methods can only be called from within the class definition. However, unlike `private` methods, `protected` methods allow access between class instances i.e. other instances of the class or subclass can also invoke the method.
+
+
+```ruby
+class Person
+
+def older?(other_person)
+    age > other_person.age
+end
+end
+```

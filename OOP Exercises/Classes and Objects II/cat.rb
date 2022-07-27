@@ -1,9 +1,8 @@
 class Cat
-  COLOR = "purple"
-  attr_accessor :name
+  attr_reader :name
 
   def initialize(name)
-    self.name = name
+    @name = name
   end
 
   def to_s
@@ -11,7 +10,5 @@ class Cat
   end
 end
 
-
 kitty = Cat.new('Sophie')
-
 puts kitty

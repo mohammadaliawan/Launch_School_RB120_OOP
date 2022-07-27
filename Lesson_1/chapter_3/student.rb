@@ -1,14 +1,11 @@
 class Student
-  attr_accessor :name
-  attr_writer :grade
-
-  def initialize(n, g)
-    self.name = n
-    self.grade = g
+  def initialize(name, grade)
+    @name = name
+    @grade = grade
   end
 
-  def better_grade_than?(other_student)
-    grade > other_student.grade
+  def better_grade_than?(other)
+    self.grade > other.grade
   end
 
   protected
@@ -16,7 +13,7 @@ class Student
   attr_reader :grade
 end
 
-joe = Student.new("Joe", 87)
-bob = Student.new("Bob", 85)
+bob = Student.new("Bob", 98)
+joe = Student.new("Joe", 100)
 
-p joe.better_grade_than?(bob)
+puts "Welldone" if joe.better_grade_than?(bob)
