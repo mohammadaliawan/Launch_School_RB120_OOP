@@ -183,6 +183,61 @@ The purpose of a module is to group reusable code into one place. Another use is
 
 Duck typing is a form of polymorphism. It is an informal way of classifying objects based on their behavior. It occurs when two or more than two different unrelated types of objects have the same behavior i.e. method with the same name, so these objects can be invoked with the same method name although these methods may have completely different implementations. 
 
+```ruby
+class EngineeringProject
+  attr_reader :process_flow_diagram, :piping_layout
+
+  def design(engineers)
+    engineers.each do |engineer|
+      engineer.prepare_design(self)
+    end
+  end
+end
+
+class PipingEngineer
+  def prepare_design(project)
+    design_piping(project.process_flow_diagram)
+  end
+
+  def design_piping(process_flow_diagram)
+    # some implementation
+  end
+end
+
+class ProcessEngineer
+  def prepare_design(project)
+    design_process(project.process_flow_diagram)
+  end
+
+  def design_process(process_flow_diagram)
+    # some implementation
+  end
+end
+
+class CivilEngineer
+  def prepare_design(project)
+    design_foundations(project.piping_layout)
+  end
+
+  def design_foundations(piping_layout)
+    # some_implementation
+  end
+end
+
+class ElectricalEngineer
+  def prepare_design(project)
+    design_electrical_wiring(project.piping_layout)
+  end
+
+  def design_electrical_wiring(piping_layout)
+    # some_implementation
+  end
+end
+
+
+```
+
+
 
 ## Method Lookup Path
 
