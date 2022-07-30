@@ -6,7 +6,7 @@
 
 Encapsulation is hiding pieces of functionality and making it unavailable to the rest of the code base. It is a form of data protection, so that data cannot be manipulated or changed without obvious intention. It is what defines the boundaries in your application and allows your code to achieve new levels of complexity. Ruby, like many other OO languages, accomplishes this task by creating objects, and exposing interfaces (i.e., methods) to interact with those objects.
 
-Check this <!-- Encapsulation lets us hide the internal representation of an object from the outside and only expose the methods and properties that users of the object need. We can use method access control to expose these properties and methods through the public (or external) interface of a class: its public methods. -->
+Encapsulation lets us hide the internal representation of an object from the outside and only expose the methods and properties that users of the object need. We can use method access control to expose these properties and methods through the public (or external) interface of a class: its public methods.
 
 ### My definition
 
@@ -14,9 +14,9 @@ Check this <!-- Encapsulation lets us hide the internal representation of an obj
 - implemented through creation of objects and exposing behaviours and attributes
 - helps with data protection, reduces dependences, 
 
-Confirmed<!-- Encapsulation in object oriented programming is about restricting access to data and functionality. It is a way of protecting data from unintentional manipulation. Users of the data only have access to the data and functionality that they actually need. This also helps with hiding how a functionality is implemented providing a new level of abstraction. We can use a functionality without needing to know how it is actually implemented.
+Encapsulation in object oriented programming is about restricting access to data and functionality. It is a way of protecting data from unintentional manipulation. Users of the data only have access to the data and functionality that they actually need. This also helps with hiding how a functionality is implemented providing a new level of abstraction. We can use a functionality without needing to know how it is actually implemented.
 
-Encapsulation in Ruby is implemented through the creation of objects and exposing only those behaviours and attributes of the objects through public methods that are actually needed by objects to interact with other objects. -->
+Encapsulation in Ruby is implemented through the creation of objects and exposing only those behaviours and attributes of the objects through public methods that are actually needed by objects to interact with other objects.
 
 Encapsulation helps with data protection, reduces dependencies within the program and also makes the software program easier to maintain. It also helps the programmer to think on a new level of abstraction as the objects represent real world nouns.
 
@@ -39,7 +39,7 @@ class Computer
   end
 
   def info
-    "#{type}, #{model}, #{ram}"
+    "Type: #{type}, Model: #{model}, RAM: #{ram}, Storage: #{storage}"
   end
 
   def upgrade_ram
@@ -48,7 +48,7 @@ class Computer
 
   private
 
-  attr_accessor :type, :model, :ram
+  attr_accessor :type, :model, :ram, :storage
 end
 
 class Laptop < Computer
@@ -70,13 +70,15 @@ p home_computer.info
 
 ```
 
-In the above example, the `Computer` object referenced by `home_computer` has three attributes `type`, `model` and `ram`. These attributes are tracked by the state of the object which comprises of the instance variables `@type`, `@model`, `@ram` and their values.
+In the above example, the `Computer` object referenced by `home_computer` has four attributes `type`, `model`, `ram` and `storage` These attributes are tracked by the state of the object which comprises of the instance variables `@type`, `@model`, `@ram`, `@storage` and their values.
 
-In Ruby, by default, it is not possible to access these instance variables directly from outside the object. So this object encapsulates i.e hides its own state from the outside world. The only way to access these attributes is through the public interface of the object i.e public methods. So, we can 'read' the object's state by invoking the `Computer#info` method on the `home_computer` object. 
+In Ruby, by default, it is not possible to access these instance variables directly from outside the object. So this object encapsulates ( or hides) its own state from the outside world. The only way to access these attributes is through the public interface of the object i.e public methods. So, we can 'read' the object's state by invoking the `Computer#info` method on the `home_computer` object. 
 
 Furthermore, by using method access control we have made all attribute accessors i.e. getters and setters, private. So it is not possible to reference the object's state or change it from outside the object or class. We have provided only a few public instance methods like `info` and `upgrade_ram` to interact with the object. This is an example of encapsulation of behaviour.
 
 So by creating objects and only exposing certain attributes and behaviours through the public interface of a class, we have protected the data from unintentional manipulation and hid the internal representation of the object from the outside. We dont need to do know how the `info` method or the `upgrade_ram` methods work, but only what they do.
+
+This is an example of encapsulation.
 
 ## Polymorphism
 
