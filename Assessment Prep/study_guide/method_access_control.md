@@ -26,6 +26,8 @@ We can call the `private` method and any methods defined below the `private` met
 
 Like `private` methods, `protected` methods can only be called from within the class definition. However, unlike `private` methods, `protected` methods allow access between class instances i.e. other instances of the class or subclass can also invoke the method.
 
+When a method is `private`, the method can only be invoked on `self`. However, when a method is `protected`, instances of the class or a subclass can also call the method. This means we can easily share sensitive data between instances of the same class type.
+
 
 ```ruby
 class Person
