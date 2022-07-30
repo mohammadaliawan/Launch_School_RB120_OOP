@@ -1,24 +1,24 @@
 class Pet
   def run
-    "running"
+    'running!'
   end
 
   def jump
-    "jumping"
+    'jumping!'
   end
 end
 
 class Dog < Pet
-  def fetch
-    "fetching"
-  end
-
   def speak
-    'bark!'
+    "bark!"
   end
 
   def swim
     'swimming!'
+  end
+
+  def fetch
+    'fetching!'
   end
 end
 
@@ -34,19 +34,10 @@ class BullDog < Dog
   end
 end
 
-pete = Pet.new
-kitty = Cat.new
-dave = Dog.new
-bud = Bulldog.new
+teddy = Dog.new
+puts teddy.speak           # => "bark!"
+puts teddy.swim           # => "swimming!"
 
-pete.run                # => "running!"
-pete.speak              # => NoMethodError
-
-kitty.run               # => "running!"
-kitty.speak             # => "meow!"
-kitty.fetch             # => NoMethodError
-
-dave.speak              # => "bark!"
-
-bud.run                 # => "running!"
-bud.swim                # => "can't swim!"
+bully = BullDog.new
+puts bully.speak
+puts bully.swim

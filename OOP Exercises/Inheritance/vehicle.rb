@@ -5,10 +5,10 @@ module Towable
 end
 
 class Vehicle
-  attr_accessor :year
+  attr_reader :year
 
   def initialize(year)
-    self.year = year
+    @year = year
   end
 end
 
