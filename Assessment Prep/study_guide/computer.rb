@@ -1,23 +1,23 @@
 
-class Computer
-  def initialize(model, ram, storage)
-    self.model = model
-    self.ram = ram
-    self.storage = storage
-  end
+# class Computer
+#   def initialize(model, ram, storage)
+#     self.model = model
+#     self.ram = ram
+#     self.storage = storage
+#   end
 
-  def info
-    "#{model}, #{ram}, #{storage}"
-  end
+#   def info
+#     "#{model}, #{ram}, #{storage}"
+#   end
 
-  def upgrade_ram
-    self.ram = "8 GB"
-  end
+#   def upgrade_ram
+#     self.ram = "8 GB"
+#   end
 
-  private
+#   private
 
-  attr_accessor :model, :ram, :storage
-end
+#   attr_accessor :model, :ram, :storage
+# end
 
 # class Laptop < Computer
 #   def initialize(model, ram, storage, screen_size)
@@ -33,13 +33,13 @@ end
 #   attr_accessor :screen_size
 # end
 
-home_computer = Computer.new("Dell Latitude", "4 GB", "350 GB")
+# home_computer = Computer.new("Dell Latitude", "4 GB", "350 GB")
 
-p home_computer.info
+# p home_computer.info
 
-home_computer.upgrade_ram
+# home_computer.upgrade_ram
 
-p home_computer.info
+# p home_computer.info
 
 # class Person
 #   attr_reader :name
@@ -181,3 +181,20 @@ p home_computer.info
 
 # fido = Dog.new("Fido")
 # puts fido.dog_name
+
+class Computer
+end
+
+class Person
+  attr_accessor :computer
+
+  def initialize(name, computer)
+    @name = name
+    @computer = computer
+  end
+end
+
+computer1 = Computer.new
+
+jack = Person.new("Jack", computer1)
+puts jack.computer 

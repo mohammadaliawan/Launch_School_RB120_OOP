@@ -33,6 +33,8 @@ Classes are like blueprints for objects. They are what objects are created from.
 
 Individual objects will contain different information from other objects, yet they are instances of the same class.
 
+Classes group common behaviors and objects encapsulate state.
+
 For example in Ruby, there are classes like `String`, `Integer`, `Array` and `Hash`. And we can create instances of these classes which are known as objects. 
 
 ```ruby

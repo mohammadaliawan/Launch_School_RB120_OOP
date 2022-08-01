@@ -1,5 +1,9 @@
 # Modules
 
+In Ruby, a class can only inherit from one superclass. This is called single inheritance. Sometimes, this makes it difficult to accurately model problems. 
+
+Some programming languages do allow inheritance form multiple classes. But Ruby does not. To cater for this functionality, ruby allows to mix-in as many modules as needed into our classes. 
+
 A module is a collection of behaviors(instance methods) that is usable in other classes via mixins. Modules are one of the ways to achieve polymorphism in Ruby. A module allows us to group related or common reusable code into one place.
 
 A module must be mixed in with a class using the `include` method invocation. This is called a mixin. After mixing in a module, the behaviors declared in that module are available to the class and its objects.
