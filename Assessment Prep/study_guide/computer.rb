@@ -182,19 +182,37 @@
 # fido = Dog.new("Fido")
 # puts fido.dog_name
 
-class Computer
-end
+# class Computer
+# end
 
-class Person
-  attr_accessor :computer
+# class Person
+#   attr_accessor :computer
 
-  def initialize(name, computer)
-    @name = name
-    @computer = computer
+#   def initialize(name, computer)
+#     @name = name
+#     @computer = computer
+#   end
+# end
+
+# computer1 = Computer.new
+
+# jack = Person.new("Jack", computer1)
+# puts jack.computer 
+
+class Animal
+  attr_accessor :name
+
+  def initialize
+    set_name
   end
 end
 
-computer1 = Computer.new
+class Dog < Animal
+  def set_name
+    puts "What is your name?"
+    self.name = gets.chomp
+  end
+end
 
-jack = Person.new("Jack", computer1)
-puts jack.computer 
+dog = Dog.new
+puts dog.name

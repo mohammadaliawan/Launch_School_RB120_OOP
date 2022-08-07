@@ -2,6 +2,8 @@
 
 Objects that are stored as state within another object are called collaborator objects. They are called collaborators because they work in collaboration with the class they are associated with.
 
+Another definition: An object that is assigned to an instance variable in another object.
+
 As state is tracked by(or stored in) instance variables, we can assign instance variables to reference any type of object. These objects are known as collaborator objects.
 
 Collaborator objects have an important role in object oriented design as they represent the connections between various parts in a program so it is important to consider what collaborators a class has and if those associations make sense both technically and in terms of modeling the problem.
