@@ -31,12 +31,12 @@ end
 home_computer = Computer.new("350 GB")
 laptop = Computer.new("150 GB")
 
-p home_computer.get_storage
-p laptop.get_storage 
+p home_computer 
+p laptop
 
 ```
 
-Instance variables have object level scope which means that each individual object can access only the instance variables associated with it. Instance variables donot cross over between objects.
+Instance variables have object level scope which means that each individual object can access only the instance variables associated with itself. Instance variables donot cross over between objects.
 
 In the above example, on lines `x` to `x` we have defined a class `Computer` and instantiated two `Computer` objects `home_computer` and `laptop` on lines `x` and `x` respectively. We have initialized both objects with their own instance variable `@storage`in the `initialize` method which is invoked by the `new` method. 
 

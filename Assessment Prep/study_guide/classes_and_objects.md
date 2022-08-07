@@ -25,7 +25,7 @@ OOP provides a way to create containers for data that can be changed and manipul
 
 ### Objects
 
-In Ruby, anything that can be said to have a value is an object. Objects represent real world nouns which have both attributes and behaviors. Objects are created from Classes.They are known as instances of a class. 
+In Ruby, anything that can be said to have a value is an object. Objects can represent real world nouns which have both attributes and behaviors. Objects are created from Classes.They are known as instances of a class. 
 
 ### Classes
 

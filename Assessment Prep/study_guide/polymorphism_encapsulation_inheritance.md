@@ -92,11 +92,11 @@ Polymorphism is implemented in two major ways:
 
 ### Inheritance
 
-They are two ways to implement inheritance in Ruby i.e. Class Inheritance and Interface Inheritance.
+Inheritance is a way to share behaviour among classes. When a class inherits behavior from another class or module, it is called inheritance. Inheritance is used a way to extract common behaviors from classes that share that behaviour moving it a superclass or module. It lets us keep logic in one place. They are two ways to implement inheritance in Ruby i.e. Class Inheritance and Interface Inheritance.
 
 #### Class Inheritance:
 
-Class Inheritance is when a class inherits behavior or methods from another class. The class that is inheriting behavior is called the subclass and the class it inherits from is called the superclass.
+Class Inheritance is when a class inherits behavior or methods from another class. The class that is inheriting behavior is called the subclass and the class it inherits from is called the superclass. Class inheritance is used when there is a "is a" relationship between classes while interface inheritance is used when there is a "has a relationship".
 
 Super classes can be defined as basic classes with large reusability and smaller subclasses are defined for more fine-grained, detailed behaviors.
 
