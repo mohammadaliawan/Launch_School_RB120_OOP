@@ -23,7 +23,9 @@ The class method is invoked by calling the method directly on the class itself a
 
 ## Class Variables
 
-Class variables are used to capture information related to an entire class. They are used to keep track of a class level detail. They are created by prepending two `@@` symbols to the variable name.
+Class variables are used to capture information related to an entire class. They are used to keep track of a class level detail.
+
+They are created by prepending two `@@` symbols to the variable name.
 
 Class variables can be accessed in an instance method.
 

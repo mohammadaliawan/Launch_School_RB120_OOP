@@ -1,43 +1,39 @@
 # Collaborator Objects
 
-Objects that are stored as state within another object are called collaborator objects. They are called collaborators because they work in collaboration with the class they are associated with.
+- stored as state within another object
+- assigned to instance variables in another object
+- work in conjunction with the class they are associated with
+- represent connections between various parts in a program
+- associations should make sense both technically and how it models the problem domain.
+
+Objects that are stored as state within another object are called collaborator objects i.e they are assigned to instance variables of another object. They are called collaborators because they work in conjunction with the class they are associated with.
 
 Another definition: An object that is assigned to an instance variable in another object.
 
 As state is tracked by(or stored in) instance variables, we can assign instance variables to reference any type of object. These objects are known as collaborator objects.
 
+Collaborator objects are usually custom objects. Technically string or other built-in object types that is assigned to an instance variable of another object is also a collaborator object but we dont tend to think of them in that way.
+
 Collaborator objects have an important role in object oriented design as they represent the connections between various parts in a program so it is important to consider what collaborators a class has and if those associations make sense both technically and in terms of modeling the problem.
 
-
-
 ```ruby
-class Computer
+class Pet
 end
 
 class Person
-  attr_accessor :computer
+  attr_accessor :pet
 
-  def initialize(name, computer)
+  def initialize(name, pet)
     @name = name
-    @computer = computer
+    @pet = Pet.new
   end
 end
 
-computer1 = Computer.new
-
-jack = Person.new("Jack", computer1)
-puts jack.computer #=> #<Computer:0x0000015fb647a420>
+jack = Person.new("Jack")
+puts jack.pet #=>
 ```
 
-In the above example we have defined two classes `Computer` and `Person`. And we have instantiated an object `computer1` of the `Computer` class and object `jack`  of the `Person` class. 
+As seen in the above example, on line `x` the constructor `Person#initialize` is instantiating a new `Pet` object and assigning that object to the instance variable `@pet`. So the `@pet` instance variable for each `Person` object will reference a `Pet` object.
 
-During instantiation of the `jack` object on line `20`, we have passed the `computer1` object as an argument to the `new` method which is then passed to the `initialize` instance method by the `new` method and assigned to the `computer` method parameter.
-
-The `initialize` method initializes the instance variable `@computer` to the object referenced by the method parameter `computer`.
-
-So now our `Person` objects are using `Computer` objects to track their states. And so `Computer` objects are called Collaborator Objects in this case.
-
-
-
-
+Here, the relationship between `Person` objects and `Pet` objects is that of collaboration. A person **has a** pet. So this 'has a pet' relationship is modeled in our program as the `Peron` objects state comprising of the `@pet` instance variable and its referenced `Pet` object.
 

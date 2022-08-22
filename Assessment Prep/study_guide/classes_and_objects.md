@@ -25,13 +25,13 @@ OOP provides a way to create containers for data that can be changed and manipul
 
 ### Objects
 
-In Ruby, anything that can be said to have a value is an object. Objects can represent real world nouns which have both attributes and behaviors. Objects are created from Classes.They are known as instances of a class. 
+In Ruby, anything that can be said to have a value is an object. For example, strings, integers, floats, arrays, hashes and even classes and modules are objects. Custom Objects can represent real world nouns. Objects have both attributes and behaviors. Attributes are like properties of the object and behaviours are like actions that an object can perform. Attributes of an object are tracked by the state of an object. And state in turn is tracked by the instance variables of an object. While instance methods expose behaviour for objects. Objects are created from Classes.They are known as instances of a class.
 
 ### Classes
 
-Classes are like blueprints for objects. They are what objects are created from. They are basic outlines of what an object should be made of i.e. 'attributes' and what it should be able to do i.e. 'behaviours'. That is, they define the attributes and behaviors of the objects instantiated from those classes.
+Classes are like blueprints for objects. They are what objects are created from. They are basic outlines of what an object should be made of i.e. 'attributes' and what it should be able to do i.e. 'behaviours'. That is, they define the attributes and behaviors of the objects instantiated from them.
 
-Individual objects will contain different information from other objects, yet they are instances of the same class.
+Individual objects of a class will contain different information from other objects, yet they are instances of the same class.
 
 Classes group common behaviors and objects encapsulate state.
 

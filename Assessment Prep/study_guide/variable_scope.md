@@ -48,48 +48,42 @@ This shows that instance variables are scoped at each individual object's level.
 
 Class variables are scoped at the class level.
 
-- All objects of a class share 1 copy of the class variable. 
+- All objects of a class and subclasses share 1 copy of the class variable. 
 - Objects can access class variables through instance methods
 - Class methods can access class variables regardless of where they are initialized.
 
-Even if there are several different objects of a class, all those objects will access or modify one copy of that class variable. So, effectively, the same class variable is shared by all objects of the class. So any object can modify the class variable. Hence, we can say that class variables can share state between objects, unlike instance variables or local variables.
+Even if there are several different objects of a class and subclasses, all those objects will access or modify one copy of that class variable. So, effectively, the same class variable is shared by all objects of the class and subclass. Likewise, all subclasses of a class will also have access to the same class variable. So any object can modify the class variable. Hence, we can say that class variables can share state between objects, unlike instance variables or local variables.
 
 ```ruby
 class Computer
-  @@total_computers = 0
+  @@type = "Desktop"
 
-  def initialize(storage)
-    @@total_computers += 1
+  def type
+    @@type
   end
 
-  def total_computers
-    @@total_computers
-  end
-
-  def self.total_computers
-    @@total_computers
+  def self.type
+    @@type
   end
 
 end
 
 home_computer = Computer.new
-laptop = Computer.new
+office_computer = Computer.new
 
-p Computers.total_computers
-p laptop.total_computers
-p home_computer.total_computers
+p Computer.type
+p office_computer.type
+p home_computer.type
 
 ```
 
-In the above example, on lines `x` to `x` we have defined a class `Computer` and instantiated two `Computer` objects `home_computer` and `laptop` on lines `x` and `x` respectively. In the class definition we have initialized a class variable `@@total_computers` to the integer object `0`. 
+In the above example, on lines `x` to `x` we have defined a class `Computer` and instantiated two `Computer` objects `home_computer` and `office_computer` on lines `x` and `x` respectively. In the class definition we have initialized a class variable `@@type` to the string object `"Desktop"`. 
 
-In the `Computer` class definition we have also defined an `initialize` method which gets invoked whenever a new `Computer` object is instantiated using the `new` method. This is an instance method and this method increments the value for `@@total_computers` by 1 each time a new `Computer` object is created.
+In addition, we have also defined an instance method `type` and a class method `type`. Each of these returns the value for the `@@type` class variable.
 
-In addition, we have also defined an instance method `total_computers` and a class method `total_computers`. Each of these returns the value for the `@@total_computers` class variable.
+First we invoke the class method `type` on the class `Computer` and output the result. The output is `"Desktop"` . Then we invoke the instance method `type` on the `office_computer` object and output the result. The output is `"Desktop"` again. Then we do the same with the `home_computer` object and output is `"Desktop"` yet again.
 
-First we invoke the class method `total_computers` on the class `Computer` and output the result. The output is `2`. Then we invoke the instance method `total_computers` on the `laptop` object and output the result. The output is `2` again. Then we do the same with the `home_computer` object and output is `2 `yet again.
-
-This shows two things: first that all objects of a class can access class variables through instance methods, second that all objects share one copy of a class variable which is why both lines `81` and `82` output the same value `2`.
+This shows two things: first that all objects of a class can access class variables through instance methods, second that all objects share one copy of a class variable which is why both lines `81` and `82` output the same value `"Desktop"`.
 
 ## Constants
 
@@ -98,8 +92,12 @@ Constants have lexical scope. Lexical scope means that where the constant is def
 
 ### Constant Lookup
 
-Ruby first attempts to resolve a constant reference in the lexical scope of the reference. This means it first searches the class or module that encloses the reference to see if that class or module defines the constant. If not, it searches the next enclosing class or module. This continues if there are no more enclosing classes or modules.  If no constant definition is found in the lexically enclosing scope, ruby next tries to resolve the constant in the inheritance heirarchy by checking the ancestors of the class or module that referred to the constant.
+Ruby first attempts to resolve a constant reference in the lexical scope of the reference. This means it first searches the class or module that encloses the reference to see if that class or module defines the constant. If not, it searches the next enclosing class or module. This continues if there are no more enclosing classes or modules.  If no constant definition is found in the lexically enclosing scope, ruby next tries to resolve the constant in the inheritance heirarchy of the structure that references the constant by checking the ancestors of the class that referred to the constant.
 If no constant definition is found in the inheritance heirarchy, then top level constant definition is checked.
+
+- Lexical Scope
+- Inheritance heirarchy
+- Top level
 
 ## Variable Scope and Inheritance
 
@@ -145,3 +143,12 @@ fido = Dog.new
 p fido.can_swim?
 
 ```
+
+Instance variables and their values are not inherited. We must first call the instance method that initializes the instance variable and then it becomes accessible.
+
+## Class variables and Class Inheritance
+
+Class variables are accessible to subclasses. Class variables are loaded when the class is evaluated by Ruby.
+One copy of the class variable is shared among all the subclasses and the superclass as well. So modifying the class variable in a subclass affects the class variable in the superclass as well as the rest of the subclasses.
+
+It is dangerous to use class variables when dealing with inheritance, because one copy of the class variable is shared among all the subclasses and the superclass.

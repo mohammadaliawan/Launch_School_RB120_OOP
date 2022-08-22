@@ -82,19 +82,21 @@ This is an example of encapsulation.
 
 ## Polymorphism
 
+### What is polymorphism?
+
 Polymorphism is the ability for different types of data to respond to a common interface. That is, it lets objects of different types respond to the same method invocation.
 
-When two or more object types have a method with the same name, we can invoke that method with any of those objects.
+When we dont care what type of object is calling the method, we are using polymorphism.
 
-When we dont care what type of object is calling the method, we are using polymorphism
+### How is polymorphism implemented in Ruby?
 
 Polymorphism is implemented in two major ways:
 
-### Inheritance
+#### Inheritance
 
-Inheritance is a way to share behaviour among classes. When a class inherits behavior from another class or module, it is called inheritance. Inheritance is used a way to extract common behaviors from classes that share that behaviour moving it a superclass or module. It lets us keep logic in one place. They are two ways to implement inheritance in Ruby i.e. Class Inheritance and Interface Inheritance.
+Inheritance is a way to share behaviour among classes. Inheritance is used a way to extract common behaviors from classes that share that behaviour moving it a superclass or module. It lets us keep logic in one place. They are two ways to implement inheritance in Ruby i.e. Class Inheritance and Interface Inheritance.
 
-#### Class Inheritance:
+##### Class Inheritance:
 
 Class Inheritance is when a class inherits behavior or methods from another class. The class that is inheriting behavior is called the subclass and the class it inherits from is called the superclass. Class inheritance is used when there is a "is a" relationship between classes while interface inheritance is used when there is a "has a relationship".
 
@@ -120,7 +122,7 @@ If `super` is called without any arguments, it automatically forwards the argume
 
 When called with specific arguments e.g. `super(a,b)`, the specified arguments will be sent up the method lookup path.
 
-If you call `super()` with empty paratheses, it calls the method in the superclass with no arguments at all.
+ If you call `super()` with empty paratheses, it calls the method in the superclass with no arguments at all.
 
 See example in computer.rb
 
