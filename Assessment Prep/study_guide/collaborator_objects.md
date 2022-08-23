@@ -1,10 +1,18 @@
 # Collaborator Objects
 
+- state
+- instance variables
+- conjunction
+- connections
+- sense
+- has a
+
 - stored as state within another object
 - assigned to instance variables in another object
 - work in conjunction with the class they are associated with
 - represent connections between various parts in a program
 - associations should make sense both technically and how it models the problem domain.
+- are used to model a 'has a' relationship between objects
 
 Objects that are stored as state within another object are called collaborator objects i.e they are assigned to instance variables of another object. They are called collaborators because they work in conjunction with the class they are associated with.
 

@@ -9,23 +9,62 @@
 
 ## What is OOP and Why is it important?
 
-Object oriented programming is a programming paradigm. It was created to deal with growing complexity of large software systems. As software systems grow in size, they become complex and it becomes hard to maintain them. OOP was created to deal with this problem.
+Object oriented programming is a programming paradigm. It was created to deal with growing complexity of large software systems. As software systems grow in size, they become complex and it becomes hard to maintain them.
 
 If a software program contains several dependent parts, then changing something in one part effects several other parts which makes making a small change a very difficult task.
 
 OOP provides a way to create containers for data that can be changed and manipulated without affecting the entire software program. 
 
-- programming paradigm
-- software programs grow complex, hard to maintain
+- created to deal with growing complexity of large software programs
+- as the software program grew larger, became harder to maintain
+- no clear boundaries between the different parts
+- one part could effect another without explicit intention of doing so.
 - many dependent parts triggers many errors due to a small change
-- OOP creates containers for data 
+- programming paradigm
+- a way of structuring code to make it easier to maintain and think about
+- OOP creates containers for data and functionality, section off areas of code
 - can be manipulated without affecting the entire program
+- program becomes an interaction of many small parts
+- creates another layer of abstraction for the programmer to think 
+
+```ruby
+class
+  # behaviours: move, eat, sleep, walk, take pet for a walk
+end
+
+class Cat
+  # attributes: name, age, type
+  # behaviours: move, eat, sleep, walk
+end
+
+```
 
 ## What are Classes and Objects?
 
+- anything that has a value is an object
+- created from classes
+- encapsulate state
+
+- class are blueprints or a basic outline for objects
+- objects are created from classes
+- classes define the attributes and behaviours of a particular object type
+- group common behaviours
+- attributes: 
+  - characteristics of an object type
+  - an object' state tracks these attributes
+  - the state comprises of the instance variables and their values
+  - classes specify the name of the instance variables each object should have.
+  - each object's state is unique
+- behaviours: 
+  - actions that an object can perform
+  - exposed by the instance methods defined in the class
+  - behaviour is shared
+
 ### Objects
 
-In Ruby, anything that can be said to have a value is an object. For example, strings, integers, floats, arrays, hashes and even classes and modules are objects. Custom Objects can represent real world nouns. Objects have both attributes and behaviors. Attributes are like properties of the object and behaviours are like actions that an object can perform. Attributes of an object are tracked by the state of an object. And state in turn is tracked by the instance variables of an object. While instance methods expose behaviour for objects. Objects are created from Classes.They are known as instances of a class.
+In Ruby, anything that can be said to have a value is an object. For example, strings, integers, floats, arrays, hashes and even classes and modules are objects. Custom Objects can represent real world nouns. Objects have both attributes and behaviors. Attributes are like properties of the object and behaviours are like actions that an object can perform. 
+
+Objects are created from Classes. They are known as instances of classes.
 
 ### Classes
 
