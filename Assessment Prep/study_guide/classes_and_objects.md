@@ -17,7 +17,7 @@ OOP provides a way to create containers for data that can be changed and manipul
 
 - created to deal with growing complexity of large software programs
 - as the software program grew larger, became harder to maintain
-- no clear boundaries between the different parts
+- as no clear boundaries between the different parts
 - one part could effect another without explicit intention of doing so.
 - many dependent parts triggers many errors due to a small change
 - programming paradigm
@@ -46,9 +46,9 @@ end
 - encapsulate state
 
 - class are blueprints or a basic outline for objects
-- objects are created from classes
 - classes define the attributes and behaviours of a particular object type
 - group common behaviours
+- objects are created from classes
 - attributes: 
   - characteristics of an object type
   - an object' state tracks these attributes
@@ -59,6 +59,8 @@ end
   - actions that an object can perform
   - exposed by the instance methods defined in the class
   - behaviour is shared
+- While objects encapsulate state in the form of instance variables, classes 
+  encapsulate and exposes behaviors in the form of instance methods.
 
 ### Objects
 
@@ -141,8 +143,6 @@ Behavious are what objects of a class are capable of doing.
 States are tracked by instance variables which are scoped at the object level and specified in the class  while behaviours are defined as instance methods in the class which are available to all objects of that class.
 
 Individual objects of the same class have unique states while having shared behaviors.
-
-While objects encapsulate state in the form of instance variables, classes encapsulate and exposes behaviors in the form of instance methods.
 
 For example, we have a `Computer` Class. We may create two different objects one named "HP Notebook" and the other "Dell Latitude". They are both `Computer` objects but contain different informatition like model, screen size, RAM, storage etc. 
 

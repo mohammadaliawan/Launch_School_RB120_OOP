@@ -3,7 +3,7 @@
 ## Class Methods
 
 - methods that we call on the class itself, without instantiating any objects of that class
-- defined by prepending the class name with self, self refers to the class itself
+- defined by prepending the method name with self, self refers to the class itself
 - define functionality that does not pertain to individual objects
 - methods that do not need to need to deal with state
 
@@ -36,7 +36,7 @@ The class method is invoked by calling the method directly on the class itself a
 - Class methods can access class variables regardless of where they are initialized
 - are initialized when the class is evaluated by Ruby, 
 - donot require methods that explicitly initialize them
-- class variables share state between objects
+- class variables can share state between objects
 
 Class variables are used to capture information related to an entire class. They are used to keep track of a class level detail.
 

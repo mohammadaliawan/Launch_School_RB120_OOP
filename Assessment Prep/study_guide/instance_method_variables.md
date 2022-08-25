@@ -34,7 +34,7 @@ All objects of the same class have the same behaviours which are provided by the
 - Behaviours are defined as instance methods
 - shared by all objects of a class
 - instance variables are accessible inside instance methods even if initialized outside the instance method because they are scoped at the object level
-- 
+
 
 Behaviours are defined as instance methods in a class and expose behavior for objects. These methods are available to each object of the class. So we can say that all objects of a class have shared behavior.
 

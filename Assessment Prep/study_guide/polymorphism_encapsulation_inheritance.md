@@ -156,18 +156,4 @@ end
 
 
 
-## Method Lookup Path
 
-Ruby has a distinct lookup path that it follows each time a method is called.
-
-Whenever a method is invoked, the order in which Ruby searches classes for the method definition is called the method lookup path.
-
-When a method is invoked on an object, ruby first looks for that method definition in the class that the object belongs to. If the method is not found, ruby keeps looking in any modules that are mixed in with the class following which it looks in the superclass of the current class. This continues in an ordered fashion until the method is found or there are no more places to look. 
-
-The Method lookup path ends with the following three classes/modules
-
-```
-Object
-Kernel
-BasicObject
-```

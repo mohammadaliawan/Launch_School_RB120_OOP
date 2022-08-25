@@ -111,6 +111,10 @@ This is an example of polymorphism in which three different object types can res
 
 ### Method Lookup Path
 
+- the order in which Ruby searches classes for the method definition
+
+The **method lookup path** describes the order in which classes are inspected when a method is called to see how that method is defined.
+
 Ruby has a distinct lookup path that it follows each time a method is called.
 
 Whenever a method is invoked, the order in which Ruby searches classes for the method definition is called the method lookup path.

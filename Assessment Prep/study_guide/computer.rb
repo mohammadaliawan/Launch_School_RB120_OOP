@@ -1,41 +1,49 @@
 
-# class Computer
-#   def initialize(model, ram, storage)
-#     self.model = model
-#     self.ram = ram
-#     self.storage = storage
-#   end
+class Computer
+  @@class_var = "Hello"
+  def initialize(model, ram, storage)
+    self.model = model
+    self.ram = ram
+    self.storage = storage
+  end
 
-#   def info
-#     "#{model}, #{ram}, #{storage}"
-#   end
+  def info
+    "#{model}, #{ram}, #{storage}"
+  end
 
-#   def upgrade_ram
-#     self.ram = "8 GB"
-#   end
+  def upgrade_ram
+    self.ram = "8 GB"
+  end
 
-#   private
+  private
 
-#   attr_accessor :model, :ram, :storage
-# end
+  attr_accessor :model, :ram, :storage
+end
 
-# class Laptop < Computer
-#   def initialize(model, ram, storage, screen_size)
-#     super model, ram, storage
-#     self.screen_size = screen_size
-#   end
+class Laptop < Computer
+  @@class_var = "Bye"
+  def initialize(model, ram, storage, screen_size)
+    super model, ram, storage
+    self.screen_size = screen_size
+  end
 
-#   def info
-#     "#{super}, #{screen_size}"
-#   end
+  def info
+    "#{super}, #{screen_size}"
+  end
 
-#   private
-#   attr_accessor :screen_size
-# end
+  def class_var
+    @@class_var
+  end
 
-# home_computer = Computer.new("Dell Latitude", "4 GB", "350 GB")
+  private
+  attr_accessor :screen_size
+end
 
-# p home_computer.info
+home_computer = Laptop.new("Dell Latitude", "4 GB", "350 GB", "13 in")
+
+p home_computer.info
+
+p home_computer.class_var
 
 # home_computer.upgrade_ram
 
@@ -199,20 +207,24 @@
 # jack = Person.new("Jack", computer1)
 # puts jack.computer 
 
-class Animal
-  attr_accessor :name
+# class Animal
+#   attr_accessor :name
 
-  def initialize
-    set_name
-  end
-end
+#   def initialize
+#     set_name
+#   end
+# end
 
-class Dog < Animal
-  def set_name
-    puts "What is your name?"
-    self.name = gets.chomp
-  end
-end
+# class Dog < Animal
+#   def set_name
+#     puts "What is your name?"
+#     self.name = gets.chomp
+#   end
+# end
 
-dog = Dog.new
-puts dog.name
+# dog = Dog.new
+# puts dog.name
+
+
+
+
