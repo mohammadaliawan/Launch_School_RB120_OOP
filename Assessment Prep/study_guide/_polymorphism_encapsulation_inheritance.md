@@ -11,8 +11,18 @@ Encapsulation lets us hide the internal representation of an object from the out
 ### My definition
 
 - restricting access to data and functionality
-- implemented through creation of objects and exposing behaviours and attributes
-- helps with data protection, reduces dependences, 
+- Users of the data only have access to the data and functionality they actually need 
+- a way of protecting data from unintentional manipulation
+- creates boundaries within the program
+
+- hides how a functionality is implemented providing a new level of abstraction. use a functionality without needing to know how it is implemented.
+
+- implemented through creation of objects and exposing only certain behaviours and attributes
+
+- helps with data protection,
+- reduces dependences, 
+- easier to maintain,
+- a new level of abstraction
 
 Encapsulation in object oriented programming is about restricting access to data and functionality. It is a way of protecting data from unintentional manipulation. Users of the data only have access to the data and functionality that they actually need. This also helps with hiding how a functionality is implemented providing a new level of abstraction. We can use a functionality without needing to know how it is actually implemented.
 
@@ -84,6 +94,9 @@ This is an example of encapsulation.
 
 ### What is polymorphism?
 
+- ability of different types of data to respond to a common interface
+- lets objects of different types to respond to the same method
+
 Polymorphism is the ability for different types of data to respond to a common interface. That is, it lets objects of different types respond to the same method invocation.
 
 When we dont care what type of object is calling the method, we are using polymorphism.
@@ -94,11 +107,49 @@ Polymorphism is implemented in two major ways:
 
 1. Inheritance
 
+ A specific instance of a subclass inherits a more generic method implementation from a superclass.
+
+ A subclass overrides a more generic method implementation from a superclass with a different more specific behavior by implementing a method of the same name.
+
 Refer to Inheritance.md
+
+```ruby
+class Animal
+  def eats
+    puts "feeds on other living things"
+  end
+end
+
+class Carnivore < Animal
+  def eats
+    puts "feeds on meat"
+  end
+end
+
+class Herbivore < Animal
+  def eats
+    puts "feeds on plants"
+  end
+end
+
+class Omnivore < Animal; end
+
+lion = Carnivore.new
+rabbit = Herbivore.new
+person = Omnivore.new
+
+animals = [lion, rabbit, person]
+animals.each { |animal| animal.eats }
+```
 
 2. Duck Typing
 
+- form of polymorphism
+- informal way of classifying objects based on behaviour
+- occurs when unrelated types of objects have the same behavior
+
 Duck typing is a form of polymorphism. It is an informal way of classifying objects based on their behavior. It occurs when two or more than two different unrelated types of objects have the same behavior i.e. method with the same name, so these objects can be invoked with the same method name although these methods may have completely different implementations. 
+Duck typing focuses on what an object can _do_ rather than what an object _is_.
 
 ```ruby
 class EngineeringProject

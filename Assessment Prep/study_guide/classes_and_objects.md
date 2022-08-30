@@ -15,17 +15,27 @@ If a software program contains several dependent parts, then changing something 
 
 OOP provides a way to create containers for data that can be changed and manipulated without affecting the entire software program. 
 
-- created to deal with growing complexity of large software programs
-- as the software program grew larger, became harder to maintain
-- as no clear boundaries between the different parts
-- one part could effect another without explicit intention of doing so.
-- many dependent parts triggers many errors due to a small change
+### Define the Problem?
+
+- As software systems grew larger and more complex, they became harder to maintain
+- no clear boundaries existed between the different parts in the program
+- which meant the entire program consisted of complex interdependcies
+- one small change in one part would result in a cascading effect of errors throughout the entire program
+
+### Define the solution?
 - programming paradigm
-- a way of structuring code to make it easier to maintain and think about
-- OOP creates containers for data and functionality, section off areas of code
-- can be manipulated without affecting the entire program
-- program becomes an interaction of many small parts
-- creates another layer of abstraction for the programmer to think 
+- a way of structuring (organizing) code to make it more flexible, maintainable and even easier to think about
+- OOP creates containers for data and functionality like building blocks called classes and objects
+
+### Define the benefits?
+
+- that gives us the ability to write clearly organized code 
+- helps to section off areas of code, restricting access to some parts providing protection and security
+- one building block can be manipulated without affecting the entire program, independent blocks
+- program becomes an interaction of these buidling blocks
+- Some blocks can be reused in order to reduce repetition.
+- creates another layer of abstraction for the programmer to think on which helps with solving the problem
+
 
 ```ruby
 class
@@ -41,9 +51,14 @@ end
 
 ## What are Classes and Objects?
 
+**Objects**
+
+- created from classes 
 - anything that has a value is an object
-- created from classes
+- instances of a class
 - encapsulate state
+
+**Classes**
 
 - class are blueprints or a basic outline for objects
 - classes define the attributes and behaviours of a particular object type
