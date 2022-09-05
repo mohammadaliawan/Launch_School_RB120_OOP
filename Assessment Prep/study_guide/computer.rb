@@ -225,26 +225,72 @@
 # dog = Dog.new
 # puts dog.name
 
-module FourWheeler
-  WHEELS = 4
-end
+# module FourWheeler
+#   WHEELS = 4
+# end
 
-class Vehicle
-  def maintenance
-    "Changing #{WHEELS} tires."
+# class Vehicle
+#   def maintenance
+#     "Changing #{WHEELS} tires."
+#   end
+# end
+
+# class Car < Vehicle
+#   include FourWheeler
+
+#   def wheels
+#     WHEELS
+#   end
+# end
+
+# car = Car.new
+# puts car.wheels        # => 4
+# puts car.maintenance 
+
+# module Swimmable
+#   def swim
+#     puts "#{self.class} is swimming"
+#   end
+# end
+
+# class Person
+#   include Swimmable
+# end
+
+# class Dog
+#   include Swimmable
+# end
+
+# Person.new.swim
+# Dog.new.swim
+
+module Swimmable
+  def swim
+    puts "I am swimming..."
   end
 end
 
-class Car < Vehicle
-  include FourWheeler
-
-  def wheels
-    WHEELS
+class Animal
+  def eat
+    puts "I am eating..."
   end
 end
 
-car = Car.new
-puts car.wheels        # => 4
-puts car.maintenance 
+class BullDog < Animal
+  include Swimmable
+end
 
+class Fish < Animal
+  include Swimmable
+end
 
+class Cat < Animal
+end
+
+dido = BullDog.new
+nemo = Fish.new
+puss = Cat.new
+
+dido.swim # I am swimming...
+nemo.swim # I am swimming...
+puss.swim # NoMethodError

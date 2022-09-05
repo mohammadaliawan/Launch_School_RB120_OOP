@@ -1,90 +1,80 @@
-# RB129 Practice Problems
+# Modules
 
- What is output and why? What does this demonstrate about instance variables that differentiates them from local variables?
+**Question:**
+
+> What is the method lookup path used when invoking `#walk` on `good_dog`?
 
 ```ruby
-class Person
-  attr_reader :name
-  
-  def set_name
-    @name = 'Bob'
+module Walkable
+  def walk
+    "I'm walking."
   end
 end
 
-bob = Person.new
-p bob.name
-``` 
-
-- output
-- why
-- instance variables vs. local variables
-
-The last line outputs `nil`. This happens because when the getter method `name` which is an instance method is invoked on the object referenced by `bob`  it returns `nil`. The reason it returns `nil` is because the getter method `name` returns the value for the instance variable `@name` and `@name` has not been initialized yet. Ruby returns `nil` when an uninitialized instance variable is referenced. 
-
-This differentiates instance variables from local variables which if referenced before initialization raise an exception called `NameError`. 
-
-To initialize `@name` we need to first invoke the setter method `set_name` on the `bob` object. This method will assign the string object `"Bob"` to the the instance variable `@name`.
-
-
-> What is output and why? What does this demonstrate about instance variables?
-
-```ruby
-module Swim
-  def enable_swimming
-    @can_swim = true
-  end
-end
-
-class Dog
-  include Swim
-
+module Swimmable
   def swim
-    "swimming!" if @can_swim
+    "I'm swimming."
   end
 end
 
-teddy = Dog.new
-p teddy.swim
-```
-
-- output
-- why
-- demonstrate about instance variables
-
-Line `47` outputs `nil` because the `swim` method invocation on line `47` returns `nil`. It returns `nil` because the test expresson `@can_swim` for the `if` modifier on line `42` returns `nil`as `@can_swim` is yet uninitialized. Since `nil` is falsey, the `if` expression returns `nil` and being the last line in the method `swim` , `nil` is returned by the `swim` method which is then output by the `p` method.
-
-To initialize the `@can_swim` variable we need to first invoke the `enable_swimming` method which is provided by the `Swim` module mixid in to the `Dog` class on line `39`. The `enable_swimming` method will initialize `@can_swim` to the object `true`. Now that , `@can_swim` is initialized to `true` , the `if` conditional on line `42` will return the string object `"swimming"`. And this will be returned by the `swim` method invocation. 
-
-This demonstrates that ruby returns `nil` if uninitialized instance variables are referenced instead of raising an error and also that instance variables are not inherited by a subclass from its superclass unlike instance methods. We must first call the inherited instance method that initialized that instance variable. Only then the object can access that instance variable.
-
-> What is output and why? What does this demonstrate about constant scope? What does `self` refer to in each of the 3 methods above
-
-```ruby
-module Describable
-  def describe_shape
-    "I am a #{self.class} and have #{SIDES} sides."
+module Climbable
+  def climb
+    "I'm climbing."
   end
 end
 
-class Shape
-  include Describable
+module Danceable
+  def dance
+    "I'm dancing."
+  end
+end
 
-  def self.sides
-    self::SIDES
+class Animal
+  include Walkable
+
+  def speak
+    "I'm an animal, and I speak!"
+  end
+end
+
+module GoodAnimals
+  include Climbable
+
+  class GoodDog < Animal
+    include Swimmable
+    include Danceable
   end
   
-  def sides
-    self.class::SIDES
+  class GoodCat < Animal; end
+end
+
+good_dog = GoodAnimals::GoodDog.new
+p good_dog.walk
+```
+
+**Answer**
+
+The method lookup for any method invoked on an object of `GoodAnimals::GoodDog` class will be the same. We check the methodlookup path by calling the class method `ancestors` on the `GoodAnimals::GoodDog` class. So the method lookup path for objects of `GoodAnimals::GoodDog` is `[GoodAnimals::GoodDog, Danceable, Swimmable, Animal, Walkable, Object, Kernel, BasicObject].`
+
+This code demonstrates how ruby traverses the method lookup path whenever a method is invoked. The method lookup path is the order in which classes and included modules are traversed and searched for the definition of the invoked method. When Ruby find a definition for the method it stops looking any further.
+
+**Question:**
+
+```ruby
+module Drivable
+  def self.drive
   end
 end
 
-class Quadrilateral < Shape
-  SIDES = 4
+class Car
+  include Drivable
 end
 
-class Square < Quadrilateral; end
+bobs_car = Car.new
+bobs_car.drive
 
-p Square.sides  # Square < Quadrilateral (Constant) < Shape ()
-p Square.new.sides 
-p Square.new.describe_shape 
+# What is output and why? What does this demonstrate about how methods need to be defined in modules, and why?
 ```
+
+**Answer**
+

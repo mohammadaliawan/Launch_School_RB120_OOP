@@ -132,8 +132,31 @@ BasicObject
 
 ## Interface Inheritance
 
-Interface inheritance is achieved through the use of modules. 
-A module is a collection of behaviors i.e. methods that is usable in other clasess through mixins. A module must be mixed in with a class using the `include` method invocation. This is called a mixin. After mixing in a module, the behaviors declared in that module are available to the class and its objects.
+- Interface inheritance is achieved through the use of modules. 
+- a module is a collection of behaviours i.e methods that are usable in other classes through mixins
+- they contain shared behavior and are used to group resuable or shared behavior
+- When a module is mixed in with a class through the use of include method invocation, its called a mixin
+- the methods declared in the module become available to the objects and the class
+
+```ruby
+module Swimmable
+  def swim
+    puts "I am swimming"
+  end
+end
+
+class Person
+  include Swimmable
+end
+
+class Dog
+  include Swimmable
+end
+
+Person.new.swim
+Dog.new.swim
+```
+A module is a collection of behaviors i.e. methods that are usable in other clasess through mixins. A module must be mixed in with a class using the `include` method invocation. This is called a mixin. After mixing in a module, the behaviors declared in that module are available to the class and its objects.
 
 Modules can be mixed into as many classes as needed. Modules are similar to classes as they contain shared behavior. However, you cannot create an object with a module. 
 

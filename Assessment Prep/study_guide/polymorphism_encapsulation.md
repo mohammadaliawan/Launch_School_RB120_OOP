@@ -94,9 +94,12 @@ This is an example of encapsulation.
 
 ### What is polymorphism?
 
-- ability of different types of data to respond to a common interface
-- lets objects of different types to respond to the same method
+- ability of different types of objects to respond to a common interface in different ways.
+-  objects of different classes are able to respond in different ways to the same method invocation even though the implementation details for these methods may vary from class to class. 
+- client code does not care about what type of object is calling the method. all it cares about is that the methods are called in the same way with the same number of arguments.
 
+- the public interface of these objects lets us work with these objects in the same way even though implementations may be dramatically different.
+---------------------------------------------
 Polymorphism is the ability for different types of data to respond to a common interface. That is, it lets objects of different types respond to the same method invocation.
 
 When we dont care what type of object is calling the method, we are using polymorphism.
@@ -107,7 +110,7 @@ Polymorphism is implemented in two major ways:
 
 1. Inheritance
 
- A specific instance of a subclass inherits a more generic method implementation from a superclass.
+ A subclass inherits a more generic method implementation from a superclass.
 
  A subclass overrides a more generic method implementation from a superclass with a different more specific behavior by implementing a method of the same name.
 
@@ -145,8 +148,8 @@ animals.each { |animal| animal.eats }
 2. Duck Typing
 
 - form of polymorphism
-- informal way of classifying objects based on behaviour
-- occurs when unrelated types of objects have the same behavior
+- informal way of classifying objects based on behaviourr
+- When objects of different unrelated types are able to respond to the same method invocation
 
 Duck typing is a form of polymorphism. It is an informal way of classifying objects based on their behavior. It occurs when two or more than two different unrelated types of objects have the same behavior i.e. method with the same name, so these objects can be invoked with the same method name although these methods may have completely different implementations. 
 Duck typing focuses on what an object can _do_ rather than what an object _is_.
