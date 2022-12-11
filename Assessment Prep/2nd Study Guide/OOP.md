@@ -14,8 +14,7 @@ Object Oriented Programming is a programming model/pattern/paradigm. Its a way o
 - programming paradigm
 - a way of structuring (organizing) code to make it more flexible, maintainable and even easier to think about
 
-
-### Define the benefits?What benefits does it have?
+### Define the benefits? What benefits does it have?
 
 - makes code more maintainable, flexible and easier to think about
 - that gives us the ability to write organized code with clear boundaries 
@@ -29,15 +28,21 @@ Object Oriented Programming is a programming model/pattern/paradigm. Its a way o
 - program becomes an interaction of these buidling blocks
 - Some blocks can be reused in order to reduce repetition.
 
-## What is encapsulation? WHat purpose does it serve in Object Oriented Programming? How does Ruby achieve this?
+## What is encapsulation?  
 
-Encapsulation is sectioning off and hiding data and functionality and making it unavailable to the rest of the code base. It is a form of data protection so that data cannot be manipulated without explicit intention.
-It defines the boundaries within our program.
+Encapsulation is sectioning off areas of code in a program and hiding data and functionality and making it unavailable to the rest of the code base.
+
+### What purpose does it serve in Object Oriented Programming?
+
+It is a form of data protection so that data cannot be manipulated without explicit intention.
+
+It also defines the boundaries within our program.
+
+### How does Ruby achieve this?
 
 Ruby accomplishes this by creating **objects** and exposing **interfaces** to interact with those objects.
 
 Another benefit of creating objects is that it allows us to think on a new level of abstraction as objects can represent real world nouns and can be provided with methods that represent behaviours that we are trying to model.
-
 
 ## What is polymorphism? What purpose does it serve in Object Oriented Programming?
 
@@ -45,9 +50,13 @@ Polymorphism is the ability of different types of data to respond to a common in
 
 ## What is inheritance?
 
-Inheritance is when a class inherits behaviours of another class known as the **superclass**. It helps us to define basic classes with large reusability and small **subclasses** for more fine grained behaviours.
+Inheritance is when a class inherits behaviours of another class known as the **superclass**. It helps us to define basic classes with large reusability and smaller **subclasses** for more fine grained behaviours.
 
-## WHat are modules? What are Modules used for?
+## What are modules? What are Modules used for?
 
-Modules are a collection of related behaviours. Modules are similar to classes in that they contain shared behavior but it is not possible to create object from Modules. Modules are 'mixed in' to classes using the `include` method invocation. After mixing in modules, the behaviours declared in that module become available to the class and its objects.
+Another way to apply polymorphic structure to code. Modules are a collection of related behaviours. 
+
+Modules are similar to classes in that they contain shared behavior but it is not possible to create object from Modules. 
+
+Modules are 'mixed in' to classes using the `include` method invocation. After mixing in modules, the behaviours declared in that module become available to the class and its objects.
 
