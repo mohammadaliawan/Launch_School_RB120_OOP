@@ -47,16 +47,25 @@ We have instantiated an object called `sparky` from the class `GoodDog`.
 
 ## What two things do we focus on when defining classes?
 
-States and behaviours
+**States** and **behaviours**
+
+**State** refers to the data associated to an individual object.
+
+**Behaviors** are what objects are capable of doing.
 
 ## What are attributes?
 
-- **attributes** 
+- **Attributes** 
   - characteristics of an object type
   - a class defines the attributes that each object of that class shall 
     have.
+
+  **State**
+  - refers to the data associated to an individual object.
   - an object's state tracks these attributes
   - the state comprises of the instance variables and their values
+  - instance variabless are used to track state
+  - instance variables are scoped at the object level
   - classes specify the name of the instance variables each object should 
     have.
   - each object's state is unique
@@ -64,8 +73,26 @@ States and behaviours
 - **behaviours** 
   - actions that an object can perform
   - exposed by the instance methods defined in the class
-  - behaviour is shared
+  - behaviour is shared OR all objects contain identical behaviour
 
 ## How do objects and classes show encapsulation?
 
 While objects encapsulate state in the form of instance variables, classes encapsulate and expose behaviors in the form of instance methods.
+
+In summary, instance variables keep track of state, and instance methods expose behavior for objects.
+
+## How are new objects instantiated and build? What is a constructor?
+
+```ruby
+class GoodDog
+  def initialize
+    puts "New GoodDog Object initialized!"
+  end
+end
+
+sparky = GoodDog.new
+
+```
+
+Whenever a new object is created using the `new` method, the `initialize` instance methods gets invoked. The `initialize` method is called a "constructor" because it is a special method that builds the object when a new object is instantiated.
+

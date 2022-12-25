@@ -8,18 +8,11 @@ Object Oriented Programming is a programming model/pattern/paradigm. Its a way o
 
 - As software systems grew larger and more complex, they became harder to maintain
 - no clear boundaries existed between the different parts in the program
-- one small change in one part would result in a cascading effect of errors throughout the entire program
+- one small change in one part would result in a cascade of errors throughout the entire program
 
 ### Define the solution?
 - programming paradigm
 - a way of structuring (organizing) code to make it more flexible, maintainable and even easier to think about
-
-### Define the benefits? What benefits does it have?
-
-- makes code more maintainable, flexible and easier to think about
-- that gives us the ability to write organized code with clear boundaries 
-- helps to section off areas of code, restricting access to some parts providing protection and security
-- creates another layer of abstraction for the programmer to think on which helps with solving the problem
 
 ### How does it accomplish those benefits?
 
@@ -27,6 +20,13 @@ Object Oriented Programming is a programming model/pattern/paradigm. Its a way o
 - one building block can be manipulated without affecting the entire program, independent blocks
 - program becomes an interaction of these buidling blocks
 - Some blocks can be reused in order to reduce repetition.
+
+### Define the benefits? What benefits does it have?
+
+- makes code more maintainable, flexible and easier to think about
+- that gives us the ability to write organized code with clear boundaries 
+- helps to section off areas of code, restricting access to some parts providing protection and security
+- creates another layer of abstraction for the programmer to think on which helps with solving the problem
 
 ## What is encapsulation?  
 
