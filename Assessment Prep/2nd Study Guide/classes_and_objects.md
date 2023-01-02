@@ -17,7 +17,7 @@ In other words, Classes define the attributes and behaviours of the objects crea
 
 ## What are Objects?
 
-Objects in Ruby are anything that have a value e.g. strings, integers, arrays and hashes. They can also represent real worls nouns. For example a cat, dog or a mouse.
+Objects in Ruby are anything that have a value e.g. strings, integers, arrays and hashes. They can also represent real world nouns. For example a cat, dog or a mouse.
 
 Objects are created or instantiated from Classes.
 
@@ -57,8 +57,7 @@ We have instantiated an object called `sparky` from the class `GoodDog`.
 
 - **Attributes** 
   - characteristics of an object type
-  - a class defines the attributes that each object of that class shall 
-    have.
+  - a class defines the attributes that each object of that class shall have.
 
   **State**
   - refers to the data associated to an individual object.
@@ -66,8 +65,7 @@ We have instantiated an object called `sparky` from the class `GoodDog`.
   - the state comprises of the instance variables and their values
   - instance variabless are used to track state
   - instance variables are scoped at the object level
-  - classes specify the name of the instance variables each object should 
-    have.
+  - classes specify the name of the instance variables each object should have.
   - each object's state is unique
 
 - **behaviours** 
@@ -94,5 +92,5 @@ sparky = GoodDog.new
 
 ```
 
-Whenever a new object is created using the `new` method, the `initialize` instance methods gets invoked. The `initialize` method is called a "constructor" because it is a special method that builds the object when a new object is instantiated.
+Whenever a new object is created using the `new` class method, the `initialize` instance methods gets triggered and invoked. The `initialize` method is called a "constructor" because it is a special method that builds the object when a new object is instantiated.
 

@@ -1,5 +1,7 @@
 # Instance Methods and Instance Variables
 
+Instance variables keep track of state and instance methods expose behavior for objects.
+
 ## What are Instance Variables?
 
 - a type of variable that start with the `@` symbol. 

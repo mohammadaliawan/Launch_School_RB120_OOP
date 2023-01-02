@@ -30,13 +30,13 @@ Object Oriented Programming is a programming model/pattern/paradigm. Its a way o
 
 ## What is encapsulation?  
 
-Encapsulation is sectioning off areas of code in a program and hiding data and functionality and making it unavailable to the rest of the code base.
+Encapsulation is **sectioning off areas of code** in a program and hiding data and functionality and making it unavailable to the rest of the code base.
 
 ### What purpose does it serve in Object Oriented Programming?
 
-It is a form of data protection so that data cannot be manipulated without explicit intention.
+It is a form of **data protection** so that data cannot be manipulated without explicit intention.
 
-It also defines the boundaries within our program.
+It also helps define the boundaries within our program.
 
 ### How does Ruby achieve this?
 
@@ -46,7 +46,7 @@ Another benefit of creating objects is that it allows us to think on a new level
 
 ## What is polymorphism? What purpose does it serve in Object Oriented Programming?
 
-Polymorphism is the ability of different types of data to respond to a common interface. It gives us the ability to use prewritten code for new purposes.
+Polymorphism is the ability of different types of data to **respond to a common interface**. It gives us the ability to use prewritten code for new purposes.
 
 ## What is inheritance?
 
@@ -56,7 +56,7 @@ Inheritance is when a class inherits behaviours of another class known as the **
 
 Another way to apply polymorphic structure to code. Modules are a collection of related behaviours. 
 
-Modules are similar to classes in that they contain shared behavior but it is not possible to create object from Modules. 
+Modules are similar to classes in that they contain **shared behavior** but it is not possible to create objects from Modules. 
 
 Modules are 'mixed in' to classes using the `include` method invocation. After mixing in modules, the behaviours declared in that module become available to the class and its objects.
 
