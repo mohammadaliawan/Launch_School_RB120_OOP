@@ -1,8 +1,8 @@
-# Getter and Setter Methods
+# Accessor Methods: Getter and Setter Methods
+
+Accessor methods are used to expose or change information about the state of an object.
 
 ## Getter Methods
-
-Getter Methods are used to expose information about object's state. 
 
 Getter methods are instance methods which are used to expose information about the state of an object. As state is tracked by instance variables, getter methods return the values for the instance variables.
 
@@ -65,3 +65,5 @@ On the last line, we invoke the instance method `#model=` on the `dell_notebook`
 If we want to refer to the setter methods inside the class, we cannot just do `model = m`. Ruby interprets that as the intialization of a new local variable `model`. Instead we need to invoke the setter method with the keyword `self`that is `self.model = m`.
 
 When `self` is referenced inside an instance method like above, it references the current object.
+
+##

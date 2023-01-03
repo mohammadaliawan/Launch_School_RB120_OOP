@@ -8,6 +8,7 @@ Instance variables keep track of state and instance methods expose behavior for 
 - used to keep track of the state of an object. 
 - scoped at the object level.
 - one of the ways we tie data to objects. 
+- capture information pertaining to specific instances of a class i.e. objects
 - exist as long as the object instance exists. 
 - cannot cross over between objects
 - All objects of the same class have the same behaviours but contain different states
@@ -34,11 +35,13 @@ The same thing happens when we instantiate another `GoodDog` object `fido` on li
 
 ## Instance Methods
 
+- methods that pertain to an object or instance of a class.
 - Behaviours are defined as instance methods
 - shared by all objects of a class
 - instance variables are accessible inside instance methods even if initialized outside the instance method because they are scoped at the object level
 - an objects instance variables are accessible inside instance methods
-- instance methods can be used to expose information about the state of an object. 
+- instance methods can be used to expose information about the state of an object.
+- All instance methods are accessible inside the class.
 
 Instance methods are used to perform behaviours and expose information about the state of an object. 
 

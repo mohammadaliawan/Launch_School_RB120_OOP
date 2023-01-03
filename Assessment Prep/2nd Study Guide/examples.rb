@@ -1,34 +1,32 @@
-# class GoodDog
-#   def initialize(name)
-#     @name = name
-#   end
+class GoodDog
+  puts self
 
-#   def speak
-#     puts "#{@name} says Arf!!"
-#   end
+  attr_accessor :name
+  @@total_gooddogs = 0
 
-#   def get_name
-#     @name
-#   end
-# end
+  def initialize(name)
+    @@total_gooddogs += 1
+    self.name = name
+  end
 
-# sparky = GoodDog.new("Sparky")
-# fido = GoodDog.new("Fido")
+  def what_is_self
+    self
+  end
 
-# # sparky.speak
-# # fido.speak
+  def speak
+    puts "#{name} says Arf!!"
+  end
 
-# # p sparky.get_name
-# p fido.get_name
-
-class Person
-  attr_reader :name
-
-  def name=(name)
-    self.name = name.capitalize
+  def self.total_gooddogs
+    @@total_gooddogs
   end
 end
 
-person1 = Person.new
-person1.name = 'eLiZaBeTh'
-puts person1.name
+sparky = GoodDog.new("Sparky")
+fido = GoodDog.new("Fidos")
+
+# sparky.speak
+# fido.speak
+
+# p sparky.what_is_self
+# p fido.what_is_self
