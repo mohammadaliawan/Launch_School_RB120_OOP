@@ -18,4 +18,14 @@ BasicObject
 
 For a class, we can find the method lookup path that Ruby will follow to find the definition of the method being invoked on any object of that class by invoking the class method `ancestors` on that class.
 
+Class
+Included Modules
+Superclass
+Included Modules
+Superclass
+Included Modules
+Object
+Kernel
+BasicObject
+
  

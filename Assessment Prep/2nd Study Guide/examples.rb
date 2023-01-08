@@ -1,32 +1,32 @@
-class GoodDog
-  puts self
+class Animal
+  attr_accessor :name, :age
 
-  attr_accessor :name
-  @@total_gooddogs = 0
-
-  def initialize(name)
-    @@total_gooddogs += 1
-    self.name = name
+  def initialize(n, a)
+    self.name = n
+    self.age = a
   end
 
-  def what_is_self
-    self
+  def older_than?(other_animal)
+    self.human_years > other_animal.human_years
   end
 
-  def speak
-    puts "#{name} says Arf!!"
-  end
+  protected
 
-  def self.total_gooddogs
-    @@total_gooddogs
+  def human_years
+    age * self.class::ANIMAL_YEARS
   end
 end
 
-sparky = GoodDog.new("Sparky")
-fido = GoodDog.new("Fidos")
+class GoodDog < Animal
+  ANIMAL_YEARS = 7
 
-# sparky.speak
-# fido.speak
+  def public_disclosure
+    "#{self.name} in human years is #{human_years}"
+  end
+end
 
-# p sparky.what_is_self
-# p fido.what_is_self
+sparky = GoodDog.new("sparky", 4)
+fido = GoodDog.new("fido", 3)
+
+sparky.human_years
+p sparky.older_than?(fido)

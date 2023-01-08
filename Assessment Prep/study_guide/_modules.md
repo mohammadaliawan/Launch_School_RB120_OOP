@@ -2,15 +2,7 @@
 
 ## What is a module?
 
-- polymorphism
-- shared behaviour
-- collection of behaviours useable in other classes via mixins
-- the class inherits the interface provided by the mixin module.
-
-- are used where there is a `has-a` relationship between objects and behaviours and 
-- using the class inheritance is not feasable because defining that behavior in a superclass would provide that behaviour to all subclasses. But we only want it to be available to certain subclasses.
-- a class can inherit behaviours from multiple modules.
-
+- using the class inheritance is not feasable because defining that behavior in a superclass would provide that behaviour to all subclasses. But we only want it to be available to certain subclasses
 - another way to apply polymorphic structure to programs.
 - Contain shared behavior similar to classes
 - cannot instantiate objects from modules
@@ -20,7 +12,6 @@
 - class inheritance is used where we want to model concepts that are naturally heirarchical.
 - class inheritance in Ruby only allows single inheritance i.e. subclassing directly from only one superclass. This makes it difficult to accurately model the problem domain.
 - Ruby's awnser to multiple inheritance is by way of mixing in behaviours or modules. A class can only subclass from one superclass but it can mix in as many module as it likes.
-
 - modules are used where there is a `has-a` relationship between a class and a behavior.
 - class inheritance is used where there is an `is-a` relationship between two different class types.
 

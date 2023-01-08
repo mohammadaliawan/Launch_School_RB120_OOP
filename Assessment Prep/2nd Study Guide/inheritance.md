@@ -1,10 +1,10 @@
 # Inheritance
 
+- mechanism through which a class can inherit behavior from another class or module
 - a way to share behavior among classes
 - one of the ways to implement polymorphism
-- mechanism through which a class can inherit behavior from another class or module
 - helps extract common behaviors from classes and moving to a superclass or module
-- keep logic in one place
+- keep logic in one place, remove duplication
 -------------------------------------------------------------------
 
 Inheritance is one of the ways of implementing polymorphism.
@@ -22,8 +22,8 @@ Two ways of implementing Inheritance in Ruby
 - subclass: that is inheriting behavior
 - superclass: the class it inhertis from
 - used to model hierarchical domains
-- model `is a` relationship between objects e.g. A cat `is a` pet.
-- superclasses are defined as basic classes with large reuse
+- model an 'is a'  `` relationship between objects e.g. A cat `is a` pet.
+- superclasses are defined as basic classes with large reusability
 - subclasses are defined for more fine tuned detailed behaviours
 ----------------------------------------------------------------------
 
@@ -38,7 +38,7 @@ We use inheritance as a way to extract common behaviors from classes that share 
 
 - method in a subclass has same name as a method in its superclass
 
-Method overriding occurs when we have a method in a subclass has the same name as a method in it's superclass.
+Method overriding occurs when we have a method in a subclass that has the same name as a method in it's superclass.
 
 When the method is invoked, Ruby first looks for that method in the subclass. And as it finds a method with that name, it executes that method. It does not go looking further up the method look up path in the superclass. This is called method overriding. The method in the superclass was overridden by the method defined in the subclass. 
 
@@ -46,7 +46,7 @@ See example in computer.rb
 
 #### `super`
 
-- call a method of the same name earlier in the method lookup path
+- when called from within an instance method, calls a method of the same name earlier in the method lookup path
 
 The `super` keyword is used to call a method of the same name earlier in the method lookup path. 
 
