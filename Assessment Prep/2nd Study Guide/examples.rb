@@ -40,22 +40,34 @@
 # SomeClass.some_class_method
 
 class Person
-  attr_accessor :name, :pet
+  attr_accessor :name, :pets
 
   def initialize(name)
     @name = name
+    @pets = []
   end
 end
 
 class Bulldog
   def speak
-    "Speaking!!"
+    p "Dog Speaking!!"
+  end
+end
+
+class Cat
+  def speak
+    p "Cat Speaking!!"
   end
 end
 
 bob = Person.new("Robert")
+
 bud = Bulldog.new
 
-bob.pet = bud
+kitty = Cat.new
 
-p bob.pet.speak
+bob.pets << bud << kitty
+
+bob.pets.each do |pet|
+  pet.speak
+end

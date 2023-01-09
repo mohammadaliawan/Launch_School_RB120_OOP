@@ -22,9 +22,21 @@ bob.pet = bud
 
 ## Definition
 
-Objects that are stored as state in other objects are called Collaborator Objects.
+Objects that are stored as state in other objects are called Collaborator Objects i.e. assigned to an object's instance variables.
 
 Collaborator objects are not strictly custom objects. Built in object types in ruby are also technically collavorator objects.
+
+Collaborator Objects can be of any type.
+
+## What is collaboration?
+
+Collaboration is a way of modeling relationshops between different objects.
+
+## What kind of relationship exists between collaborator objects?
+
+Collaborator objects have an **associative** relationship with each other. It can be thought of as a 'has a' relationship. For example a Library 'has a' book.
+
+A collaborative relationship is a relationship of association - not of inheritance. Collaboration is a 'has a' relationship rather than an 'is a' relationship.
 
 ## Why are they called 'collaborators'?
 
@@ -33,7 +45,6 @@ They are called 'collaborators' because they work in conjuction on in collaborat
 ## Can collaborator objects be used through their associated objects?
 
 When we need the collaborator object to perform some behavior, we can go through the object whose instance variables are referencing it as a collaborator object, by using the getter method for that instance variable and invoking instance methods on the returned collaborator object.
-
 
 ## Why are collaborator objects important in OO design?
 
@@ -45,3 +56,8 @@ They play an important role as they represent the connections between various pa
 - and if those collaborations make sense both 
   - technically
   - in terms of modeling the problem 
+
+
+## What are CRC cards and what are they used for?
+
+Class Responsibility Collaborator (CRC) cards is a way to model the various classes in a program. Its a tool to design classes and map interactions between classes.
