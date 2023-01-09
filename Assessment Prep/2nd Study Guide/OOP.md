@@ -52,6 +52,8 @@ Polymorphism is the ability of different types of data to **respond to a common 
 
 Inheritance is when a class inherits behaviours of another class known as the **superclass**. It helps us to define basic classes with large reusability and smaller **subclasses** for more fine grained behaviours.
 
+Method overriding is one of the ways in which Ruby implements polymorphism.
+
 ## What are modules? What are Modules used for?
 
 Another way to apply polymorphic structure to code. Modules are a collection of related behaviours. 

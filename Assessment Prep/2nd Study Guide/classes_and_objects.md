@@ -14,6 +14,7 @@ In other words, Classes define the attributes and behaviours of the objects crea
 - classes define the attributes and behaviours of a particular object type
 - group common behaviours
 - objects are created from classes
+- a class groups behavious i.e. methods
 
 ## What are Objects?
 
@@ -31,6 +32,8 @@ Each individual object will contain different information from other objects yet
 - anything that has a value is an object
 - instances of a class
 - encapsulate state
+- Objects donot share state between objects, but do share behaviour
+- The values in the object's instance variables (states) are different, but they can call the same instance methods i.e. behaviours defined in the class.
 
 ## How are classes created?
 
