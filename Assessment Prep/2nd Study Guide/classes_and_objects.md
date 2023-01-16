@@ -12,9 +12,9 @@ In other words, Classes define the attributes and behaviours of the objects crea
 
 - class are blueprints or a basic outline for objects
 - classes define the attributes and behaviours of a particular object type
-- group common behaviours
+- groups common behaviours i.e. methods
 - objects are created from classes
-- a class groups behavious i.e. methods
+
 
 ## What are Objects?
 
@@ -66,7 +66,7 @@ We have instantiated an object called `sparky` from the class `GoodDog`.
   - refers to the data associated to an individual object.
   - an object's state tracks these attributes
   - the state comprises of the instance variables and their values
-  - instance variabless are used to track state
+  - instance variables are used to track state
   - instance variables are scoped at the object level
   - classes specify the name of the instance variables each object should have.
   - each object's state is unique
@@ -75,6 +75,52 @@ We have instantiated an object called `sparky` from the class `GoodDog`.
   - actions that an object can perform
   - exposed by the instance methods defined in the class
   - behaviour is shared OR all objects contain identical behaviour
+
+Example:
+
+Identical behaviour but unique states
+
+```ruby
+class Computer
+  def initialize(ram, screen_size, model)
+    @ram = ram
+    @screen_size = screen_size
+    @model = "Dell Latitude 5510"
+  end
+
+  def ram
+    @ram
+  end
+
+  def screen_size
+    @screen_size
+  end
+
+  def model
+    @model
+  end
+
+  def start
+    puts "Powering up ..."
+  end
+
+  def shutdown
+    puts "Powering down ..."
+  end
+end
+
+dell = Computer.new("4 GB", "15.6 inches")
+thinkpad = Computer.new("8 GB", "14 inches")
+
+dell.start
+thinkpad.start
+
+dell.shutdown
+thinkpad.shutdown
+
+p dell.model
+p thinkpad.model
+```
 
 ## How do objects and classes show encapsulation?
 

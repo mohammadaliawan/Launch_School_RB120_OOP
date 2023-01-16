@@ -1,73 +1,57 @@
-# class Animal
-#   attr_accessor :name, :age
+=begin
+- class named Person
+  - constructor takes once argument full name
+- define a method `name ` that returns full name "first_name last_name"
+- define first_name and last_name methods that return the first name and last name
+- define last_name= method 
+  - that takes a last name as argumen
+- - - changes the full name 
 
-#   def initialize(n, a)
-#     self.name = n
-#     self.age = a
+=end
+
+
+# class Person
+#   attr_reader :first_name, :last_name
+#   attr_writer :first_name, :last_name
+
+#   def initialize(name)
+#     set_first_last_names(name)
 #   end
 
-#   def older_than?(other_animal)
-#     self.human_years > other_animal.human_years
+#   def name
+#     if last_name.empty?
+#       first_name
+#     else
+#       first_name + " " + last_name
+#     end
+#   end 
+
+#   def name=(full_name)
+#     set_first_last_names(full_name)
 #   end
 
-#   protected
+#   private
 
-#   def human_years
-#     age * self.class::ANIMAL_YEARS
+#   def set_first_last_names(full_name)
+#     parts = full_name.split
+#     self.first_name = parts[0]
+#     unless parts[1]
+#       self.last_name = ""
+#     else
+#       self.last_name = parts[1]
+#     end
 #   end
 # end
 
-# class GoodDog < Animal
-#   ANIMAL_YEARS = 7
+# bob = Person.new('Robert')
+# p bob.name                  # => 'Robert'
+# p bob.first_name            # => 'Robert'
+# p bob.last_name             # => ''
+# bob.last_name = 'Smith'
+# p bob.name                  # => 'Robert Smith'
 
-#   def public_disclosure
-#     "#{self.name} in human years is #{human_years}"
-#   end
-# end
+# bob.name = "John Adams"
+# p bob.first_name
+# p bob.last_name
+# p bob.name
 
-# sparky = GoodDog.new("sparky", 4)
-# fido = GoodDog.new("fido", 3)
-
-# sparky.human_years
-# p sparky.older_than?(fido)
-
-# class SomeClass
-#   def self.some_class_method
-#     puts self
-#   end
-# end
-
-# SomeClass.some_class_method
-
-class Person
-  attr_accessor :name, :pets
-
-  def initialize(name)
-    @name = name
-    @pets = []
-  end
-end
-
-class Bulldog
-  def speak
-    p "Dog Speaking!!"
-  end
-end
-
-class Cat
-  def speak
-    p "Cat Speaking!!"
-  end
-end
-
-bob = Person.new("Robert")
-
-bud = Bulldog.new
-
-kitty = Cat.new
-
-bob.pets << bud << kitty
-
-bob.pets.each do |pet|
-  pet.speak
-end

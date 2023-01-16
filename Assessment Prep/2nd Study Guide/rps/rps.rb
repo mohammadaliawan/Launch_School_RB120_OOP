@@ -37,18 +37,12 @@ class Computer < Player
   end
 
   def choose
-    mv = case name
-         when "R2D2" then Move::VALUES[0]
-         when "Chappie" then Move::VALUES[1..2].sample
-         when "Hal" then Move::VALUES.sample
-         end
-
-    self.move = Move.new(mv)
+    self.move = Move.new(Move::VALUES.sample)
   end
 end
 
 class Move
-  VALUES = %w(rock paper scissors)
+  VALUES = %w(rock paper scissors lizard spock)
 
   def initialize(value)
     @value = value
