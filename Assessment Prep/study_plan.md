@@ -1,9 +1,35 @@
 # Study Plan
-- [ ] Take a second pass through the course content and make new notes
-  - [ ] Ruby OOP Book
-  - [ ] Do all exercises/quizes with explainations
-  - [ ] Do all projects
-  - [ ] Learn all the definitions
+- [ ] Take a second pass through the course content
+  - [ ] Make Anki cards
+  - [ ] Prepare study guide
+      - [ ] Classes and objects
+      - [ ] Use attr_* to create setter and getter methods
+      - [ ] How to call setters and getters
+      - [ ] Instance variables, class variables, and constants, including the scope
+      - [ ] Instance methods vs. class methods
+      - [ ] Method Access Control
+      - [ ] Referencing and setting instance variables vs. using getters and setters
+      - [ ] Class inheritance, encapsulation, and polymorphism
+      - [ ] Modules
+      - [ ] Method lookup path
+      - [ ] self
+      - [ ] Calling methods with self
+          - [ ] More about self
+          - [ ] Reading OO code
+      - [ ] Fake operators and equality
+      - [ ] Working with collaborator objects
+      - [ ] Spikes
+  - [ ] Do all OOP Exercises again with explainations
+      - [ ] Classes and Objects 1
+      - [ ] Classes and Objects 2
+      - [ ] Inheritance
+      - [ ] Accessor Methods
+      - [ ] Easy 1
+      - [ ] Easy 2
+      - [ ] Medium 1
+      - [ ] Debugging
+  - [ ] Tic Tac Toe
+  - [ ] 21 Game
 - [ ] Practice Open Ended Questions
 - [ ] RB129 Assessment Practice Problems
 - [ ] Practice Problems from Marwan

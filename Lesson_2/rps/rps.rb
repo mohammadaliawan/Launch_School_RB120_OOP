@@ -1,77 +1,43 @@
-class RpsGame
-  attr_accessor :human, :computer
+class Player
+  attr_accessor :name, :move, :score
 
   def initialize
-    @human = Human.new
-    @computer = Computer.new
+    set_name
+    self.score = 0
   end
+end
 
-  def display_welcome_message
-    puts "Welcome to the Rock, Paper, Scissors, Lizard, Spock Game!"
-  end
-
-  def display_goodbye_message
-    puts "Thanks for playing Rock, Paper, Scissors, Lizard, Spock. Goodbye!"
-  end
-
-  def display_moves
-    puts "#{human.name} chose #{human.move}"
-    puts "#{computer.name} chose #{computer.move}."
-  end
-
-  def display_winner
-    if human.move > computer.move
-      puts "#{human.name} won this round!"
-      human.score.add_one
-    elsif human.move < computer.move
-      puts "#{computer.name} won this round!"
-      computer.score.add_one
-    else
-      puts "It's a tie!"
-    end
-  end
-
-  def play_again?
-    answer = ""
+class Human < Player
+  def set_name
     loop do
-      puts "Would you like to play again? (y/n)"
-      answer = gets.chomp
-      break if ['y', 'n'].include?(answer.downcase)
-      puts "Sorry, must be y or n."
+      puts "Enter your name?"
+      self.name = gets.chomp
+      break unless name.empty?
+      puts "Must enter something!"
     end
-    return true if answer == 'y'
-    false
   end
 
-  def display_score
-    puts "#{human.name} score = #{human.score}\n#{computer.name} score = #{computer.score}"
-  end
-
-  def display_final_winner
-    puts "#{human.name} Wins the Game!" if human.score.value == Score::TO_WIN
-    puts "#{computer.name} Wins the Game" if computer.score.value == Score::TO_WIN
-  end
-
-  def reset_score
-    human.score.value = 0
-    computer.score.value = 0
-  end
-
-  def play
-    display_welcome_message
+  def choose
+    choice = nil
     loop do
-      while human.score.value < Score::TO_WIN && computer.score.value < Score::TO_WIN
-        human.choose
-        computer.choose
-        display_moves
-        display_winner
-        display_score
-      end
-      display_final_winner
-      reset_score
-      break unless play_again?
+      puts "Please choose rock, paper or scissors"
+      choice = gets.chomp
+      break if Move::VALUES.include? choice
+      puts "Incorrect input!!"
     end
-    display_goodbye_message
+    self.move = Move.new(choice)
+  end
+end
+
+class Computer < Player
+  NAMES = %w(R2D2 Chappie Hal)
+
+  def set_name
+    self.name = Computer::NAMES.sample
+  end
+
+  def choose
+    self.move = Move.new(Move::VALUES.sample)
   end
 end
 
@@ -80,10 +46,6 @@ class Move
 
   def initialize(value)
     @value = value
-  end
-
-  def to_s
-    @value
   end
 
   def rock?
@@ -98,100 +60,122 @@ class Move
     @value == "scissors"
   end
 
-  def lizard?
-    @value == "lizard"
-  end
-
-  def spock?
-    @value == "spock"
+  def to_s
+    @value
   end
 
   def >(other_move)
-    (rock? && other_move.scissors?) ||
-      (paper? && other_move.rock?) ||
-      (scissors? && other_move.paper?) ||
-      (lizard? && other_move.spock?) ||
-      (paper? && other.move.spock?) ||
-      (rock? && other_move.lizard?) ||
-      (spock? && other_move.scissors?) ||
-      (scissors? && other_move.lizard?) ||
-      (lizard? && other_move.paper?) ||
-      (spock? && other_move.rock?)
+    rock? && other_move.scissors? ||
+      scissors? && other_move.paper? ||
+      paper? && other_move.rock?
   end
 
   def <(other_move)
-    (rock? && other_move.paper?) ||
-      (paper? && other_move.scissors?) ||
-      (scissors? && other_move.rock?) ||
-      (spock? && other_move.lizard?) ||
-      (spock? && other_move.paper?) ||
-      (lizard? && other_move.rock?) ||
-      (scissors? && other_move.spock?) ||
-      (lizard? && other_move.scissors?) ||
-      (paper? && other_move.lizard?) ||
-      (rock? && other_move.spock?)
+    rock? && other_move.paper? ||
+      scissors? && other_move.rock? ||
+      paper? && other_move.scissors?
   end
 end
 
-class Score
-  TO_WIN = 2
-  attr_accessor :value
+class RPSGame
+  WINNING_SCORE = 3
+  attr_accessor :human, :computer, :round_winner, :grand_winner
 
   def initialize
-    @value = 0
+    @human = Human.new
+    @computer = Computer.new
   end
 
-  def add_one
-    self.value = self.value + 1
-  end
-
-  def to_s
-    @value.to_s
-  end
-end
-
-class Player
-  attr_accessor :move, :name, :score
-
-  def initialize
-    @move = nil
-    @name = set_name
-    @score = Score.new
-  end
-end
-
-class Human < Player
-  def set_name
-    name = ""
+  def play_again?
+    answer = ""
     loop do
-      puts "What is your name?"
-      name = gets.chomp
-      break unless name.empty?
-      puts "Please input a valid name!"
+      puts "Do you want to play again? (y/n)"
+      answer = gets.chomp
+      break if %w(y n).include?(answer)
+      puts "Sorry, must enter y or n!"
     end
-    self.name = name
+    return false if answer == "n"
+    return true if answer == "y"
   end
 
-  def choose
-    choice = nil
+  def update_score
+    case round_winner
+    when human then human.score += 1
+    when computer then computer.score += 1
+    end
+  end
+
+  def display_grand_winner
+    if human.score == RPSGame::WINNING_SCORE
+      puts "#{human.name} is the grand winner!"
+    elsif computer.score == RPSGame::WINNING_SCORE
+      puts "#{computer.name} is the grand winner!"
+    end
+  end
+
+  def display_score
+    puts "#{human.name}: #{human.score} points   #{computer.name}: #{computer.score}"
+  end
+
+  def end_round
+    system('clear')
+    display_moves
+    display_winner
+    puts "------------------------------------------------------------"
+    display_score
+  end
+
+  def play
+    system('clear')
+    display_welcome_message
     loop do
-      puts "Please choose rock, paper, scissors, lizard or spock:"
-      choice = gets.chomp
-      break if Move::VALUES.include? choice
-      puts "Sorry, invalid choice. Try again."
+      human.choose
+      computer.choose
+      find_winner
+      update_score
+      end_round
+      break if someone_won?
     end
-    self.move = Move.new(choice)
+
+    display_grand_winner
+    display_goodbye
+  end
+
+  def someone_won?
+    human.score == RPSGame::WINNING_SCORE ||
+      computer.score == RPSGame::WINNING_SCORE
+  end
+
+  def display_moves
+    puts "#{human.name} chose #{human.move}."
+    puts "#{computer.name} chose #{computer.move}"
+  end
+
+  def display_winner
+    case round_winner
+    when human then puts "#{human.name} won this round!"
+    when computer then puts "#{computer.name} won this round!"
+    else puts "Its a tie"
+    end
+  end
+
+  def find_winner
+    if human.move > computer.move
+      self.round_winner = human
+    elsif human.move < computer.move
+      self.round_winner = computer
+    else
+      self.round_winner = nil
+    end
+  end
+
+  def display_welcome_message
+    puts "Welcome to Rock, Paper, Scissors!"
+  end
+
+  def display_goodbye
+    puts "Thanks for playing!"
   end
 end
 
-class Computer < Player
-  def set_name
-    self.name = %w(R2D2 C3PO).sample
-  end
-
-  def choose
-    self.move = Move.new(Move::VALUES.sample)
-  end
-end
-
-RpsGame.new.play
+RPSGame.new.play

@@ -1,12 +1,11 @@
 # Inheritance
 
+- one of the ways to implement polymorphism 
 - mechanism through which a class can inherit behavior from another class or module
 - a way to share behavior among classes
-- one of the ways to implement polymorphism
 - helps extract common behaviors from classes and moving to a superclass or module
 - keep logic in one place, remove duplication
--------------------------------------------------------------------
-
+---------------------
 Inheritance is one of the ways of implementing polymorphism.
 It is a process through which a class can inherit behavior from other classes or modules.
 
@@ -25,6 +24,7 @@ Two ways of implementing Inheritance in Ruby
 - model an 'is a'  `` relationship between objects e.g. A cat `is a` pet.
 - superclasses are defined as basic classes with large reusability
 - subclasses are defined for more fine tuned detailed behaviours
+- both class methods and instance methods are inherited in class heritance.
 ----------------------------------------------------------------------
 
 Class Inheritance is when a class inherits behavior or methods from another class. The class that is inheriting behavior is called the subclass and the class it inherits from is called the superclass. Class inheritance is used when there is a "is a" relationship between classes while interface inheritance is used when there is a "has a relationship".
@@ -38,7 +38,7 @@ We use inheritance as a way to extract common behaviors from classes that share 
 
 - method in a subclass has same name as a method in its superclass
 
-Method overriding occurs when we have a method in a subclass that has the same name as a method in it's superclass.
+Method overriding occurs when we have a method (instance or class) in a subclass that has the same name as a method in it's superclass.
 
 When the method is invoked, Ruby first looks for that method in the subclass. And as it finds a method with that name, it executes that method. It does not go looking further up the method look up path in the superclass. This is called method overriding. The method in the superclass was overridden by the method defined in the subclass. 
 
@@ -46,7 +46,7 @@ See example in computer.rb
 
 #### `super`
 
-- when called from within an instance method, calls a method of the same name earlier in the method lookup path
+- when called from within a method (instance or class), calls a method of the same name earlier in the method lookup path
 
 The `super` keyword is used to call a method of the same name earlier in the method lookup path. 
 
@@ -120,6 +120,14 @@ Ruby has a distinct lookup path that it follows each time a method is called.
 
 Whenever a method is invoked, the order in which Ruby searches classes for the method definition is called the method lookup path.
 
+**Importance**
+
+Method lookup path describes the order in which ruby inspects or traverses the class hierarchy when a method is invoked to look for the method definition.
+
+The method lookup path is important because it determines which method definition ruby will execute in case the same method is defined in the class of the calling object as well as in the superclass or a mixed in module. 
+
+It is important to know what the method lookup path looks like for our class hierarchy. It helps us to avoid accidental method overriding and also helps us determine where each method should go i.e. in the subclass or superclass or maybe a module.
+
 When a method is invoked on an object, ruby first looks for that method definition in the class that the object belongs to. If the method is not found, ruby keeps looking in any modules that are mixed in with the class following which it looks in the superclass of the current class. This continues in an ordered fashion until the method is found or there are no more places to look. 
 
 The Method lookup path ends with the following three classes/modules
@@ -133,7 +141,7 @@ BasicObject
 ## Interface Inheritance
 
 - Interface inheritance is achieved through the use of modules. 
-- a module is a collection of behaviours i.e methods that are usable in other classes through mixins
+- a module is a collection of behaviours i.e instance methods that are usable in other classes through mixins
 - they contain shared behavior and are used to group resuable or shared behavior
 - When a module is mixed in with a class through the use of include method invocation, its called a mixin
 - the methods declared in the module become available to the objects and the class

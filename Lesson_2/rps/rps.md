@@ -1,30 +1,45 @@
-# Object Oriented Rock Paper Scissors Game Initiatl Approach
+# Rock Paper and Scissors
 
-## The classical approach to object oriented programming
-  - Write a textual description of the problem or exercise
-  - Extract the major nouns and verbs from the description
-  - Organize and associate the verbs with the nouns
-  - The nouns are the classes and the verbs are the behaviours or methods
+1. The user makes a choice.
+2. The computer makes a choice.
+3. The winner is displayed.
 
+Classical approach to OOP:
 
-## Textual description of the Problem
+- Write a textual description of the problem
+- Extract the major nouns and verbs from the description
+- Organize and associate the verbs with the nouns
+- The nouns are the classes and the verbs are behaviours
 
-Rock, paper, scissors is a two player game where each player chooses one of three
-possible moves: rock, paper or scissors. The chosen moves will then be compared to see who won, according to the following rules:
+Textual Description:
+
+Rock, Paper, Scissors is a two-player game where each player chooses
+one of three possible moves: rock, paper, or scissors. The chosen moves
+will then be compared to see who wins, according to the following rules:
 
 - rock beats scissors
 - scissors beats paper
 - paper beats rock
 
-If the players chose the same move, then its a tie.
+If the players chose the same move, then it's a tie.
 
- Nouns: player, move, rule, game
- verbs: choose, compare
-
-
+Nouns:
+- Rock, Paper, Scissors
 - Player
-  - choose
+- game
 - move
 - rule
 
-  - compare
+Verbs:
+- choose move
+- compare moves
+- wins
+
+Classes:
+- Move
+  - compare moves
+- Player
+  - can choose move
+- Game
+  - Can determine the winner
+
