@@ -54,7 +54,7 @@ When you call `super` from within a method, it searches the method lookup path f
 
 **Calling `super` with and without arguments**
 
-If `super` is called without any arguments, it automatically forwards the arguments that were passed to the method from which `super` is called. 
+If `super` is called without any arguments, it automatically forwards the arguments that were passed to the method from which `super` is called.
 
 When called with specific arguments e.g. `super(a,b)`, the specified arguments will be sent up the method lookup path.
 
