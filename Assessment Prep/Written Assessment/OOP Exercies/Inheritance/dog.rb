@@ -1,6 +1,10 @@
 =begin
 - create a subclass from Dog called Bulldog
 - override the swim method to return "can't swim"
+
+Initially we had a class `Dog` that defined two instance methods
+`speak` and `swim`. We created a new class called `Bulldog` that
+subclasses from 
 =end
 
 class Dog
