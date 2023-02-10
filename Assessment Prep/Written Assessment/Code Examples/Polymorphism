@@ -28,3 +28,8 @@ end
 # Output:
 # Designing the foundations
 # Designing the structure
+
+# Every object in the array is a different type of engineer, but the client code
+# can treat them all as a generic engineer that can design. The public interface
+# for these objects lets us work with them in the same way even though the implementations
+# may be very different.

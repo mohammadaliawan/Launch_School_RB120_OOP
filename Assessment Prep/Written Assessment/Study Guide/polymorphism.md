@@ -15,32 +15,11 @@ When we don't care what type of object is calling the method, we are using polym
 
 ### Polymorphism through inheritance
 
-Example:
+The interface for the class heirarchy lets us work with all of the object types in the same way even though the implementations may be very different. 
 
-```ruby
-class Engineer
-  attr_accessor :name, :age
+Polymorphism through inheritance works in two major ways:
+1. Inheriting behaviour from a superclass: Instead of providing their own implementation of a behaviour, different object types use inheritance to aquire the behaviour of a common superclass. 
 
-  def initialize(name, age)
-    self.name = name
-    self.age = age
-  end
+2. Overriding an inherited behaviour: Different object types can respond to the same method call by overriding a method from a common superclass.
 
-  def design
-    puts "I am designing."
-  end
-end
-
-class CivilEngineer < Engineer
-  def design
-    puts "Designing the foundations"
-  end
-end
-
-class StructuralEngineer < Engineer
-  def design
-    puts "Designing the structure"
-  end
-end
-
-```
+The client code does not care about what each object type is, all it cares about is that each object type has some implementation of the same method that can be invoked in the same way.
