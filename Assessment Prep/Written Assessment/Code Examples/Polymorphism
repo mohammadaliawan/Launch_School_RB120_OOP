@@ -1,0 +1,30 @@
+class Engineer
+  def design
+    puts "I am designing."
+  end
+end
+
+class CivilEngineer < Engineer
+  def design
+    puts "Designing the foundations"
+  end
+end
+
+class StructuralEngineer < Engineer
+  def design
+    puts "Designing the structure"
+  end
+end
+
+engineer1 = CivilEngineer.new
+engineer2 = StructuralEngineer.new
+
+engineers = [engineer1, engineer2]
+
+engineers.each do |engineer|
+  engineer.design
+end
+
+# Output:
+# Designing the foundations
+# Designing the structure
