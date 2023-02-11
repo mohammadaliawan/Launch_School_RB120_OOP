@@ -9,11 +9,11 @@
       - [ ] Instance methods vs. class methods
       - [ ] Method Access Control
       - [ ] Referencing and setting instance variables vs. using getters and setters
-      - [ ] Class inheritance,
+      - [X] Class inheritance,
       - [ ] encapsulation 
-      - [ ] polymorphism
+      - [X] polymorphism
       - [ ] Modules
-      - [ ] Method lookup path
+      - [X] Method lookup path
       - [ ] self
       - [ ] Calling methods with self
           - [ ] More about self
