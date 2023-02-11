@@ -1,29 +1,29 @@
-class Engineer
-  def design
-    puts "I am designing."
-  end
-end
+# class Engineer
+#   def design
+#     puts "I am designing."
+#   end
+# end
 
-class CivilEngineer < Engineer
-  def design
-    puts "Designing the foundations"
-  end
-end
+# class CivilEngineer < Engineer
+#   def design
+#     puts "Designing the foundations"
+#   end
+# end
 
-class StructuralEngineer < Engineer
-  def design
-    puts "Designing the structure"
-  end
-end
+# class StructuralEngineer < Engineer
+#   def design
+#     puts "Designing the structure"
+#   end
+# end
 
-engineer1 = CivilEngineer.new
-engineer2 = StructuralEngineer.new
+# engineer1 = CivilEngineer.new
+# engineer2 = StructuralEngineer.new
 
-engineers = [engineer1, engineer2]
+# engineers = [engineer1, engineer2]
 
-engineers.each do |engineer|
-  engineer.design
-end
+# engineers.each do |engineer|
+#   engineer.design
+# end
 
 # Output:
 # Designing the foundations
@@ -33,3 +33,37 @@ end
 # can treat them all as a generic engineer that can design. The public interface
 # for these objects lets us work with them in the same way even though the implementations
 # may be very different.
+
+# Duck Typing
+
+class Project
+  attr_accessor :drawings, :schedule
+
+  def start(personnel)
+    personnel.each do |person|
+      person.execute_project(self)
+    end
+  end
+end
+
+class ProjectManager
+  def execute_project(project)
+    develop_milestones(project.schedule)
+  end
+
+  def develop_milestones(schedule)
+    puts "Developing Milstones"
+  end
+end
+
+class DesignEngineer
+  def execute_project(project)
+    develop_design(project.drawings)
+  end
+
+  def develop_design(drawings)
+    puts "Designing the Equipment"
+  end
+end
+
+Project.new.start([ProjectManager.new, DesignEngineer.new])
