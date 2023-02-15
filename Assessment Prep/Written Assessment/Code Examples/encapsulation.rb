@@ -1,33 +1,12 @@
-class Person
-  MONTHS = %w(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec)
+# Example
 
-  def initialize(name, birthdate)
-    @name = name
-    @birthdate = birthdate
-  end
-
-  def birthday
-    puts "My birthday is in #{birth_month}"
-  end
-
-  def greet
-    puts "Hi, I am #{first_name}"
-  end
-
-  private
-
-  attr_accessor :name, :birthdate
-
-  def first_name
-    name.split.first
-  end
-
-  def birth_month
-    MONTHS[birthdate.month - 1]
+class Book
+  def initialize(author, title)
+    @author = author
+    @title = title
   end
 end
 
-boby = Person.new("Robert Downey", Time.new(1975, 3, 31))
+book1 = Book.new("J.K. Rowling", "Harry Potter")
+book2 = Book.new("Tolkien", "The Hobbit")
 
-boby.greet
-boby.birthday
