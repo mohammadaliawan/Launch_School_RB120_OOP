@@ -10,21 +10,21 @@
       - [ ] Method Access Control
       - [ ] Referencing and setting instance variables vs. using getters and setters
       - [X] Class inheritance,
-      - [ ] encapsulation 
+      - [X] encapsulation 
       - [X] polymorphism
       - [ ] Modules
       - [X] Method lookup path
       - [ ] self
       - [ ] Calling methods with self
           - [ ] More about self
-          - [ ] Reading OO code
+      - [ ] Reading OO code
       - [ ] Fake operators and equality
       - [ ] Working with collaborator objects
       - [ ] Spikes
   - [ ] Do all OOP Exercises again with explainations
-      - [ ] Classes and Objects 1
-      - [ ] Classes and Objects 2
-      - [ ] Inheritance
+      - [X] Classes and Objects 1
+      - [X] Classes and Objects 2
+      - [X] Inheritance
       - [ ] Accessor Methods
       - [ ] Easy 1
       - [ ] Easy 2
