@@ -6,7 +6,7 @@ In general, encapsulation is the act of hiding or restricting access to some dat
 
 In Ruby, it is implemented through the creation of objects and exposing interfaces to interact with those objects.
 
-When objects are created in Ruby, by default they hide or restrict access to their own internal representation i.e. their own state and behaviours from the rest of the program. They expose only those behaviours and attributes that users of the object need through their public interace.
+When objects are created in Ruby, by default they hide or restrict access to their own internal representation i.e. their own state and certain behaviours from the rest of the program. They expose only those behaviours and attributes that users of the object need through their public interace.
 
 It means first that the attributes and methods of an object are associated specifically with that object, or bundled with it; second, it means that the scope of those attributes and methods is by default the object itself.
 

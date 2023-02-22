@@ -3,29 +3,29 @@
   - [ ] Make Anki cards
   - [ ] Prepare study guide
       - [ ] Classes and objects
-      - [ ] Use attr_* to create setter and getter methods
-      - [ ] How to call setters and getters
+      - [X] Use attr_* to create setter and getter methods
+      - [X] How to call setters and getters
       - [ ] Instance variables, class variables, and constants, including the scope
       - [ ] Instance methods vs. class methods
       - [ ] Method Access Control
-      - [ ] Referencing and setting instance variables vs. using getters and setters
+      - [X] Referencing and setting instance variables vs. using getters and setters
       - [X] Class inheritance,
       - [X] encapsulation 
       - [X] polymorphism
-      - [ ] Modules
+      - [X] Modules
       - [X] Method lookup path
       - [ ] self
       - [ ] Calling methods with self
           - [ ] More about self
       - [ ] Reading OO code
       - [ ] Fake operators and equality
-      - [ ] Working with collaborator objects
+      - [X] Working with collaborator objects
       - [ ] Spikes
   - [ ] Do all OOP Exercises again with explainations
       - [X] Classes and Objects 1
       - [X] Classes and Objects 2
       - [X] Inheritance
-      - [ ] Accessor Methods
+      - [X] Accessor Methods
       - [ ] Easy 1
       - [ ] Easy 2
       - [ ] Medium 1

@@ -2,9 +2,9 @@
 
 ## What is Object Oriented Programming?   
 
-Object Oriented Programming is a programming model/pattern/paradigm. Its a way of organizing code.
 
 ### Define the Problem? Why was it created?
+Object Oriented Programming is a programming model/pattern/paradigm. Its a way of organizing code.
 
 - As software systems grew larger and more complex, they became harder to maintain
 - no clear boundaries existed between the different parts in the program

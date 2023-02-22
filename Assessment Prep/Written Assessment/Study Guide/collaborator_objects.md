@@ -22,7 +22,9 @@ bob.pet = bud
 
 ## Definition
 
-Objects that are stored as state in other objects are called Collaborator Objects i.e. assigned to an object's instance variables.
+Objects that are stored as state in other objects are called Collaborator Objects i.e. assigned to an object's instance variables. 
+
+We call them collaborator objects because they work in conjunction with the class they are associated with.
 
 Collaborator objects are not strictly custom objects. Built in object types in ruby are also technically collavorator objects.
 
@@ -40,7 +42,7 @@ A collaborative relationship is a relationship of association - not of inheritan
 
 ## Why are they called 'collaborators'?
 
-They are called 'collaborators' because they work in conjuction on in collaboration with the class they are associated with.
+They are called 'collaborators' because they work in conjuction or in collaboration with the class they are associated with.
 
 ## Can collaborator objects be used through their associated objects?
 
