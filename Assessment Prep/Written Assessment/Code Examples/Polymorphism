@@ -1,33 +1,33 @@
-# class Engineer
-#   def design
-#     puts "I am designing."
-#   end
-# end
+class Engineer
+  def design
+    puts "I am designing."
+  end
+end
 
-# class CivilEngineer < Engineer
-#   def design
-#     puts "Designing the foundations"
-#   end
-# end
+class CivilEngineer < Engineer
+  def design
+    puts "Designing the foundations"
+  end
+end
 
-# class StructuralEngineer < Engineer
-#   def design
-#     puts "Designing the structure"
-#   end
-# end
+class StructuralEngineer < Engineer
+  def design
+    puts "Designing the structure"
+  end
+end
 
-# engineer1 = CivilEngineer.new
-# engineer2 = StructuralEngineer.new
+engineer1 = CivilEngineer.new
+engineer2 = StructuralEngineer.new
 
-# engineers = [engineer1, engineer2]
+engineers = [engineer1, engineer2]
 
-# engineers.each do |engineer|
-#   engineer.design
-# end
+engineers.each do |engineer|
+  engineer.design
+end
 
-# Output:
-# Designing the foundations
-# Designing the structure
+Output:
+Designing the foundations
+Designing the structure
 
 # Every object in the array is a different type of engineer, but the client code
 # can treat them all as a generic engineer that can design. The public interface

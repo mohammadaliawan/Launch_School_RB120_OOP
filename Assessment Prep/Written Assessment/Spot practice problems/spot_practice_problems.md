@@ -22,7 +22,7 @@ It also creates another layer of abstraction for the programmer to think on whic
 
 In general terms, encapsulation is the hiding of or restricting access to some data and functionality in a program, making it unavailable to rest of the code base.
 
-Ruby implements encapsulation by creating objects that have some hidden attributes and behaviours and exposing only those methods and properties through the object's public interface that users of the object need to interact with this object.
+Ruby implements encapsulation by creating objects that have some hidden attributes and behaviours and exposing only those attributes and behaviours through the object's public interface that users of the object need to interact with this object.
 
 Encapsulation is used as a form of data protection so that data cannot be manipulated without explicit intention. It also helps to define boundaries within our program and introduces a new layer of abstraction in a program in the way that the implementation details of a class and its associated behaviour are abstracted away from the programmer.
 
@@ -95,4 +95,83 @@ book2.title # The Hobbit
 
 The methods and properties which are encapsulated within an object are exposed to the outside through the public interface of a class i.e. its public methods. The public interface of a class defines how we interact with the data encapsulated within an object.
 
-### 
+Encapsulation hides the internal represenation i.e. the state of objects and certain implementation details of behaviours of an object from the outside. The public interface i.e. the public methods are used to expose only those behaviours and attributes in a controlled way that users of the objects need to interact with this object.
+
+## Classes and Objects
+
+### What is object?
+
+An object is an instance of a class. Objects are created from classes. If classes are considered as molds then objects can be considered as the things that are produced out of those molds. In Ruby, objects are anything that have a value e.g. strings, arrays, hashes etc.
+
+### What is a class?
+
+A class is like a blueprint for objects. They are basic outlines of what an object should be made of i.e. attributes and what it should be able to do i.e. behaviours. So classes define the attributes and behaviours of its objects. 
+
+### What is instantiation?
+
+Instantiation is the workflow of creating objects from classes.
+
+### What is polymorphism?
+
+Polymorphism is the ability of different types of objects to respond to the same method invocation.
+
+### Explain two different ways to implement polymorphism?
+
+Polymorphism can be implemented in two major ways:
+
+1. Inheritance
+2. Duck Typing
+
+Inheritance is a mechanism through which a class can inherit behaviour from another class or module. There are two ways of implementing inheritance in Ruby.
+
+1. Class inheritance
+2. Interface inheritance
+
+Class Inheritance occurs when a class inherits behaviour from another class. The class that inherits behaviour is known as the subclass and the class that it inherits from is the superclass.
+
+Interface inheritance occurs when a module that contains certain related behaviours i.e instance methods is mixed in to a class. So class then inherits the instance methods defined in the module.
+
+So when multiple different classes inherit behaviour either from a common superclass or a common mixed in module, then objects of all those different classes will be able to invoke the same methods or be able to respond to the same method invocations because those methods have been aquired by those different classes through inheritance. So any client code that is using objects of these various classes does not need to care about what type of object is invoking a method. All it needs to know is that those object types have that behaviour. This is polymorphism through inheritance.
+
+Furthermore, the subclasses may provide their own implementations of that behaviour by overriding the behaviours inherited from the superclass. In this case as well, the different object types will be able to respond to the same method invocation but the implementation details may be very different. This is also polymorphism.
+
+Below is an example of polymorphism through Inheritance:
+
+```ruby
+class Engineer
+  def design
+    puts "I am designing."
+  end
+end
+
+class ProjectEngineer < Engineer
+end
+
+class CivilEngineer < Engineer
+  def design
+    puts "Designing the foundations"
+  end
+end
+
+class StructuralEngineer < Engineer
+  def design
+    puts "Designing the structure"
+  end
+end
+
+engineer1 = CivilEngineer.new
+engineer2 = StructuralEngineer.new
+engineer3 = ProjectEngineer.new
+
+engineers = [engineer1, engineer2, engineer3]
+
+engineers.each do |engineer|
+  engineer.design
+end
+```
+
+In the above code, we have three classes `ProjectEngineer`, `CivilEngineer` and `StructuralEngineer` that subclass from a common superclass `Engineer`. The `design` instance method defined in the superclass `Engineer` is inherited by all three subclasses. But both `CivilEngineer` and `StructuralEngineer`  override this behaviour with their own implementations. While the subclass `ProjectEngineer` aquires this behaviour from its superclass `Enginer`.
+
+We have also created three objects from each of those classes on lines 162 to 164 and we have stored them in an array referenced by the local variable `engineer`.
+
+On lines 168 to 170, the client code i.e. the `each` method with the passed in block does not care about what type of object is being passed into the block as long as this object as the behaviour or instance method `design`. All three objects that are passed into the block are able to respond to the same method invocation `design`. This is an example of polymorphism through inheritance.

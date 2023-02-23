@@ -2,7 +2,7 @@
 - [ ] Take a second pass through the course content
   - [ ] Make Anki cards
   - [ ] Prepare study guide
-      - [ ] Classes and objects
+      - [X] Classes and objects
       - [X] Use attr_* to create setter and getter methods
       - [X] How to call setters and getters
       - [ ] Instance variables, class variables, and constants, including the scope
