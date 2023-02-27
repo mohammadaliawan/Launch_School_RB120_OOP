@@ -37,10 +37,14 @@ Designing the structure
 # Duck Typing
 
 class Project
-  attr_accessor :drawings, :schedule
+  attr_accessor :drawings, :schedule, :staff
 
-  def start(personnel)
-    personnel.each do |person|
+  def initialize
+    self.staff = [DesignEngineer.new, ProjectManager.new]
+  end
+
+  def start
+    staff.each do |person|
       person.execute_project(self)
     end
   end
@@ -66,4 +70,4 @@ class DesignEngineer
   end
 end
 
-Project.new.start([ProjectManager.new, DesignEngineer.new])
+Project.new.start
