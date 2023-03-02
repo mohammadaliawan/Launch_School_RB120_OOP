@@ -1,16 +1,25 @@
-class Pet
-  attr_accessor :name
+class Person
+  @@greeting = "Hello"
 
-  def initialize(name)
-    self.name = name
+  def self.greet
+    @@greeting
   end
 
-  def ==(other_pet)
-    self.name == other_pet.name
+  def greet
+    @@greeting
+  end
+
+  def add_to_greeting
+    @@greeting += " World"
   end
 end
 
-pet1 = Pet.new("buddy")
-pet2 = Pet.new("bud")
+bob = Person.new
+joe = Person.new
 
-p pet1 == pet2
+p Person.greet
+p bob.greet
+p joe.greet
+bob.add_to_greeting
+joe.add_to_greeting
+p Person.greet
