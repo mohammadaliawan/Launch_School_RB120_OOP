@@ -9,7 +9,7 @@
       - [ ] Instance methods vs. class methods
       - [ ] Method Access Control
       - [X] Referencing and setting instance variables vs. using getters and setters
-      - [X] Class inheritance,
+      - [X] Class inheritance
       - [X] encapsulation 
       - [X] polymorphism
       - [X] Modules
