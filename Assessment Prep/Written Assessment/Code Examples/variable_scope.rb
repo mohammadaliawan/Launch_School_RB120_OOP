@@ -27,6 +27,24 @@
 # inside an object's instance methods even if it is initialized
 # outside the instance method.
 
+# Instance variables and Inheritance
+
+# class Person
+#   def sleep
+#     @sleep = true
+#   end
+# end
+
+# class Student < Person
+#   def asleep?
+#     @sleep
+#   end
+# end
+
+# bob = Student.new
+# bob.sleep
+# p bob.asleep?
+
 # Class Variables
 
 # class Person
@@ -54,6 +72,27 @@
 # bob.add_to_greeting
 # joe.add_to_greeting
 # p Person.greet
+
+# Class Variables and Inheritance
+
+class Person
+  @@greeting = "Hello"
+
+  def self.greet
+    @@greeting
+  end
+end
+
+class Student < Person
+  def change_greeting
+    @@greeting = "Goodbye"
+  end
+end
+
+bob = Student.new
+p Person.greet
+bob.change_greeting
+p Person.greet
 
 # Constants
 
@@ -91,20 +130,20 @@
 # p bob.eat
 # p SchoolStaff::Person.fav_fruits
 
-class Robot
-  GREETINGS = %w(hello hi)
-end
+# class Robot
+#   GREETINGS = %w(hello hi)
+# end
 
-class Person
-  def self.greetings
-    GREETINGS
-  end
+# class Person
+#   def self.greetings
+#     GREETINGS
+#   end
 
-  def greet
-    GREETINGS.sample
-  end
-end
+#   def greet
+#     GREETINGS.sample
+#   end
+# end
 
-bob = Person.new
-p bob.greet
-p Person.greetings
+# bob = Person.new
+# p bob.greet
+# p Person.greetings

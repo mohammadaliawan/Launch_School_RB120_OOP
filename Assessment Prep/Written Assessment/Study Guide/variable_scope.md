@@ -38,3 +38,18 @@ __Differences between local variables and instance variables__
 
 ### Instance variables
 
+- Instance variables and their values are not inherited from a superclass or mixin module
+- The instance method that initializes the instance variable must first be invoked whether its in a superclass or mixin module. The instance can then access that instance variable.
+
+### Class variables
+
+- If the class variables is initialized in a superclass i.e. we dont need to explicitly invoke a method to initialize it then it is accessible to all subclasses and their objects i.e. it is accessible inside instance methods and class methods. Any of the subclasses or object of these subclasses can change the value of this class variable.
+- It is dangerous to work with class variables in the context of inheritance because the superclass and all the subclasses and their objects share one copy of the class variable.
+
+### Constants
+
+Order of Constant Resolution:
+
+- Ruby will resolve a constant by first searching in the lexical scope of the reference i.e. surrounding structure of the constant reference. Lexical scope does not include the main scope
+- If that is unsuccessful, Ruby will then traverse up the inheritance hierarchy of the structure that references the constant
+- Top level - The top level scope is only searched after Ruby tries the inheritance hierarchy.
