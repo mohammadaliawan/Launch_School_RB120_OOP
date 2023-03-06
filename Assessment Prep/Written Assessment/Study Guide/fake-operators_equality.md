@@ -38,3 +38,8 @@ By defining a `==` method in our `Pet` class, we are overriding the default `Bas
 - by default, `BasicObject#==` does not perform an equality check; instead, it returns true if two objects are the same object. This is why other classes often provide their own behavior for `#==`.
 - if you need to compare custom objects, you should define the `==` method.
 - understanding how this method works is the most important part of this assignment.
+
+`<<`
+
+Add shift operators can result in very clean code, but they make most sense when working with classes that represent a collection.
+
