@@ -5,7 +5,7 @@
       - [X] Classes and objects
       - [X] Use attr_* to create setter and getter methods
       - [X] How to call setters and getters
-      - [ ] Instance variables, class variables, and constants, including the scope
+      - [X] Instance variables, class variables, and constants, including the scope
       - [ ] Instance methods vs. class methods
       - [ ] Method Access Control
       - [X] Referencing and setting instance variables vs. using getters and setters
@@ -14,11 +14,11 @@
       - [X] polymorphism
       - [X] Modules
       - [X] Method lookup path
-      - [ ] self
-      - [ ] Calling methods with self
-          - [ ] More about self
+      - [X] self
+      - [X] Calling methods with self
+          - [X] More about self
       - [ ] Reading OO code
-      - [ ] Fake operators and equality
+      - [X] Fake operators and equality
       - [X] Working with collaborator objects
       - [ ] Spikes
   - [ ] Do all OOP Exercises again with explainations
