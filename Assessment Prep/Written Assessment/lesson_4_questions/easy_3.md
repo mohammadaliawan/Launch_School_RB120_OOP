@@ -97,3 +97,74 @@ Each object's instance variables `@age` and `@name` will be scoped to that parti
 
 __Question 4__
 
+```ruby
+class Cat
+  def initialize(type)
+    @type = type
+  end
+
+  def to_s
+    "I am a #{@type} cat."
+  end
+end
+```
+How could we go about changing the to_s output on this method to look like this: I am a tabby cat? (this is assuming that "tabby" is the type we passed in during initialization).
+
+We can override the `Object#to_s` method in our `Cat` class. This can be done by defining a `to_s` instance method in `Cat` class that interpolates the value of the instance variable `@type ` in to the string `"I am a ... cat."`
+
+__Question 5__
+
+```ruby
+class Television
+  def self.manufacturer
+    # method logic
+  end
+
+  def model
+    # method logic
+  end
+end
+
+tv = Television.new
+tv.manufacturer # NoMethodError
+tv.model
+
+Television.manufacturer
+Television.model
+```
+
+__Question 6__
+
+```ruby
+class Cat
+  attr_accessor :type, :age
+
+  def initialize(type)
+    @type = type
+    @age  = 0
+  end
+
+  def make_one_year_older
+    @age += 1
+  end
+end
+```
+
+__Question 7__
+
+```ruby
+class Light
+  attr_accessor :brightness, :color
+
+  def initialize(brightness, color)
+    @brightness = brightness
+    @color = color
+  end
+
+  def self.information
+    return "I want to turn on the light with a brightness level of super high and a color of green"
+  end
+
+end
+```
+
