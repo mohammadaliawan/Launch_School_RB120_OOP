@@ -105,5 +105,20 @@ end
 ```
 __Question 6__
 
+```ruby
+class Computer
+  attr_accessor :template
 
+  def create_template
+    @template = "template 14231"
+  end
 
+  def show_template
+    template
+  end
+end
+```
+
+__Question 7__
+
+change `light_status` to just `status`.
