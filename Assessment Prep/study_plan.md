@@ -30,10 +30,16 @@
       - [ ] Easy 2
       - [ ] Medium 1
       - [ ] Debugging
+      - [ ] Quiz Lesson 2
+      - [ ] Quiz Lesson 3
+      - [ ] Quiz Lesson 5
   - [ ] Tic Tac Toe
+    - [X] Initial Spike
+    - [ ] Improvements
+    - [ ] OOP improvements
+    - [ ] Rubocop
   - [ ] 21 Game
 - [ ] Practice Open Ended Questions
 - [ ] RB129 Assessment Practice Problems
 - [ ] Practice Problems from Marwan
 - [ ] Practice Tests from Ginni
-
