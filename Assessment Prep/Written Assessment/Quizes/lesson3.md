@@ -57,15 +57,17 @@ thing3 = thing1
 thing1.size = 4
 
 thing1 == thing2
+
 ```
 
 On line 54 and 55 two `Thing` objects are created (and assigned to local variables `thing1` and `thing2`) and their instance variables `@size` are initialized to `5`.
 
 On line 57, the `Thing#size=` instance method is invoked on the `thing1` object. This setter method invocation reassigns the `thing1` object's `@size` variable to `4`. 
 
-On line 59, `Thing#==` method is invoked on the `thing1` object and `thing2` is passed as argument. On line 50 the `size` and `other_thing.size` are getter method invocations that return the objects referenced by the `@size` instance variable for the calling object and the `other_thing` object. The `Thing#==` method compares the values of the `@size` instance variableS using the `Integer#==` method.
+On line 59, `Thing#==` method is invoked on the `thing1` object and `thing2` is passed as argument and assigned to `other_thing`. On line 50 the `size` and `other_thing.size` are getter method invocations that return the integer objects referenced by the `@size` instance variable for the calling object and the `other_thing` respectively. The `Thing#==` method compares the values of the `@size` instance variableS using the `Integer#==` method.
 
 So line 50 will evaluate to `4 == 5` which will return `false`. So `thing1 == thing2` returns `false`. 
+
 
 `thing2 == thing3` will return `faLSE`. On line 56, `thing3` local variable was initialized and assigned to the same `Thing` object that `thing1` references. The `@size` variable for `thing3` references `4` as `thing1` and `thing3` reference the same object while `@size` for `thing2` points to `5`. So line 50 will evaluate to `4 == 5` which will return `false`. So `thing2 == thing3` will return `false`.
 
@@ -102,16 +104,20 @@ circle1 == circle3
 circle3 != circle2
 ```
 
-- circle1 and circle2 @radius init to 5 and 3
-- line 90 is the #> method invoc, 
-- defined on line 86-88, radius and other.radius are getter method invoc, return @radius
-- compares @radius using integer >
-- line 87 evals to `5 > 3`
-- returns true
+On lines 97 and 98, two objects of `Circle` class are created and assigned to the local variables `circle1` and `circle2` and their `@radius` instance variables are initialized to `5` and `3` respectively. 
+
+On line 101 the `Circle#>` method is invoked on the object referecned by `circle1`; the object referenced by `circle2` is passed in as an argument and assigned to the local variable `other` in the `>` method. 
+
+In the `>` method, `radius` and `other.radius` are getter method invocations that return the values for the `@radius` instance variables for the calling object and the object referenced by `other` respectively. The `Circle#>` method uses the `Integer#>` method to compare the values of the two instance variables.
+
+Line 93 evaluates to ` 5 > 3` which returns `true` so `circle1 > circle2` returns `true`.
 
 
+The `Circle#>` method compares the `@radius` instance variables for the calling object and the object referenced by `other` by utilizing the `Integer#>` method. 
 
+`@radius` for `circle1` is initialized to `5` on line XX and the `@radius` for `circle2` is initialized to `3` on line XX. 
 
+So line XX evaluates to `5 > 4` which return `true` so line X returns `true`.
 
 
 

@@ -32,7 +32,7 @@ __Differences between local variables and instance variables__
 
 - When trying to reference a constant from an unconnected class through, a `NameError` is raised as the class is not part of the lexical search and not included in the constant lookup path. 
 
-- Unlike class and instance variables, we can reach into the another unconnected class and reference a constant defined in that class. We have to tell Ruby where to search for the constant by using the `::` operator. It is called the namespace resolution operator.
+- Unlike class and instance variables, we can reach into the another unconnected class and reference a constant defined in that class. We have to tell Ruby where to search for the constant by using the `::` operator. It is called the constant resolution operator.
 
 ## Inheritance and Variable Scope
 

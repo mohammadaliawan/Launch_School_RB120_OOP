@@ -30,8 +30,8 @@
       - [ ] Easy 2
       - [ ] Medium 1
       - [ ] Debugging
-      - [ ] Quiz Lesson 2
-      - [ ] Quiz Lesson 3
+      - [X] Quiz Lesson 2
+      - [X] Quiz Lesson 3
       - [ ] Quiz Lesson 5
   - [ ] Tic Tac Toe
     - [X] Initial Spike
