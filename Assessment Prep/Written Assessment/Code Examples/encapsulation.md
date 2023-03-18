@@ -45,7 +45,7 @@ class Book
   end
 
   def change_title(new_title)
-  self.title = new_title.capitalize
+    self.title = new_title.capitalize
   end
 
   private

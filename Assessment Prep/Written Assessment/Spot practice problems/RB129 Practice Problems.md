@@ -249,3 +249,135 @@ p Vehicle.wheels
 p Motorcycle.wheels                           
 p Car.wheels     
 ```
+Line 237 outputs `4`. On line 237 we are invoking the class method `::wheels` on the class `Vehicle`. `::wheels` is a class method defined on lines 232-234. It returns the value for the class variable `@@wheels`. `@wheels` is initialized on line 230 to the integer `4` when the class is loaded. So `Vehicle.wheels` returns `4` on line 237 which is passed in to the method invocation `p` and is output.
+
+Line 243 and 244 output `2`. On line 239-241 we are defining the class `Motorcycle` as the subclass of `Vehicle`. Inside this class, on line 240 we are reassigning the class variable `@@wheel` to `2`. We are able to do this because all subclasses of a class share one copy of the class variable that has been initialized in a superclass. So a subclass can reassign the class variable. On line 243 we are invoking the class method `::wheels` on the `Motorcycle` class. `::wheels` is inheritd by `Motorcycle` from `Vehicle`. `Motorcycle.wheels` on line 243 returns `2` as `@@wheels` was reassigned to `2` in `Motorcycle` class. Line 244 outputs `2` as well because of the same reason.
+
+Lines 248-250 all output `2` because as said earlier, a class variable that has been initialized in a superclass is available to all subclasses and its objects. So it available to `Car` as well which has been defined on line 246 as a subclass of `Vehicle`.
+
+__Q8: # What is output and why? What does this demonstrate about `super`?__
+
+```ruby
+class Animal
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
+end
+
+class GoodDog < Animal
+  def initialize(color)
+    super
+    @color = color
+  end
+end
+
+bruno = GoodDog.new("brown")       
+p bruno
+```
+Line 277 outputs `#<GoodDog:0x000001e5b336acf0 @name="brown", @color="brown">`. This output shows that `bruno` references a `GoodDog` object and has two instance variables `@name` and `@color` both of which reference a string object `"brown"`. 
+
+The reason for this is the call to `super` on line 271. When `super` is called without any arguments, it invokes a method of the same name earlier in the method lookup path and automatically forwards all the arguments to this method that were passed to the method from which `super` was called.
+
+So the instance variable `@name` and `@color` are initialized to the same string object that was passed to the `::new` method i.e. the string object `"brown"`.
+---------------------------
+
+On line 276 the instantiation of a `GoodDog` object using the class method `new` automatically invokes the `GoodDog#initialize` method and passes it as argument the string object `"brown"` where it is assigned to the local variable `color`. 
+
+On line 271, the reserved keyword `super` is called. `super` invokes a method of the same name as the method from which it is called but earlier in the method lookup path which in this case is the `Animal#initialize` method. This is because `GoodDog` directly subclasses from `Animal`. In addition, `super` also forwards all of the arguments to `Animal#initialize` that were passed to `GoodDog#initialize`, which in this case is the string `"brown"`. The `Animal#intialize` method initializes a new instance variable `@name` to this string object `"brown"` and then execution returns to the `GoodDog#initialize` method on line 271. Next, on line 272 the `@color` instance variable is initialized to the same string object `"brown"` that is referenced by `color`.
+
+So the `@name` and `@color` instance variables refernce the same string object `"brown"` so when the `bruno` object is output by `p` method invocation on line 277, the output shows the instance variables `@name` and `@color` both reference the string `"brown"`.
+
+This demonstrates that if `super` is called without any arguments, it automatically forwards all the argument to the method of the same name earlier in the method lookup path.
+
+---------------------------------------------------------------
+
+Line 277 outputs `#<GoodDog:0x000001e5b336acf0 @name="brown", @color="brown">`. This output shows that the `bruno` which is a `GoodDog` object, has two instance variables `@name` and `@color` both of which reference the string object `"brown"`. 
+
+On line 278 we instantiated a new `GoodDog` object by invoking the class method `::new` on the `GoodDog` class and pass in the string `"brown"` as an argument. The `new` method invokes the `initialize` constructor method defined in the `GoodDog` class on lines 270-272 and forwards the arguments to `GoodDog#initialize` as well. So `color` refernces the passed in string `"brown"`. Inside the `initialize` method on line 271 we call `super` which is reserved keyword in Ruby that invokes a method of the same name, that is, `initialize` and that is earlier in the method lookup path. Since `GoodDog` subclasses from `Animal`, Ruby will inspect `Animal` to look for the `initialize` method and invoke it. `super` will also automatically forward all the arguments that were passed to `GoodDog#initialize` to the `Animal#initialize` method. So the string object `"brown"` will be passed to `Animal#initialize` and assigned to `name`. In this method on line 265, the instance variable `@name` for `bruno` object will be initialized to object referenced by`name` local variable which is the string object `"brown"`. 
+
+Next, execution will return to the `GoodDog#initialize` method  on line 271 and then the `@color` instance variable will be initialized to the same string object `"brown"` that is referenced by `color` local variable and `@name` instance variable as well. 
+
+This demonstrates that if `super` is called without any arguments, it automatically forwards all the argument to the method of the same name earlier in the method lookup path. 
+
+__Q9:  What is output and why? What does this demonstrate about `super`?__
+
+```ruby
+class Animal
+  def initialize
+  end
+end
+
+class Bear < Animal
+  def initialize(color)
+    super
+    @color = color
+  end
+end
+
+bear = Bear.new("black")        
+```
+
+The above code raises an `ArgumentError`. The reason for this error is the call to `super`  in the `Bear#initialize` method on line 314 . When `super` is called without `()`, it invokes a method of the same name earlier in the method lookup path which in this case is `Animal#initialize` and also forwards all the arguments to this method. But as `Animal#initialize` does not expect any arguments, an `ArgumentError` is raised. 
+
+__Q10:What is the method lookup path used when invoking `#walk` on `good_dog`?__
+
+```ruby
+ module Walkable
+  def walk
+    "I'm walking."
+  end
+end
+
+module Swimmable
+  def swim
+    "I'm swimming."
+  end
+end
+
+module Climbable
+  def climb
+    "I'm climbing."
+  end
+end
+
+module Danceable
+  def dance
+    "I'm dancing."
+  end
+end
+
+class Animal
+  include Walkable
+
+  def speak
+    "I'm an animal, and I speak!"
+  end
+end
+
+module GoodAnimals
+  include Climbable
+
+  class GoodDog < Animal
+    include Swimmable
+    include Danceable
+  end
+  
+  class GoodCat < Animal; end
+end
+
+good_dog = GoodAnimals::GoodDog.new
+p good_dog.walk
+```
+
+We can find the method lookup path by invoking the `ancestors` method on the class of the `good_dog` object.
+
+```ruby
+p GoodAnimals::GoodDog.ancestors
+```
+
+The above line outputs: `[GoodAnimals::GoodDog, Danceable, Swimmable, Animal, Walkable, Object, Kernel, BasicObject]`
+
+The output is an array of the classes and modules that Ruby will inspect to search for any methods invoked on an object of `GoodAnimals::GoodDog` class and the order of the search will be from right to left. So first Ruby will look in the `GoodAnimals::GoodDog` class, then `Danceable` module, then `Swimmable` module, then `Animal` class, then `Walkable` module where Ruby will find the `walk` method and execute it. Ruby will not go any further up the method look up path after the method is found.
+
