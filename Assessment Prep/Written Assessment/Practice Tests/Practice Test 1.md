@@ -2,6 +2,8 @@
 
 ## Classes and Objects
 
+__Q: What is Object Oriented Programming, and why was it created? What are the benefits of OOP, and examples of problems it solves?__
+
 __Q: What is a class? What is an object? What relationship do they have? Explain with an example?__
 
 
@@ -12,7 +14,8 @@ __Q: When defining a class, we usually focus on state and behaviors. What is the
 
 
 __Q: How do you initialize a new object? Give an example?__
-`
+
+__Q: # What is the relationship between classes and objects in Ruby?__
 
 __Q: What is a constructor method?__
 
@@ -27,6 +30,10 @@ __Q: Explain the idea that a class groups behaviors.__
 __Q: Objects do not share state between other objects, but do share behaviors__
 
 __Q: The values in the objects' instance variables (states) are different, but they can call the same instance methods (behaviors) defined in the class.__
+
+__Q: What is the difference between states and behaviors?__
+
+__Q: Describe the distinction between modules and classes.__
 
 __Q: Given the below usage of the Person class, code the class definition__
 
@@ -81,6 +88,86 @@ puts "The person's name is: #{bob}"
 
 __Q: What happens when you call the p method on an object? And the puts method?__
 
+__Q: What is output on `lines 14, 15, and 16` and why?__
+
+```ruby
+class Person
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  def to_s
+    "My name is #{name.upcase!}."
+  end
+end
+
+bob = Person.new('Bob')
+puts bob.name
+puts bob
+puts bob.name
+```
+
+__Q: # What is output and why? How could we output a message of our choice instead?__
+
+```ruby
+class GoodDog
+  DOG_YEARS = 7
+
+  attr_accessor :name, :age
+
+  def initialize(n, a)
+    self.name = n
+    self.age  = a * DOG_YEARS
+  end
+end
+
+sparky = GoodDog.new("Sparky", 4)
+puts sparky
+```
+
+__Q: How is the output above different than the output of the code below, and why?__
+
+```ruby
+class GoodDog
+  DOG_YEARS = 7
+
+  attr_accessor :name, :age
+
+  def initialize(n, a)
+    @name = n
+    @age  = a * DOG_YEARS
+  end
+end
+
+sparky = GoodDog.new("Sparky", 4)
+p sparky
+```
+
+__Q: Do `molly` and `max` have the same states and behaviors in the code above? Explain why or why not, and what this demonstrates about objects in Ruby.__
+
+```ruby
+class Cat
+  def initialize(name, coloring)
+    @name = name
+    @coloring = coloring
+  end
+
+  def purr; end
+
+  def jump; end
+
+  def sleep; end
+
+  def eat; end
+end
+
+max = Cat.new("Max", "tabby")
+molly = Cat.new("Molly", "gray")
+```
+
+
 ## Creating Setters and Getters
 
 __Q: What is an accessor method?__
@@ -92,6 +179,59 @@ __Q: What is attr_accessor?__
 __Q: Explain how the element getter (reference) and setter methods work, and their corresponding syntactical sugar.__
 
 __Q: When using getters and setters, in what scenario might you decide to only use a getter, and why is this important?__
+
+__Q:We expect the code above to output `”Spartacus weighs 45 lbs and is 24 inches tall.”` Why does our `change_info` method not work as expected?__
+
+```ruby
+class GoodDog
+  attr_accessor :name, :height, :weight
+
+  def initialize(n, h, w)
+    @name = n
+    @height = h
+    @weight = w
+  end
+
+  def change_info(n, h, w)
+    name = n
+    height = h
+    weight = w
+  end
+
+  def info
+    "#{name} weighs #{weight} and is #{height} tall."
+  end
+end
+
+
+sparky = GoodDog.new('Spartacus', '12 inches', '10 lbs') 
+sparky.change_info('Spartacus', '24 inches', '45 lbs')
+puts sparky.info 
+# => Spartacus weighs 10 lbs and is 12 inches tall.
+```
+
+__Q: In the code above, we hope to output `'BOB'` on `line 16`. Instead, we raise an error. Why? How could we adjust this code to output `'BOB'`?__
+
+```ruby
+class Person
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
+  
+  def change_name
+    name = name.upcase
+  end
+end
+
+bob = Person.new('Bob')
+p bob.name 
+bob.change_name
+p bob.name
+```
+
+__Q: # What is the `attr_accessor` method, and why wouldn’t we want to just add `attr_accessor` methods for every instance variable in our class? Give an example.__
 
 ## Instance variables and Scope
 
@@ -172,7 +312,97 @@ end
 teddy = Dog.new
 teddy.swim
 ```                         
-# 
+
+__Q:What is output and why? What does this demonstrate about instance variables that differentiates them from local variables?__
+
+```ruby
+class Person
+  attr_reader :name
+  
+  def set_name
+    @name = 'Bob'
+  end
+end
+
+bob = Person.new
+p bob.name
+```
+
+__Q: What is output and why? What does this demonstrate about instance variables?__
+
+```ruby
+module Swimmable
+  def enable_swimming
+    @can_swim = true
+  end
+end
+
+class Dog
+  include Swimmable
+
+  def swim
+    "swimming!" if @can_swim
+  end
+end
+
+teddy = Dog.new
+p teddy.swim   
+```
+__Q:What does the above code demonstrate about how instance variables are scoped?__
+
+```ruby
+class Person
+  def initialize(n)
+    @name = n
+  end
+  
+  def get_name
+    @name
+  end
+end
+
+bob = Person.new('bob')
+joe = Person.new('joe')
+
+puts bob.inspect # => #<Person:0x000055e79be5dea8 @name="bob">
+puts joe.inspect # => #<Person:0x000055e79be5de58 @name="joe">
+
+p bob.get_name # => "bob"
+```
+__Q: How do class inheritance and mixing in modules affect instance variable scope? Give an example.__
+
+__Q:Running the following code will not produce the output shown on the last line. Why not? What would we need to change, and what does this demonstrate about instance variables?__
+
+```ruby
+class Student
+  attr_accessor :grade
+
+  def initialize(name, grade=nil)
+    @name = name
+  end 
+end
+
+ade = Student.new('Adewale')
+p ade # => #<Student:0x00000002a88ef8 @grade=nil, @name="Adewale">
+```
+
+__Q: What are the scopes of each of the different variables in the above code?__
+
+```ruby
+class Person
+  TITLES = ['Mr', 'Mrs', 'Ms', 'Dr']
+
+  @@total_people = 0
+
+  def initialize(name)
+    @name = name
+  end
+
+  def age
+    @age
+  end
+end
+```
 
 
 ## Class variables and scope
@@ -209,6 +439,34 @@ class Car < Vehicle
 end
 
 Car.wheels                                  # => ??
+```
+
+__Q: What can executing `Triangle.sides` return? What can executing `Triangle.new.sides` return? What does this demonstrate about class variables?__
+
+```ruby
+class Shape
+  @@sides = nil
+
+  def self.sides
+    @@sides
+  end
+
+  def sides
+    @@sides
+  end
+end
+
+class Triangle < Shape
+  def initialize
+    @@sides = 3
+  end
+end
+
+class Quadrilateral < Shape
+  def initialize
+    @@sides = 4
+  end
+end
 ```
 
 
@@ -248,6 +506,39 @@ __Q: What is lexical scope?__
 
 __Q: When dealing with code that has modules and inheritance, where does constant resolution look first?__
 
+__Q: What is output and why? What does this demonstrate about constant scope? What does `self` refer to in each of the 3 methods above?__
+
+```ruby
+module Describable
+  def describe_shape
+    "I am a #{self.class} and have #{SIDES} sides."
+  end
+end
+
+class Shape
+  include Describable
+
+  def self.sides
+    self::SIDES
+  end
+  
+  def sides
+    self.class::SIDES
+  end
+end
+
+class Quadrilateral < Shape
+  SIDES = 4
+end
+
+class Square < Quadrilateral; end
+
+p Square.sides 
+p Square.new.sides 
+p Square.new.describe_shape 
+```
+
+
 ## Instance methods vs Class methods
 
 __Q: What is an instance method?__
@@ -258,7 +549,7 @@ __Q: What are class methods?__
 
 __Q: Classes also have behaviors not for objects (class methods).__
 
-
+__Q: What is the difference between instance methods and class methods?__
 
 
 ## Method Access Control
@@ -271,7 +562,7 @@ __Q: What is the protected keyword used for?__
 
 __Q: What are two rules of protected methods?__
 
-
+__Q: # How is Method Access Control implemented in Ruby? Provide examples of when we would use public, protected, and private access modifiers.__
 
 
 ## Referencing and setting instance variables vs. using getters and setters
@@ -344,9 +635,9 @@ priya.change_grade('A')
 priya.grade # => "A"
 ```
 
+__Q: Why is it generally safer to invoke a setter method (if available) vs. referencing the instance variable directly when trying to set an instance variable within the class? Give an example.__
 
-
-
+__Q: Give an example of when it would make sense to manually write a custom getter method vs. using `attr_reader`__
 
 ## Class Inheritance
 
@@ -507,6 +798,29 @@ __Q: When do you use empty parentheses with super?__
 __Q: What is namespacing, and how do you instantiate a class contained in a module?__
 
 
+__Q: What is output and why? What does this demonstrate about `super`?__
+
+```ruby
+class Animal
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
+end
+
+class GoodDog < Animal
+  def initialize(color)
+    super
+    @color = color
+  end
+end
+
+bruno = GoodDog.new("brown")       
+p bruno
+```
+
+
 ## Interface Inheritance and Modules
 
 __Q: What is a module?__
@@ -521,7 +835,89 @@ __Q: What is namespacing?__
 
 __Q: How does Ruby provide the functionality of multiple inheritance?__
 
+__Q: # When should we use class inheritance vs. interface inheritance?__
+
 __Q: Describe the use of modules as containers.__
+
+__Q: What is returned/output in the code? Why did it make more sense to use a module as a mixin vs. defining a parent class and using class inheritance?__
+
+```ruby
+module Walkable
+  def walk
+    "#{name} #{gait} forward"
+  end
+end
+
+class Person
+  include Walkable
+
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  private
+
+  def gait
+    "strolls"
+  end
+end
+
+class Cat
+  include Walkable
+
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  private
+
+  def gait
+    "saunters"
+  end
+end
+
+mike = Person.new("Mike")
+p mike.walk
+
+kitty = Cat.new("Kitty")
+p kitty.walk
+```
+
+__Q: What is output and why? What does this demonstrate about how methods need to be defined in modules, and why?__
+
+```ruby
+module Drivable
+  def self.drive
+  end
+end
+
+class Car
+  include Drivable
+end
+
+bobs_car = Car.new
+bobs_car.drive
+```
+__Q: # What module/method could we add to the above code snippet to output the desired output on the last 2 lines, and why?__
+
+```ruby
+class House
+  attr_reader :price
+
+  def initialize(price)
+    @price = price
+  end
+end
+
+home1 = House.new(100_000)
+home2 = House.new(150_000)
+puts "Home 1 is cheaper" if home1 < home2 # => Home 1 is cheaper
+puts "Home 2 is more expensive" if home2 > home1 # => Home 2 is more expensive
+```
 
 ## Encapsulation
 
@@ -532,6 +928,8 @@ __Q: How does encapsulation relate to the public interface of a class?__
 __Q: How do objects encapsulate state?__
 
 __Q: Why should a class have as few public methods as possible?__
+
+__Q: # What is encapsulation, and why is it important in Ruby? Give an example.__
 
 ## Polymorphism
 
@@ -621,6 +1019,87 @@ __Q: What is the method lookup path?__
 
 __Q: How is the method lookup path affected by module mixins and class inheritance?__
 
+__Q:What is the method lookup path used when invoking `#walk` on `good_dog`?__
+
+```ruby
+module Walkable
+  def walk
+    "I'm walking."
+  end
+end
+
+module Swimmable
+  def swim
+    "I'm swimming."
+  end
+end
+
+module Climbable
+  def climb
+    "I'm climbing."
+  end
+end
+
+module Danceable
+  def dance
+    "I'm dancing."
+  end
+end
+
+class Animal
+  include Walkable
+
+  def speak
+    "I'm an animal, and I speak!"
+  end
+end
+
+module GoodAnimals
+  include Climbable
+
+  class GoodDog < Animal
+    include Swimmable
+    include Danceable
+  end
+  
+  class GoodCat < Animal; end
+end
+
+good_dog = GoodAnimals::GoodDog.new
+p good_dog.walk
+
+```
+
+__Q: What is the method lookup path that Ruby will use as a result of the call to the `fly` method? Explain how we can verify this.__
+
+```ruby
+module Flight
+  def fly; end
+end
+
+module Aquatic
+  def swim; end
+end
+
+module Migratory
+  def migrate; end
+end
+
+class Animal
+end
+
+class Bird < Animal
+end
+
+class Penguin < Bird
+  include Aquatic
+  include Migratory
+end
+
+pingu = Penguin.new
+pingu.fly
+```
+
 
 ## `self` and calling methods with `self`
 
@@ -652,6 +1131,27 @@ end
 i = MeMyselfAndI.new
 ```
 
+__Q:# In the `make_one_year_older` method we have used `self`. What is another way we could write this method so we don't have to use the `self` prefix? Which use case would be preferred according to best practices in Ruby, and why?__
+
+```ruby
+class Cat
+  attr_accessor :type, :age
+
+  def initialize(type)
+    @type = type
+    @age  = 0
+  end
+
+  def make_one_year_older
+    self.age += 1
+  end
+end
+```
+
+
+
+__Q: What are the use cases for `self` in Ruby, and how does `self` change based on the scope it is used in? Provide examples.__
+
 ## Fake Operators and Equality
 
 __Q: How does equivalence work in Ruby?__
@@ -680,6 +1180,18 @@ int1.object_id == int2.object_id      # => ??
 __Q: What is the `===` method?__
 
 __Q: What is the eql? method?__
+
+__Q: If we use `==` to compare the individual `Cat` objects in the code above, will the return value be `true`? Why or why not? What does this demonstrate about classes and objects in Ruby, as well as the `==` method?__
+
+```ruby
+class Cat
+end
+
+whiskers = Cat.new
+ginger = Cat.new
+paws = Cat.new
+```
+
 
 __Q:How can you make this code function? How is this possible?__
 
@@ -755,6 +1267,79 @@ al = Person.new('Alexander')
 alex = Person.new('Alexander')
 p al == alex # => # => true
 ```
+
+__Q: What is output? Is this what we would expect when using `AnimalClass#+`? If not, how could we adjust the implementation of `AnimalClass#+` to be more in line with what we'd expect the method to return?__
+
+```ruby
+class AnimalClass
+  attr_accessor :name, :animals
+  
+  def initialize(name)
+    @name = name
+    @animals = []
+  end
+  
+  def <<(animal)
+    animals << animal
+  end
+  
+  def +(other_class)
+    animals + other_class.animals
+  end
+end
+
+class Animal
+  attr_reader :name
+  
+  def initialize(name)
+    @name = name
+  end
+end
+
+mammals = AnimalClass.new('Mammals')
+mammals << Animal.new('Human')
+mammals << Animal.new('Dog')
+mammals << Animal.new('Cat')
+
+birds = AnimalClass.new('Birds')
+birds << Animal.new('Eagle')
+birds << Animal.new('Blue Jay')
+birds << Animal.new('Penguin')
+
+some_animal_classes = mammals + birds
+
+p some_animal_classes 
+```
+__Q: In the code above, we want to compare whether the two objects have the same name. `Line 11` currently returns `false`. How could we return `true` on `line 11`? Further, since `al.name == alex.name` returns `true`, does this mean the `String` objects referenced by `al` and `alex`'s `@name` instance variables are the same object? How could we prove our case?__
+
+```ruby
+class Person
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+end
+
+al = Person.new('Alexander')
+alex = Person.new('Alexander')
+p al == alex # => true
+```
+__Q: How and why would we implement a fake operator in a custom class? Give an example.__
+
+__Q: What methods does this `case` statement use to determine which `when` clause is executed?__
+
+```ruby
+number = 42
+
+case number
+when 1          then 'first'
+when 10, 20, 30 then 'second'
+when 40..49     then 'third'
+end
+```
+
+
 ##  Collaborator Objects
 
 __Q: What is a collaborator object, and what is the purpose of using collaborator objects in OOP?__
@@ -812,6 +1397,8 @@ bob.pets << bud
 bob.pets.jump 
 ```
 
+__Q: What are collaborator objects, and what is the purpose of using them in OOP? Give an example of how we would work with one.__
+
 
 ## Spike
 
@@ -820,3 +1407,13 @@ __Q: What is a spike?__
 __Q: When writing a program, what is a sign that you’re missing a class?__
 
 __Q: What are some rules/guidelines when writing programs in OOP?__
+
+__Q: # The following is a short description of an application that lets a customer place an order for a meal:__
+
+# - A meal always has three meal items: a burger, a side, and drink.
+# - For each meal item, the customer must choose an option.
+# - The application must compute the total cost of the order.
+
+# 1. Identify the nouns and verbs we need in order to model our classes and methods.
+# 2. Create an outline in code (a spike) of the structure of this application.
+# 3. Place methods in the appropriate classes to correspond with various verbs.
