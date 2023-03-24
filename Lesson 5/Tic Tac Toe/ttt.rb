@@ -137,7 +137,7 @@ class TTTGame
     display_board
 
     if board.detect_winner == human.marker
-      puts "You won"
+      puts "Lily flower and Mano Bidia won"
     elsif board.detect_winner == computer.marker
       puts "Computer won!"
     else

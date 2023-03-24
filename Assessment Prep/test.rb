@@ -1,18 +1,28 @@
-module Speakable
-  def speak(words)
-    puts words
+class Game
+  def play
+    display_greeting
+    make_move
+    display_winner
+    display_goodbye
+  end
+
+  private
+  
+  def display_greeting
+    # logic
+  end
+
+  def make_move
+    # logic
+  end
+
+  def display_winner
+    # logic
+  end
+
+  def display_goodbye
+    # logic
   end
 end
 
-class GoodDog
-  include Speakable
-end
-
-class HumanBeing
-  include Speakable
-end
-
-sparky = GoodDog.new
-sparky.speak("Arff!!")
-bob = HumanBeing.new
-bob.speak("Hello")
+Game.new.display_greeting

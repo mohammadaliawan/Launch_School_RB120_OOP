@@ -21,17 +21,15 @@ __Differences between local variables and instance variables__
 - all objects share 1 copy of the class variable. This implies that objects can access class variables through instance methods and that any object can manipulate the value of the class variable.
 - Only class variables can share state between objects
 
+A class variable that has been initialized in a superclass is available to all the subclasses and their objects which means that only one copy of the class variable exists that is shared by the superclass, all subclasses of that superclass and all objects of the superclass as well as the subclasses.
+
 ### Constant Variable Scope
 
-- Constants have lexical scope
-- Lexical scope means that where the constant is defined in the source code determines where it is available.
-- When Ruby tries to resolve a constant reference, it searches lexically - that is, it searches the surrounding structure of the constant reference. 
-- lexical scope: the class and the module the class is in
+- Constants have lexical scope which means that it is available throughout the enclosing structure in which it has been initialized i.e. the enclosing module or class.
+- A constant reference is also resolved lexically, that is, when a constant is referenced, Ruby searches for the constant definition in the surrounding structure of the constant reference.  
 - If the constant is initialized in the class, it is accessible inside both class methods and instance methods.
 - If the constant is initialized in a module that groups related classes for namespacing purposes, then the constant is still accessible inside the class methods and instance methods because it is available lexically. 
-
-- When trying to reference a constant from an unconnected class through, a `NameError` is raised as the class is not part of the lexical search and not included in the constant lookup path. 
-
+- When trying to reference a constant from an unconnected class though, a `NameError` is raised as the class is not part of the lexical search and not included in the constant lookup path. 
 - Unlike class and instance variables, we can reach into the another unconnected class and reference a constant defined in that class. We have to tell Ruby where to search for the constant by using the `::` operator. It is called the constant resolution operator.
 
 ## Inheritance and Variable Scope

@@ -10,8 +10,7 @@ What `self` references changes depending on the scope it is used in.
 
 From within the class when an instance method uses `self` it references the calling object.
 
-`self` inside of an instance method references the instance (object)
-that called the method - the calling object. 
+`self` inside of an instance method references the instance (object) that called the method - the calling object. 
 
 2. Use `self` for class method definitions.
 

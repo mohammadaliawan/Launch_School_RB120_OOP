@@ -66,13 +66,17 @@ On the last line, we invoke the instance method `#model=` on the `dell_notebook`
 
 If we want to refer to the setter methods inside the class, we cannot just do `model = m`. Ruby interprets that as the intialization of a new local variable `model`. Instead we need to invoke the setter method with the keyword `self`that is `self.model = m`.
 
-When `self` is referenced inside an instance method like above, it references the current object.
+When `self` is referenced inside an instance method like above, it references the calling object.
 
 ## Why is it a good idea to use getters instead of referencing the instance variables directly?
 
 When we dont want to expose the raw data referenced by instance variables, it is a good idea to use getter methods instead because they can be used to return a consistently modified version of the instance variable value. This way sensitive data can be protected. 
 
-Furthermore, any changes to how the data needs to be formatted in the future can be performed in one place and entire code does not need to be modfied this making the code more flexible.
+Furthermore, any changes to how the data needs to be formatted in the future can be performed in one place and entire code does not need to be modfied thus making the code more flexible.
+
+## How do you decide whether to reference an instance variable or a getter method?__
+
+If getter methods are available, it is better to invoke the getter method instead of referencing an instance variable directly because, there might be some built-in data protection within the getter method that would be bypassed if the instance variable is referenced directly. Referencing instance variables directly exposes the raw data that these variables reference. Getter methods can be used to return a consistently modified version of the instance variable value and any changes to the formatting can be made in one place making future changes easier.
 
 **Example:**
 
