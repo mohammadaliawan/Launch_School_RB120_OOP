@@ -27,7 +27,7 @@
       - [X] Inheritance
       - [X] Accessor Methods
       - [X] Easy 1
-      - [ ] Easy 2
+      - [X] Easy 2
       - [ ] Medium 1
       - [ ] Debugging
       - [X] Quiz Lesson 2

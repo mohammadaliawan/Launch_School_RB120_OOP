@@ -1,12 +1,14 @@
 # Polymorphism
 
-Polymorphism refers to the ability of different object types to respond to the same method invocation in different ways.
+Polymorphism describes the ability of different object types to respond to the same method invocation in different ways.
 
-In other words, different data types can respond to a common interface.
+Polymorphism refers to the many forms that a method can take in terms of how that method is implemented in different classes but the way that method is invoked on different object types remains the same i.e. different object types share a common interface. In otherwords, the objects of different types are able to respond to the same method invocation but in different ways. 
 
 When two or more object types have a method with the same name, we can invoke that method with any of those objects.
 
 When we don't care what type of object is calling the method, we are using polymorphism.
+
+
 
 ## Two ways of implementing polymorphism
 

@@ -1,28 +1,26 @@
-class Game
-  def play
-    display_greeting
-    make_move
-    display_winner
-    display_goodbye
+class ProjectTeam
+  attr_accessor :members
+
+  def initialize
+    @members = []
   end
 
-  private
-  
-  def display_greeting
-    # logic
-  end
-
-  def make_move
-    # logic
-  end
-
-  def display_winner
-    # logic
-  end
-
-  def display_goodbye
-    # logic
-  end
 end
 
-Game.new.display_greeting
+class Engineer
+end
+
+class ProjectManager
+end
+
+class AdminStaff
+end
+
+team1 = ProjectTeam.new
+bob = Engineer.new
+jim = ProjectManager.new
+sara = AdminStaff.new
+
+team1.members.push(bob, jim, sara)
+
+p team1

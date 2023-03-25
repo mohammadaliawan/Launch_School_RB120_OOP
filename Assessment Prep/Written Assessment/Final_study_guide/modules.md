@@ -65,5 +65,5 @@ bob.speak("Hello")
 ### Container for methods
 
 - container for methods called module methods
-- used to house out of place methods that dont `go into any class
+- used to house out of place methods that dont go into any class
 - are called directly from the module

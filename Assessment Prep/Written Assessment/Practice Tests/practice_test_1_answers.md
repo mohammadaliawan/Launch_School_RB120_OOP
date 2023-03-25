@@ -453,11 +453,21 @@ end
 ## 9. Class Inheritance
 
 __Q: What is inheritance?__
-Inheritance is a mechanism through a class can inherit behavior from another class or module. The inherited behaviour could instance methods as well as class methods. However, module methods are not inherited. Inheritance allows us to extract common behaviours from classes that share that behaviour and move it to a superclass or module. 
+Inheritance is a mechanism through a class can inherit behavior from another class or module. The inherited behaviour could be instance methods as well as class methods. However, module methods are not inherited. Inheritance allows us to keep logic in one place by extracting common behaviours from classes into superclasses or modules. Inheritance also helps to write code with large reusability which means that the same code could be used in multiple scenarious there by removing duplication in code and making future changes much more manageable.
 
 __Q: When is it good to use inheritance?__
 
+When different object types have some common attributes and/or behaviours, we can use either class inheritance or interface inheritance to extract that behaviour and/or attributes into superclasses or modules. Class inheritance should be used when working with naturally hierarhcical domains. In other words, where their is an `is a` relationship between object types, class inheritance should be used. Interface inheritance should be used where there is a `has a ability` relationship between different object types and a behaviour.
+
+Superclasses are defined as general classes that have multiple use cases. So the attributes and behaviours defined in superclasses are generic and could be applicable in multiple scenarios.
+
+On the other hand, subclasses are defined for a more specific use case where the attributes and behaviours are detailed and fine tuned to that specific scenario. Subclasses can either extend the behaviours defined in their superclasses or completely override that behaviour with their own implementation.
+
+Interface inheritance allows us to group shared behaviour among classes into a module. Interface inheritance is used where different object types have a common behaviour. We can extract that behaviour into a module in the form of instance methods. For example, Dogs and Fish have the ability to swim but other wise these object types dont have anything in common. We can extract this instance method `swim` and move it to a module. This module would then be mixed into the `Dog` and `Fish` classes using the `include` method invocation.
+
 __Q: In inheritance, when would it be good to override a method?__
+
+A subclass can override a method from a superclass when it needs to provide a more specific and more detailed behaviour for a particular its particular scenarios
 
 __Q: What will the following code output?__
 
@@ -485,38 +495,36 @@ end
 daisy = Cow.new("Daisy")
 daisy.speak
 ```
+- speak method inherited from animal
+- speak invokes the Cow#sound
+- that invokes the super, that invokes the Animal sound
+- ANimal sound returns string with @name
+- concat with mooo
 
-__Q: Given the following code, modify #start_engine in Truck by appending 'Drive fast, please!' to the return value of #start_engine in Vehicle. The 'fast' in 'Drive fast, please!' should be the value of speed.__
+Line X outputs `Daisy says moooooooooooo!`. On line X the `speak` method is invoked on the object referenced by local variable `daisy`. `daisy` is intiialized to the an object of `Cow` class on line X. This `Cow` object is instantiated and its `@name` instance variable is initialized to the string `Daisy` in the `initialize` method inherited from `Animal`. The `speak` method is also inherited by `Cow` from `Animal` class. The `Animal#speak` method further invokes the `Cow#sound` method because the calling object is a `Cow` object and `Cow` class overrides the `Animal#sound` method. `COw#sound` invokes the keyword `super` which invokes the `Animal#sound` method because `Animal` is the superclass for `Cow`. `Animal#sound` returns a string with `@name` instance variable for `daisy` object interpolated in to the string, `Daisy says ` is returned by `Animal#sound` to `Cow#sound`. This string is concatenated with the string `mooooooo` and the returned string `Daisy says mooooo` is returned to the `speak` method on line xx and is output by `puts`.
 
-```ruby
-class Vehicle
-  def start_engine
-    'Ready to go!'
-  end
-end
-
-class Truck < Vehicle
-  def start_engine(speed)
-    super() + “Go #{speed} please!”
-  end
-end
-
-truck1 = Truck.new
-puts truck1.start_engine('fast')
-# Expected output:
-
-# Ready to go! Drive fast, please!
-```
 
 ## 10. Interface Inheritance and Modules
 
 __Q: What is a module?__
 
+Modules provide another way to apply polymorphic structure to Ruby programs. A module is a collection of behaviours that can be used in other classes by mixing in the module into those classes. The instance methods defined in the module then become available to the class and its objects. 
+
 __Q: What is a mixin?__
+
+WHen modules are mixed in to classes using the `inlcude` method invocation, it is called a mixin. The method defined in the module become available to the class and its objects
 
 __Q: When creating a hierarchical structure, under what circumstance would a module be useful?__
 
+When we have a behaviour that we only want to be available to some of the subclasses of a superclass, we cannot include that behaviour in the superclass because then all subclasses would inherit that behaviour. Instead we can define that behaviour in a module and include that module into only those subclasses that need that behaviour. 
+
 __Q: What is interface inheritance, and under what circumstance would it be useful in comparison to class inheritance?__
+
+Interface inheritance is achieved by mixing in moduless to classes. Modules are a collection of shared behaviours that can be mixed into classes using the `include` method invocation. The instance methods defined in the module then become available to the class and its objects i.e. are inherited by the class. 
+
+Ruby does not allow multiple class inheritance. So it is not possible for a class to inherit behaviour from multiple superclasses. But Ruby does allow to mizin as modules as needed into classes. This way we can implement multiple inheritance in Ruby. A class can inherit behavours from multiple sources as needed.
+
+Another reason for using interface inheritane instead of class inheritance is when we dont want all the subclasses of a superclass to aquire a behaviour. When a behaviour is needed by only some subclasses we can define that behavour in a module instead of the superclass and include that module in subclasses where that behaviour is needed.
 
 __Q: What is returned/output in the code? Why did it make more sense to use a module as a mixin vs. defining a parent class and using class inheritance?__
 

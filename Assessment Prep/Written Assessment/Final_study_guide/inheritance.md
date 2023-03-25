@@ -21,13 +21,17 @@ Two ways of implementing Inheritance in Ruby
 - subclass: that is inheriting behavior
 - superclass: the class it inhertis from
 - used to model hierarchical domains
-- model an 'is a'  `` relationship between objects e.g. A cat `is a` pet.
+- model an 'is a' relationship between objects e.g. A cat `is a` pet.
 - superclasses are defined as basic classes with large reusability
 - subclasses are defined for more fine tuned detailed behaviours
 - both class methods and instance methods are inherited in class heritance.
 ----------------------------------------------------------------------
 
 Class Inheritance is when a class inherits behavior or methods from another class. The class that is inheriting behavior is called the subclass and the class it inherits from is called the superclass. Class inheritance is used when there is a "is a" relationship between classes while interface inheritance is used when there is a "has a relationship".
+
+Superclasses are defined as general classes that have multiple use cases. So the attributes and behaviours defined in superclasses are generic and could be applicable in multiple scenarios.
+
+On the other hand, subclasses are defined for a more specific use case where the attributes and behaviours are detailed and fine tuned to that specific scenario. Subclasses can either extend the behaviours defined in their superclasses or completely override that behaviour with their own implementation.
 
 Super classes can be defined as basic classes with large reusability and smaller subclasses are defined for more fine-grained, detailed behaviors.
 
@@ -54,7 +58,7 @@ When you call `super` from within a method, it searches the method lookup path f
 
 **Calling `super` with and without arguments**
 
-If `super` is called without any arguments, it automatically forwards the arguments that were passed to the method from which `super` is called.
+If `super` is called without any arguments, it automatically forwards all the arguments that were passed to the method from which `super` is called.
 
 When called with specific arguments e.g. `super(a,b)`, the specified arguments will be sent up the method lookup path.
 
@@ -112,7 +116,7 @@ This is an example of polymorphism in which three different object types can res
 
 ### Method Lookup Path
 
-- the order in which Ruby searches classes for the method definition
+Method lookup path describes the order in which ruby traverses the class hierarchy when a method is invoked to look for the method definition.
 
 The **method lookup path** describes the order in which classes are inspected when a method is called to see how that method is defined.
 
@@ -122,7 +126,7 @@ Whenever a method is invoked, the order in which Ruby searches classes for the m
 
 **Importance**
 
-Method lookup path describes the order in which ruby inspects or traverses the class hierarchy when a method is invoked to look for the method definition.
+
 
 The method lookup path is important because it determines which method definition ruby will execute in case the same method is defined in the class of the calling object as well as in the superclass or a mixed in module. 
 

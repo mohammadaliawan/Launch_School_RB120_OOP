@@ -1106,13 +1106,25 @@ pingu.fly
 
 __Q: When would you call a method with `self`?__
 
+We need to call setter methods with an explicit `self` as the callerr because if we dont Ruby interprets that as the initalization a new local variable. So to distinguish from local variable initilization we need to call setter methods with `self` . `self` inside an instance method references the calling object. 
+
+We could also call other instance methods with an explicit `self` but that is not required because instance method are implicitly called on `self`. 
+
 __Q: From within a class, when an instance method uses self, what does it reference?__
+
+`self` within an instance method refernces the calling object.
 
 __Q: What happens when you use self inside a class but outside of an instance method?__
 
+`self` outside instance methods and inside the class refernces the class itself.
+
 __Q: Why do you need to use self when calling private setter methods?__
 
+setter methods, whether private or not, need to be called with an explicit `self` as the caller because if we dont, Ruby interprets that as the initlization of a local variable. So to distinguish from local variable initialization we need to use `self`.
+
 __Q: Why use self, and how does self change depending on the scope it is used in?__
+
+We use `self` to be explicit about our intentions within code. within a class and inside an instance method `self` references the calling object. However, outside instance methods but still within the class `self` references the class itself. And within class methods, `self` also references the class.
 
 __Q: On which lines in the following code does self refer to the instance of the MeMyselfAndI class referenced by i rather than the class itself? Select all that apply.__
 
@@ -1132,6 +1144,8 @@ end
 i = MeMyselfAndI.new
 ```
 
+On line x `self` references the `i` object because it is inside an instance method.
+
 __Q:# In the `make_one_year_older` method we have used `self`. What is another way we could write this method so we don't have to use the `self` prefix? Which use case would be preferred according to best practices in Ruby, and why?__
 
 ```ruby
@@ -1148,39 +1162,109 @@ class Cat
   end
 end
 ```
-
+Another way to write this method would be to reassign the instance variable `@age` directly but that is not the preferred way. If setter methods are available then we should use the setter method because if we dont we could be bypassing any data validation within the setter methods and that could result in incorrect values being assigned to the instance variable.
 
 
 __Q: What are the use cases for `self` in Ruby, and how does `self` change based on the scope it is used in? Provide examples.__
+
+`self` is used to call setter method within the class inside an instance method. Here it references the calling object. This is required because we need to distinguish between initialization of local variables and calling setter methods. Because if `self` is not used as the explicit caller then Ruby interprets `setter_method = value` as the initialization of a local variable `setter_method`. 
+
+```ruby
+class Computer
+  attr_accessors :ram
+
+  def initialize(type, ram)
+    @ram = ram
+  end
+
+  def upragde_ram(new_ram)
+    self.ram = new_ram
+  end
+end
+
+dell = Computer.new("4 GB")
+dell.ram # => 4 GB
+dell.upgrade_ram("8 GB")
+dell.ram # => 8 GB
+```
+In the `upgrade_ram` method we are calling the setter method `ram=` with an explicit `self`. `self` here references the `dell` object. 
+
+`self` is also used to define class methods. Here it references the class itself in which it is being used.
+
+```ruby
+class Computer
+  @@number_of_computers = 0
+
+  attr_accessors :ram
+
+  def self.number_of_computers
+    @@number_of_computers
+  end
+
+  def initialize(type, ram)
+    @ram = ram
+    @@number_of_computers += 1
+  end
+
+  def upragde_ram(new_ram)
+    self.ram = new_ram
+  end
+end
+
+dell = Computer.new("4 GB")
+
+Computer.number_of_computers #=> 1
+```
+
+On line xx-xx we are defining a class method `number_of_computer`. We have defined the method name with `self` to make clear that this method is defined on the class `Computer`.
 
 ## Fake Operators and Equality
 
 __Q: How does equivalence work in Ruby?__
 
+There are multiple method defined in Ruby classes that could be used to check for equivalence in Ruby. But the most used method is the `==` method. It is defined in the `BasicObject` class which is the superclass for all classes in Ruby. This method is inheritd by all classes. However, most classes override this method by defining this method with their own implementation to provide a more meaningful behaviour in the context of that class. `BasicObject#==` method checks if the two object being compared are the same opject. But subclasses override this behaviour. For example, `String#==` method compares the content and length of the string object. Likewise, `Integer#==` method compares the values of the integer objects.
+
 __Q: How do you determine if two variables actually point to the same object?__
 
+We can use the `equal?` method. Or we can also compare their object ids using the `object_id` method.
+
 __Q: What is == in Ruby? How does == know what value to use for comparison?__
+`==` is an instance method in Ruby that is defined in the `BasicObject` class and returns `true` if the two object being compared are the same object. It is overridden by subclasses to provide more meaningful behavior in the context of those classes. The class defines what value to use for comparison when it defines this method.
+
 
 __Q: Is it possible to compare two objects of different classes?__
+
+Yes it is possible to compare two object of different classes. 
 
 __Q:What will the code above return and why?__
 
 ```ruby
 arr1 = [1, 2, 3]
 arr2 = [1, 2, 3]
-arr1.object_id == arr2.object_id      # => ??
+arr1.object_id == arr2.object_id      # => false
+# arr1 and arr2 are different objects that occupy different spaces in memory hence they have different object ids.
 
 sym1 = :something
 sym2 = :something
-sym1.object_id == sym2.object_id      # => ??
+sym1.object_id == sym2.object_id      # => true
+# In Ruby if two symbol objects have the same value, then they are the same object. As symbol objects are immutable, this is a performance optimization in Ruby.
 
 int1 = 5
 int2 = 5
-int1.object_id == int2.object_id      # => ??
+int1.object_id == int2.object_id      # => true
+# In the same way, if two integer objects have the same value then they are the same object.
+
 ```
 __Q: What is the `===` method?__
 
+`===` is an instance method. This method is defined in the `Object` class which is the super class for all classes in Ruby's Core library. Hence, this method is inherited by all classes.
+By default `Object#===` istance method returns the same as the `BasicObject#==` method, that is it returns `true` if the two object being compared are the same object. However, if a class overrides the `BasicObject#==` method with its own implementation, then `Object#===` is also overridden and will now return according to the new implementation of `==` defined in the class.
+
+However, as this method is used implicitly by the `case` statement to determine equivalency of objects, it is overridden by most classes to provide more meaningful behaviour in the context of that class in a `case` statement. For example `Range#===` method determines if the object passed as argument lies in the provides `Range` object e.g. `(1..10) === 5` will return `true`.
+
 __Q: What is the eql? method?__
+
+The `eql?` method determines if the two objects contain the same value and if they are of the same class. Its used by the `Hash` class to determine equality of it key-value pairs. 
 
 __Q: If we use `==` to compare the individual `Cat` objects in the code above, will the return value be `true`? Why or why not? What does this demonstrate about classes and objects in Ruby, as well as the `==` method?__
 
@@ -1192,6 +1276,7 @@ whiskers = Cat.new
 ginger = Cat.new
 paws = Cat.new
 ```
+Comparing two `Cat` object using the `==` method would not return `true`. The reason for this is that by default the `==` method returns `true` only if the two objects being compared are the same object otherwise it returns `false`. The reason for this is that `==` method is defined in the `BasicObject` class which is the superclass for all classes in Ruby so the `==` method is inherited by all classes. And the `BasicObject#=` method by default only returns `true ` if the two objects are the same object. To provide more meaningful behaviour in the case of specific classes, we need to override this method by defining `==` method in our class.
 
 
 __Q:How can you make this code function? How is this possible?__
@@ -1204,12 +1289,18 @@ class Person
     @name = name
     @age = age
   end
+
+  def >(other_person)
+    age > other_person.age
+  end
 End
 
 bob = Person.new("Bob", 49)
 kim = Person.new("Kim", 33)
 puts "bob is older than kim" if bob > kim
 ```
+Line x will raise a `NoMethodError` because the `>` method is not defined in the `Person` class. We can fix this by defining a `Person#>` method that compares the `@age` of two `Person` objects.This is possible because `>` is a fake operator in RUby. It is actually an instance method that can be defined in our custom classes and Ruby provides a more natural syntaz for this method. 
+
 
 __Q: What happens here, and why?__
 
@@ -1219,7 +1310,11 @@ my_hash << {d: 4}
 
 ```
 
+Last line raises a `NoMethodError` because `Hash` class does not define a `<<` method for its objects.
+
 __Q: When do shift methods make the most sense?__
+
+Shift methods like `<<` make the most sense when used in classes that represent a collection for example `Library`, `Team`, `Cards`.
 
 __Q: what is dream_team? What does the Team#+ method currently return? What is the problem with this? How could you fix this problem?__
 
@@ -1237,7 +1332,9 @@ class Team
   end
 
   def +(other_team)
-    members + other_team.members
+    temp = Team.new("Temp Team")
+    temp.members = self.members + other_team.members
+    temp
   end
 end
 # we'll use the same Person class from earlier
@@ -1250,24 +1347,11 @@ niners << Person.new("Joe Montana", 59)
 dream_team = cowboys + niners         
 ```
 
-__Q:In the code above, we want to compare whether the two objects have the same name. `Line 11` currently returns `false`. How could we return `true` on `line 11`?__
+`dream_team` references an array object containing `Person` objects. These `Person` objects are the same objects that are conatined in the `@members` arrays for `cowboys` and `niners` objects.
+As per convention followed in the Ruby core library, the `+` method always returns a new object of the calling object's class after concatenating or incrementing. In this case, we are concatenating the array objects referenced by the instance variable `@members` but we are not returning a new `Team` object. We expect the `Team#+` method to return a new `Team` object instead it returns a new array object. 
 
-__Further, since `al.name == alex.name` returns `true`, does this mean the `String` objects referenced by `al` and `alex`'s `@name` instance variables are the same object? How could we prove our case?__
 
 
-```ruby
-class Person
-  attr_reader :name
-
-  def initialize(name)
-    @name = name
-  end
-end
-
-al = Person.new('Alexander')
-alex = Person.new('Alexander')
-p al == alex # => # => true
-```
 
 __Q: What is output? Is this what we would expect when using `AnimalClass#+`? If not, how could we adjust the implementation of `AnimalClass#+` to be more in line with what we'd expect the method to return?__
 
@@ -1285,7 +1369,9 @@ class AnimalClass
   end
   
   def +(other_class)
-    animals + other_class.animals
+    temp = AnimalClass.new("Temp")
+    temp.animals=(animals + other_class.animals)
+    temp
   end
 end
 
@@ -1311,6 +1397,8 @@ some_animal_classes = mammals + birds
 
 p some_animal_classes 
 ```
+Line x outputs an array of `Animal` objects which means that `mammals + birds` on line x returned an array of `Animal` objects and that is what `some_animal_classes` references. However, this is not what we would expect the `AnimalClass#+` method to return. As per convention followed in the Ruby's standard library, `+` method usually returns a new object of the calling object's class aftern concatenating or incrementing the value. Currently, `Animal#+` method is concantenating the `@animals` arrays for `mammals` and `birds` objects but it not returning a new `AnimalClass` object. We can fix this shown below. By creating a new `AnimalClass` object and setting its `@animals` instance variable to the new array object returned by concatenating the `@animals` arrays for the two `AnimalClass` objects. And then returning this new `AnimalClass` object. 
+
 __Q: In the code above, we want to compare whether the two objects have the same name. `Line 11` currently returns `false`. How could we return `true` on `line 11`? Further, since `al.name == alex.name` returns `true`, does this mean the `String` objects referenced by `al` and `alex`'s `@name` instance variables are the same object? How could we prove our case?__
 
 ```ruby
@@ -1320,13 +1408,63 @@ class Person
   def initialize(name)
     @name = name
   end
+
+  def ==(other)
+    name == other.name
+  end
 end
 
 al = Person.new('Alexander')
 alex = Person.new('Alexander')
 p al == alex # => true
 ```
+
+Line X is currently returning `false` because `==` method being invoked on this line on the `Person` object referenced by `al` is actually inherited by `Person` class from the `BasicObject` class. `BasicObject#==` method actually returns `true` if the two objects being compared are the same object. As `al` and `alex` reference two differnt `Person` objects, hence line x returns `false`. 
+
+If we want to compare the names of the two objects when we use `==` method to compare two `Person` objects, then we need to override the `BasicObject#==` method in our `Person` class.
+`Person#==` should compare the names of the two objects i.e the string objects referenced by the `@name` instance variable for the two objects.
+
+In the expression `al.name == alex.name` we are actually invoking the `String#==` method. This method return `true` if the two string objects have the same value i.e. they have the same content and length. However, that does not mean they are the same objects. We can prove this using the `equal?` method that returns `true` if the two object being compared are the same object.
+
+`al.name.equal?(alex.name)`
+
 __Q: How and why would we implement a fake operator in a custom class? Give an example.__
+
+Fake operators are actually instance methods that Ruby provides with a special syntax that reads more naturally. For example, `+`, `-`, `<<`, `<`, `>` are all instance methods disguised as operators.
+
+Since these all are actually instance methods, we can implement them in our custom classes by defining these methods in our class. The reason for implementing these methods is that it provides our classes with a public interface that reads more naturally and makes it easy to use the classes and its methods. But we should take care to follow the Ruby core library's convention in implementing how these methods work. For example, `+` method usually increments or concatenates two objects and returns a new object of the same class. `<<` is used by `Array` objects to append elements to the array objects and returns the calling array.
+
+For example we can implement the `<<` method in a `ProjectTeam` class as shown below:
+
+```ruby
+class ProjectTeam
+  attr_accessor :members
+
+  def initialize
+    self.members = []
+  end
+
+  def <<(person)
+    members << person
+    self
+  end
+end
+
+class Engineer
+end
+
+class ProjectManager
+end
+
+team1 = ProjectTeam.new
+
+civil_engineer = Engineer.new
+project_manager = ProjectManager.new
+
+team1 << civil_engineer << project_manager
+
+p team1
+```
 
 __Q: What methods does this `case` statement use to determine which `when` clause is executed?__
 
@@ -1340,10 +1478,42 @@ when 40..49     then 'third'
 end
 ```
 
+It used the instance method `Integer#===` in the first and second `when` clauses and `Range#===` in the last `when` clause to determine equivalency of `number` with the objectin the `when` clause. 
+__Q: Why does the last line output `false` in the below code?
+
+```ruby
+class Person
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  def ==(other)
+    name == other.name
+  end
+end
+
+bob = Person.new("bob")
+
+bob2 = Person.new("bob")
+
+bob == bob2                # => false
+```
+On line x we are invoking the `==` method on object referenced by `bob` and passing in `bob2` as an argument. The `==` method is inherited by the `Person` class from the `BasicObject` class which is the superclass for all classes in Ruby. `BasicObject#==` method returns `true` if the two objects being compared are the same object. `bob` and `bob2` reference two different `Person` objects which is why line x returns false. 
+
+To provide a more meaningful behavior for the `==` method in the context of `Person` objects, we need to override this method in the `Person` class by defining this method in `Person` and specifying what attributes of the `Person` objects to compare to determine equivalence of its objects. 
+
 
 ##  Collaborator Objects
 
 __Q: What is a collaborator object, and what is the purpose of using collaborator objects in OOP?__
+
+A collaborator object is an object that is stored as state within another object. As state is tracked by instance variables, this means that objects that are assigned to instance variables of an other object are known as collaborator objects. 
+
+Collaboration is a way of modeling relationships between object types that have an associative relationship. That is, objects that work togather with each other. Collaborator objects can be thought of as having a 'has a' relationship. For example, a library has books, a team has members, a deck has cards etc.
+
+Collaborator objects are an important aspect of OO design as they represent the connections between the various buidling blocks of the program. Collaborator objects allow us to breakdown the problem into smaller pieces and work on the smaller pieces seperately. This makes solving the smaller problem easier. And then bringing togather all the pieces or buidling blocks that fit togather to solve the problem at hand.
 
 __Q:Identify all custom defined objects that act as collaborator objects within the code__
 
@@ -1364,6 +1534,8 @@ end
 sara = Person.new("Sara")
 fluffy = Cat.new("Fluffy", sara)
 ```
+
+In this problem, the `Person` object referenced by `sara` is acting as a collaborator object for the `Cat` object referenced by `fluffy` because it is assigned to the instance variable `@owner`. So `Person` objects are collaborators for `Cat` objects.
 
 __Q: We raise an error in the code above. Why? What do `kitty` and `bud` represent in relation to our `Person` object?__
 
@@ -1398,7 +1570,45 @@ bob.pets << bud
 bob.pets.jump 
 ```
 
+Line X raises a `NoMethodError` because arrays dont have a `jump` method. On line x `bob.pets` returns the array referenced by the `@pets` instance variable and then we are invoking the `jump` method on that array. This is why the error is raised.
+
+`kitty` and `bud` are collaborator objects for the `Person` object referenced by `bob` because they are stored as part of the state of `Person` object.
+
 __Q: What are collaborator objects, and what is the purpose of using them in OOP? Give an example of how we would work with one.__
+
+A collaborator object is an object that is stored as state within another object. As state is tracked by instance variables, this means that objects that are assigned to instance variables of an other object are known as collaborator objects. 
+
+Collaboration is a way of modeling relationships between object types that have an associative relationship. That is, objects that work togather with each other. Collaborator objects can be thought of as having a 'has a' relationship. For example, a library has books, a team has members, a deck has cards etc.
+
+Collaborator objects are an important aspect of OO design as they represent the connections between the various buidling blocks of the program. Collaborator objects allow us to breakdown the problem into smaller pieces and work on the smaller pieces seperately. This makes solving the smaller problem easier. And then bringing togather all the pieces or buidling blocks that fit togather to solve the problem at hand.
+
+```ruby
+class ProjectTeam
+  attr_accessor :members
+
+  def initialize
+    @members = []
+  end
+
+end
+
+class Engineer
+end
+
+class ProjectManager
+end
+
+class AdminStaff
+end
+
+team1 = ProjectTeam.new
+bob = Engineer.new
+jim = ProjectManager.new
+sara = AdminStaff.new
+
+team1.members.push(bob, jim, sara)
+
+p team1
 
 
 ## Spike
