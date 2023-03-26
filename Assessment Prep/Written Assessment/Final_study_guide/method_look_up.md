@@ -1,6 +1,6 @@
 # Method Lookup
 
-Method lookup path describes the order in which ruby traverses the class hierarchy when a method is invoked to look for the method definition.
+Method lookup path describes the order in which Ruby traverses the class hierarchy when a method is invoked to look for the method definition.
 
 The **method lookup path** describes the order in which classes are inspected when a method is called to see how that method is defined.
 

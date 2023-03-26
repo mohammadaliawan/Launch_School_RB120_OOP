@@ -1020,6 +1020,10 @@ __Q: What is the method lookup path?__
 
 __Q: How is the method lookup path affected by module mixins and class inheritance?__
 
+With module mixins, RUby will first search in the class of the calling object and then look in the last module that was mixid in. SO the last module included in the class is looked in first.
+
+With class inheritance, Ruby first searches in the class of the calling object, then in any mixed in modules in the order already explained above, and then it goes to the immediate superclass for the current class. 
+
 __Q:What is the method lookup path used when invoking `#walk` on `good_dog`?__
 
 ```ruby
@@ -1070,6 +1074,9 @@ good_dog = GoodAnimals::GoodDog.new
 p good_dog.walk
 
 ```
+The method lookup path that Ruby will follow to look for the `walk` method is [GoodDog, Danceable, Swimmable, Animal, Walkable]. Ruby does not go further up the method lookup path after `Walkable` because it find the `walk` method defined in this module and stops searching further.
+
+
 
 __Q: What is the method lookup path that Ruby will use as a result of the call to the `fly` method? Explain how we can verify this.__
 
@@ -1100,6 +1107,12 @@ end
 pingu = Penguin.new
 pingu.fly
 ```
+
+Penguin, Migratory, Aquatic, Bird, Animal, Object, Kernel, BasicObject
+
+Line xx will raise a `NoMethodError` because the `fly` method is not defined in any of the classes or modules in the method look up path which is Penguin, Migratory, Aquatic, Bird, Animal, Object, Kernel, BasicObject.
+
+We can verify this using the class method `ancestors` on the `Penguin` class.
 
 
 ## `self` and calling methods with `self`
