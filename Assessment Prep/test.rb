@@ -1,26 +1,23 @@
-class ProjectTeam
-  attr_accessor :members
-
-  def initialize
-    @members = []
+class Foo
+  def self.method_a
+    "Justice" + all
   end
 
+  def self.method_b(other)
+    "Justice" + other.exclamate
+  end
+
+  private
+
+  def self.all
+    " for all"
+  end
+
+  def self.exclamate
+    all + "!!!"
+  end
 end
 
-class Engineer
-end
-
-class ProjectManager
-end
-
-class AdminStaff
-end
-
-team1 = ProjectTeam.new
-bob = Engineer.new
-jim = ProjectManager.new
-sara = AdminStaff.new
-
-team1.members.push(bob, jim, sara)
-
-p team1
+foo = Foo.new
+puts Foo.method_a
+puts Foo.method_b(Foo)

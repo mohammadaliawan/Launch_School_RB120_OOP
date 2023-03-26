@@ -2,6 +2,17 @@
 
 ## What is Object Oriented Programming?   
 
+Object Oriented Programming is a programming paradigm. It is a way of structuring and organizing code to make it more maintainable, flexible and easier to think about. 
+
+It was created to deal with the increasing complexity of software programs. As software systems grew larger and more complex it became very difficult to maintain them and make changes. 
+
+OOP solves these problems by creating containers for data and functionality called objects which form the building blocks for the entire program.
+
+These building blocks are independent of each other. Manipulating one object does not affect other objects.The entire program becomes the interaction of these objects. It is even possible to reuse these objects for other purposes which reduces repetition within the program.
+
+OOP gives us the ability write organized code with clear boundaries. Its gives us the ability to section off areas of code, restricting access to data providing data protection and security.
+
+It also creates another layer of abstraction for the programmer to think on which helps with comming up with a more flexibles solution. 
 
 ### Define the Problem? Why was it created?
 Object Oriented Programming is a programming model/pattern/paradigm. Its a way of organizing code.

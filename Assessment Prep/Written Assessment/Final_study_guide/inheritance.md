@@ -29,6 +29,8 @@ Two ways of implementing Inheritance in Ruby
 
 Class Inheritance is when a class inherits behavior or methods from another class. The class that is inheriting behavior is called the subclass and the class it inherits from is called the superclass. Class inheritance is used when there is a "is a" relationship between classes while interface inheritance is used when there is a "has a relationship".
 
+### Superclass vs. Subclasses
+
 Superclasses are defined as general classes that have multiple use cases. So the attributes and behaviours defined in superclasses are generic and could be applicable in multiple scenarios.
 
 On the other hand, subclasses are defined for a more specific use case where the attributes and behaviours are detailed and fine tuned to that specific scenario. Subclasses can either extend the behaviours defined in their superclasses or completely override that behaviour with their own implementation.
@@ -66,54 +68,6 @@ If you call `super()` with empty paratheses, it calls the method in the supercla
 
 See example in computer.rb
 
-**Example of Polymorphism through class inheritance**
-
-The interface for the class heirarchy lets us work with all of the object types in the same way though the implementation may be dramatically different.
-
-```ruby
-class Transportation
-  def move
-    puts "Moving."
-  end
-end
-
-class Vehicle < Transportaiton
-  def move
-    puts "Driving on the road."
-  end
-end
-
-class Train < Transportation
-  def move
-    puts "Running on the track."
-  end
-end
-
-class Airplane < Transportation
-  def move
-    puts "Flying in the air."
-  end
-end
-
-transports = [Vehicle.new, Train.new, Airplane.new]
-
-transports.each {|transport| puts transport.move}
-
-
-```
-
-Polymorphism is the ability for different types of data to respond to a common interface. That is, it lets objects of different types respond to the same method invocation.
-
-In the above code we have defined a `Transportation` class that is the superclass for three other classes i.e. `Vehicle`, `Train` and `Airplane`.
- `Vehicle`, `Train` and `Airplane` all inherit the behaviors from `Transportation` class. `Transportation` class defines a general `move` method. And each of the  `Vehicle`, `Train` and `Airplane` classes define their own `move` methods. So essentially the `Transportation#move` method is overridden by the  `Vehicle`, `Train` and `Airplane`subclasses. 
-
- We have also initialized a `transports` array which contains three different objects i.e. objects of  `Vehicle`, `Train` and `Airplane` classes. 
-Every object in the `transports` array is a differnt type of object. The client code i.e. the `each` method with its accompanying block is using each of these objects in the same way i.e. calling the `move` method on each object. It does not matter what type of object is calling the `move` method. All that matters is that the calling object for the `move` method has an implementation for the `move` method.
-
-Since each class overrides the `Transportation#move` method with its own implementation of the `move` method, these overriding methods shall be invoked.
-This is an example of polymorphism in which three different object types can respond to the same method call by overriding a method inherited from a superclass. This is polymorphism through inheritance.
-
-
 ### Method Lookup Path
 
 Method lookup path describes the order in which ruby traverses the class hierarchy when a method is invoked to look for the method definition.
@@ -124,9 +78,7 @@ Ruby has a distinct lookup path that it follows each time a method is called.
 
 Whenever a method is invoked, the order in which Ruby searches classes for the method definition is called the method lookup path.
 
-**Importance**
-
-
+**Importance of Method Lookup path**
 
 The method lookup path is important because it determines which method definition ruby will execute in case the same method is defined in the class of the calling object as well as in the superclass or a mixed in module. 
 
@@ -151,23 +103,26 @@ BasicObject
 - the methods declared in the module become available to the objects and the class
 
 ```ruby
-module Swimmable
-  def swim
-    puts "I am swimming"
+module Upgradable
+  def upgrade(new_ram, new_storage)
+    self.ram = new_ram if ram < new_ram
+    self.storage = new_storage if storage < new_storage
   end
 end
 
-class Person
-  include Swimmable
-end
+class Computer
+  include Upgradable
+  attr_accessor :ram, :storage
 
-class Dog
-  include Swimmable
+  def initialize(ram, storage)
+    self.ram = ram
+    self.storage = storage
+  end
 end
-
-Person.new.swim
-Dog.new.swim
 ```
+In the above example, we have created a class `Computer`. Computers have an ability that they can be upgraded. Hence, this signifies a 'has an ability' relationship between `Computer` objects and the `upgrade` behaviour. So we can extract this behaviour from the class `Computer` into a module `Upgradable`. This will help us to keep the logic of this behaviour in one place and also reuse this code in multiple other classes that have this behaviour. This is an example of interface inheritance.
+
+
 A module is a collection of behaviors i.e. methods that are usable in other clasess through mixins. A module must be mixed in with a class using the `include` method invocation. This is called a mixin. After mixing in a module, the behaviors declared in that module are available to the class and its objects.
 
 Modules can be mixed into as many classes as needed. Modules are similar to classes as they contain shared behavior. However, you cannot create an object with a module. 
