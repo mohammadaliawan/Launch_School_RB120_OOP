@@ -1,0 +1,32 @@
+# Interterview Topics
+
+- [ ] Object Oriented Programming
+  - [ ] What is OOP?
+  - [ ] Why does OOP exist?
+  - [ ] What are the benefits of OOP?
+- [ ] Classes and objects
+  - [ ] What are classes and objects? How are they related?
+  - [ ] What are the benefits of creating classes and objects
+- [ ] Use attr_* to create setter and getter methods
+  - [ ] What are attr_* methods?
+  - [ ] What are getters, setters, different ways to make them.
+- [ ] How to call setters and getters
+- [ ] Instance variables, class variables, and constants, including the scope
+  - [ ] What are instance variables and how are they used in Ruby. What is their scope?
+  - [ ] What are class variables and how are they used in Ruby. What is their scope?
+  - [ ] What are constants and how are they used in Ruby. What is their scope?
+- [ ] Instance methods vs. class methods
+- [ ] Method Access Control
+- [ ] Referencing and setting instance variables vs. using getters and setters
+- [ ] Class inheritance
+- [ ] encapsulation 
+- [ ] polymorphism
+- [ ] Modules
+- [ ] Method lookup path
+- [ ] self
+- [ ] Calling methods with self
+    - [ ] More about self
+- [ ] Reading OO code
+- [ ] Fake operators and equality
+- [ ] Working with collaborator objects
+- [ ] Spikes
