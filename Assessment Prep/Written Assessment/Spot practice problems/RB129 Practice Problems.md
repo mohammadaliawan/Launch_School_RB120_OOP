@@ -381,3 +381,64 @@ The above line outputs: `[GoodAnimals::GoodDog, Danceable, Swimmable, Animal, Wa
 
 The output is an array of the classes and modules that Ruby will inspect to search for any methods invoked on an object of `GoodAnimals::GoodDog` class and the order of the search will be from right to left. So first Ruby will look in the `GoodAnimals::GoodDog` class, then `Danceable` module, then `Swimmable` module, then `Animal` class, then `Walkable` module where Ruby will find the `walk` method and execute it. Ruby will not go any further up the method look up path after the method is found.
 
+
+Q: Encapsulation is about hiding or restricting access to data and functionality in a program making it unavailable to the rest of the codebase. Explain why this concept is important in OOP. And explain with reference to the below code how it is implemented in Ruby. 
+
+```ruby
+class Book
+  def initialize(author, title)
+    @author = author
+    @title = title
+  end
+
+  def show_author
+    author.clone
+  end
+
+  def show_title
+    title.clone
+  end
+
+  def change_author(new_author)
+    self.author = new_author.capitalize
+  end
+
+  def change_title(new_title)
+  self.title = new_title.capitalize
+  end
+
+  private
+
+  attr_accessor :author, :title
+end
+
+book1 = Book.new("J.K. Rowling", "Harry Potter")
+book2 = Book.new("Tolkien", "The Hobbit")
+
+book1.author # J.K. Rowling
+book2.author # Tolkien
+
+book1.title # Harry Potter
+book2.title # The Hobbit
+```
+
+```ruby
+class Mammal
+  def speak
+    "I am speaking"
+  end
+
+  def sleep
+    "I "
+  end
+end
+
+chimp = Monkey.new
+human = Human.new
+fish = Fish.new
+
+chimp.
+
+
+
+```
