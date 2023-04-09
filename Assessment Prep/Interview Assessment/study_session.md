@@ -16,3 +16,10 @@
 # - can only access class variables
 # - definition syntax (defined on class)
 # - do not require object instantion to be called
+
+
+# general definition of the topic 2 - 3 mins
+# write the code example
+# explain the code example - how the concept is demonstrated 
+# summary of what you said
+# ask if the information is sufficient 

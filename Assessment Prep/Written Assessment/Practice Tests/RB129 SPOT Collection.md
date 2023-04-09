@@ -1457,10 +1457,6 @@ class ProjectTeam
     self.members = []
   end
 
-  def <<(person)
-    members << person
-    self
-  end
 end
 
 class Engineer
