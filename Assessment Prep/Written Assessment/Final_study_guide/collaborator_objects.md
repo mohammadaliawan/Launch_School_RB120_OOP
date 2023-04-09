@@ -3,20 +3,7 @@
 We can use any object to represent an object's state. Instance variables can be set to any object even an object of a custom class. 
 
 ```ruby
-class Person
-  attr_accessor :name, :pet
-
-  def initialize(name)
-    @name = name
-  end
-end
-
-class Bulldog
-end
-
-bob = Person.new("Robert")
-bud = Bulldog.new
-
+class 
 bob.pet = bud
 ```
 
